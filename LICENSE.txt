@@ -1,4 +1,4 @@
-WSUWP Plugin HRS Courses
+HRSWP Plugin Sqlsrv DB
 
 Copyright 2019 by Washington State University
 
@@ -361,6 +361,6 @@ Public License instead of this License.
 WRITTEN OFFER
 
 The source code for any program binaries or compressed scripts that are
-included with WSUWP Help Docs can be freely obtained at the following URL:
+included with HRSWP Sqlsrv DB can be freely obtained at the following URL:
 
-https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses
+https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db

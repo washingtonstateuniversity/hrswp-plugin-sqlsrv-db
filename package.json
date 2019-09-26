@@ -1,27 +1,27 @@
 {
-	"name": "@wsuwp/hrscourses",
-	"version": "1.0.0",
-	"description": "A plugin to create a Course custom post type for WSU Human Resource Services.",
-	"author": "washingtonstateuniversity",
+	"name": "@washingtonstateuniversity/hrswp-plugin-sqlsrv-db",
+	"version": "0.1.0",
+	"description": "A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.",
+	"author": "Adam Turner",
 	"contributors": [
 		{
-			"name": "Adam Turner"
+			"name": "washingtonstateuniversity"
 		}
 	],
 	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"wordpress",
 		"plugin",
-		"custom-post-type",
-		"learning"
+		"sqlsrv",
+		"database"
 	],
-	"homepage": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/master/README.md",
+	"homepage": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/master/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses"
+		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db"
 	},
 	"bugs": {
-		"url": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/issues"
+		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/issues"
 	},
 	"browserslist": [
 		"> 1%",

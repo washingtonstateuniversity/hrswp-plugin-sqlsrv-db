@@ -1,7 +1,7 @@
 # Travis CI configuration
 # @link https://travis-ci.org/
-# WSUWP Plugin HRS Courses
-# @link https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses
+# HRSWP Plugin Sqlsrv DB
+# @link https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db
 
 language: php
 
