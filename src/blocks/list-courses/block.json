@@ -1,0 +1,8 @@
+{
+	"name": "hrscourses/list-courses",
+	"category": "widgets",
+	"supports": {
+		"align": true,
+		"html": false
+	}
+}

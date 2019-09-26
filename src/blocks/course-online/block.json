@@ -1,0 +1,16 @@
+{
+	"name": "hrscourses/course-online",
+	"category": "common",
+	"attributes": {
+		"onlineLearningUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"onlineLearningLink": {
+			"type": "string",
+			"default": "Online Learning"
+		}
+	}
+}

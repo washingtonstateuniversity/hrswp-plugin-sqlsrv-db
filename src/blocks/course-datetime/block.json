@@ -1,0 +1,16 @@
+{
+	"name": "hrscourses/course-datetime",
+	"category": "common",
+	"attributes": {
+		"datetimeMetaValue": {
+			"type": "string",
+			"source": "meta",
+			"meta": "_wsuwp_hrs_courses_datetime"
+		},
+		"displayValue": {
+			"type": "string",
+			"source": "text",
+			"selector": ".course-datetime"
+		}
+	}
+}

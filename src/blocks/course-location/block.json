@@ -1,0 +1,16 @@
+{
+	"name": "hrscourses/course-location",
+	"category": "common",
+	"attributes": {
+		"locationMetaValue": {
+			"type": "string",
+			"source": "meta",
+			"meta": "_wsuwp_hrs_courses_location"
+		},
+		"displayValue": {
+			"type": "string",
+			"source": "html",
+			"selector": ".course-location"
+		}
+	}
+}

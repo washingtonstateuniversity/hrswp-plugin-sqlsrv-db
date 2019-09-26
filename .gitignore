@@ -1,0 +1,25 @@
+## Folders and files for git to ignore
+
+# Build/test tool files and directories
+/jsdoc
+/node_modules
+/npm-debug.log
+/phpunit.xml
+/phpcs.xml
+/tests/phpunit/data/plugins/wordpress-importer
+/tests/phpunit/data/.trac-ticket-cache*
+/tests/qunit/compiled.html
+/tests/phpunit/build
+/vendor
+/wp-cli.local.yml
+
+# OS generated files
+*~
+.Trash-*
+.DS_Store
+._*
+
+# Just in case
+wp-config.php
+wp-tests-config.php
+.htaccess
