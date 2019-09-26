@@ -176,7 +176,11 @@ class MSSQL_DB {
 		);
 
 		// Open a MS SQL connection using ODBC.
-		$this->dbh = sqlsrv_connect( $this->dbhost, $params );
+		if ( $this->show_errors ) {
+			$this->dbh = sqlsrv_connect( $this->dbhost, $params );
+		} else {
+			$this->dbh = @sqlsrv_connect( $this->dbhost, $params );
+		}
 
 		// Check for a successful connection. Return false on error.
 		if ( ! $this->dbh ) {
