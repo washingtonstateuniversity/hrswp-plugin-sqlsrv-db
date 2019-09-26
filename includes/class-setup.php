@@ -139,6 +139,9 @@ class Setup {
 	 * @access private
 	 */
 	private function includes() {
+		// The Microsoft SQL Server database connection class.
+		require __DIR__ . '/class-mssql-db.php';
+
 		// Server-side rendered blocks.
 		require __DIR__ . '/blocks.php';
 	}
