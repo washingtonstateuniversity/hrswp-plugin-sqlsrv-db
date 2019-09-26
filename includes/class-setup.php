@@ -43,7 +43,7 @@ class Setup {
 	public static function get_instance( $file ) {
 		static $instance;
 
-		if ( !isset( $instance ) ) {
+		if ( ! isset( $instance ) ) {
 			$instance        = new Setup();
 			Setup::$basename = $file;
 
