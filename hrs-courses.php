@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: WSUWP HRS Courses
-Version: 1.0.0
-Description: A plugin to create a Course custom post type for WSU Human Resource Services.
+Plugin Name: HRSWP Sqlsrv DB
+Version: 0.1.0
+Description: A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.
 Author: Adam Turner, washingtonstateuniversity
 Author URI: https://hrs.wsu.edu/
-Plugin URI: https://github.com/washingtonstateuniversity/wsuwp-hrs-courses
-Text Domain: wsuwp-hrs-courses
+Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db
+Text Domain: hrswp-sqlsrv-db
 Requires at least: 5.0
 Tested up to: 5.2.3
 Requires PHP: 7.0
 */
-namespace WSUWP\HRS\Courses;
+namespace HRSWP\SQLSRV;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -19,25 +19,28 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Loads the core plugin class.
+ * Loads the core plugin Setup class.
+ *
+ * @since 0.1.0
  */
-require __DIR__ . '/includes/class-wsuwp-hrs-courses.php';
+require __DIR__ . '/includes/class-setup.php';
 
 // Starts things up.
-add_action( 'plugins_loaded', __NAMESPACE__ . '\load_hrs_courses' );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\load' );
 
-// Flush rules on activation and clean up on deactivation.
-register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_activate' ) );
-register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_deactivate' ) );
-register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_uninstall' ) );
+register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'activate' ) );
+register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'deactivate' ) );
+register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'uninstall' ) );
 
 /**
- * Creates an instance of the HRS Courses class.
+ * Creates an instance of the Setup class.
  *
  * @since 0.1.0
  *
- * @return WSUWP_HRS_Courses An instance of the WSUWP_HRS_Courses class.
+ * @return Setup An instance of the Setup class.
  */
-function load_hrs_courses() {
-	$wsuwp_hrs_courses = Setup\WSUWP_HRS_Courses::get_instance( __FILE__ );
+function load() {
+	$hrswp_sqlsrv_db = Setup\Setup::get_instance( __FILE__ );
+
+	return $hrswp_sqlsrv_db;
 }
