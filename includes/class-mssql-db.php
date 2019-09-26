@@ -163,7 +163,7 @@ class MSSQL_DB {
 	 *
 	 * @link http://php.net/manual/en/intro.sqlsrv.php
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @return bool True with a successful connection, false on failure.
 	 */
@@ -202,7 +202,7 @@ class MSSQL_DB {
 	 *     $like = $msdb->esc_like( $find );
 	 *     $sql  = $msdb->get_results( "SELECT * FROM table WHERE content LIKE '%' + ? + '%' ", array( $like ) );
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $text The raw text to be escaped.
 	 * @return string Text in the form of a LIKE phrase. The output is not SQL safe on its own.
@@ -223,7 +223,7 @@ class MSSQL_DB {
 	 *
 	 * @todo Consider switching to PDO for better built-in escaping.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $string String to escape.
 	 * @return string Escaped string.
@@ -247,7 +247,7 @@ class MSSQL_DB {
 	 *
 	 * @uses msdb::mssql_escape_string()
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $string String to escape.
 	 */
@@ -262,7 +262,7 @@ class MSSQL_DB {
 	 *
 	 * @see wpdb::placeholder_escape()
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @return string String to escape placeholders.
 	 */
@@ -291,7 +291,7 @@ class MSSQL_DB {
 	/**
 	 * Adds a placeholder escape string, to escape anything that resembles a printf() placeholder.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $query The query to escape.
 	 * @return string The query with the placeholder escape string inserted as needed.
@@ -307,7 +307,7 @@ class MSSQL_DB {
 	/**
 	 * Removes the placeholder escape strings from a query.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $query The query to remove the placeholder from.
 	 * @return string The query with the placeholder removed as needed.
@@ -342,7 +342,7 @@ class MSSQL_DB {
 	 *
 	 * @link https://secure.php.net/sprintf Description of syntax.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string      $query Query statement with sprintf()-like placeholders.
 	 * @param array|mixed $args  The array of variables to substitute into the query's placeholders
@@ -442,7 +442,7 @@ class MSSQL_DB {
 	 * @todo Check on the type of query, {@see /wp-includes/wp-db.php}.
 	 * @todo Include some filtering and checking first.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $query A database query.
 	 * @param array  $param Optional. Arguments for a parameterized query.
@@ -497,7 +497,7 @@ class MSSQL_DB {
 	 * @see HRS_MSDB::query()
 	 * @link http://php.net/manual/en/function.sqlsrv-query.php
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $query The query to run.
 	 * @param array $param Optional. Arguments for a parameterized query.
@@ -517,7 +517,7 @@ class MSSQL_DB {
 	 *
 	 * Executes a given SLQ query and returns the full result.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $query  An SQL query.
 	 * @param array  $param  Optional. Arguments for a parameterized sqlsvr query.
@@ -552,7 +552,7 @@ class MSSQL_DB {
 	/**
 	 * Remove cached query results.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 */
 	public function flush() {
 		// Unset properties.
@@ -569,7 +569,7 @@ class MSSQL_DB {
 	/**
 	 * Closes the current database connection.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @return bool True if the connection was successfully closed, false if it
 	 *              wasn't or if the connection doesn't exist.
@@ -595,7 +595,7 @@ class MSSQL_DB {
 	 *
 	 * This is only a wrapper for HRS_MSDB::flush() and HRS_MSDB::clean().
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 */
 	public function clean() {
 		// Clean up.
@@ -608,7 +608,7 @@ class MSSQL_DB {
 	/**
 	 * Prints an SQL/DB error.
 	 *
-	 * @since 0.20.0
+	 * @since 0.1.0
 	 *
 	 * @param string $str The error to display.
 	 * @return false|void False if showing of errors is disabled.
