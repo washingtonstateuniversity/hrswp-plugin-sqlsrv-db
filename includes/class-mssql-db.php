@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-
 /**
  * SQL Server Database Access Object.
  *
@@ -142,6 +141,18 @@ class MSSQL_DB {
 		$this->dbhost     = $dbhost;
 
 		$this->mssql_db_connect();
+	}
+
+	/**
+	 * Handles database option destruction.
+	 *
+	 * This PHP5-style destructor runs when the database object is destroyed.
+	 *
+	 * @since 0.1.0
+	 * @return true
+	 */
+	public function __destruct() {
+		return true;
 	}
 
 	/**
