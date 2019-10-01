@@ -179,7 +179,7 @@ class MSSQL_DB {
 		if ( $this->show_errors ) {
 			$this->dbh = sqlsrv_connect( $this->dbhost, $params );
 		} else {
-			$this->dbh = @sqlsrv_connect( $this->dbhost, $params );
+			$this->dbh = @sqlsrv_connect( $this->dbhost, $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 
 		// Check for a successful connection. Return false on error.

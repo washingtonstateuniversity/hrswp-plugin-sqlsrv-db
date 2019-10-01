@@ -62,7 +62,7 @@ class MSSQL_Query {
 	public function init() {
 		unset( $this->records );
 		unset( $this->query );
-		$this->query_vars = array();
+		$this->query_vars    = array();
 		$this->found_records = 0;
 	}
 
