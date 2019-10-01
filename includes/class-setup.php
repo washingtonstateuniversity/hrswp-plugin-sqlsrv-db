@@ -127,8 +127,6 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'setup_block_editor_assets' ) );
-		add_action( 'enqueue_block_assets', array( $this, 'setup_block_assets' ) );
 	}
 
 	/**
@@ -141,9 +139,6 @@ class Setup {
 	private function includes() {
 		// The Microsoft SQL Server database connection class.
 		require __DIR__ . '/class-mssql-db.php';
-
-		// Server-side rendered blocks.
-		require __DIR__ . '/blocks.php';
 	}
 
 	/**
@@ -176,53 +171,5 @@ class Setup {
 
 			update_option( self::$slug . '_plugin-status', $status );
 		}
-	}
-
-	/**
-	 * Enqueues scripts and styles for the block editor.
-	 *
-	 * @since 0.1.0
-	 */
-	public function setup_block_editor_assets() {
-		$plugin = get_option( self::$slug . '_plugin-status' );
-
-		wp_enqueue_script(
-			'hrswp-sqlsrv-db-editor-script',
-			plugins_url( 'build/index.js', self::$basename ),
-			array(
-				'wp-blocks',
-				'wp-block-editor',
-				'wp-components',
-				'wp-element',
-				'wp-i18n',
-				'wp-data',
-				'wp-api-fetch',
-				'wp-url',
-			),
-			$plugin['version']
-		);
-
-		wp_enqueue_style(
-			'hrswp-sqlsrv-db-editor-style',
-			plugins_url( 'build/editor.css', self::$basename ),
-			array(),
-			$plugin['version']
-		);
-	}
-
-	/**
-	 * Enqueues scripts and styles for the frontend and the editor.
-	 *
-	 * @since 0.1.0
-	 */
-	public function setup_block_assets() {
-		$plugin = get_option( self::$slug . '_plugin-status' );
-
-		wp_enqueue_style(
-			'hrswp-sqlsrv-db-style',
-			plugins_url( 'build/style.css', self::$basename ),
-			array(),
-			$plugin['version']
-		);
 	}
 }
