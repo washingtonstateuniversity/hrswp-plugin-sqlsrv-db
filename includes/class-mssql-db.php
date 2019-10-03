@@ -74,7 +74,7 @@ class MSSQL_DB {
 	 * @since 0.2.0
 	 * @var array
 	 */
-	protected $datasets = array();
+	protected $databases = array();
 
 	/**
 	 * The SQL Server database tables.
@@ -152,7 +152,7 @@ class MSSQL_DB {
 	 * @since 0.2.0
 	 *
 	 * @param string $slug                 Required. A reference name for accessing this dataset.
-	 * @param array  $dataset_config {
+	 * @param array  $database_config {
 	 *     Required. Array of SQL Server database connection details.
 	 *
 	 *     @type string $mssql_db_name     The name of the database to connect to.
@@ -161,14 +161,14 @@ class MSSQL_DB {
      *     @type string $mssql_db_host     The Microsoft SQL Server host.
 	 * }
 	 */
-	private function add_dataset( $slug, $dataset_config ) {
-		if ( empty( $slug ) || ! is_array( $dataset_config ) ) {
+	private function add_database( $slug, $database_config ) {
+		if ( empty( $slug ) || ! is_array( $database_config ) ) {
 			$this->print_error(	__( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
 		}
 
 		$slug = sanitize_key( $slug );
 
-		$this->datasets[$slug] = $dataset_config;
+		$this->databases[ $slug ] = $database_config;
 	}
 
 	/**
@@ -181,22 +181,22 @@ class MSSQL_DB {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $dataset Required. The handle corresponding to the database to connect to.
+	 * @param string $database Required. The handle corresponding to the database to connect to.
 	 * @return bool True with a successful connection, false on failure.
 	 */
-	public function mssql_db_connect( $dataset ) {
+	public function mssql_db_connect( $database ) {
 		// Set the MS SQL Server-style query parameters.
 		$params = array(
-			'Database' => $this->datasets[$dataset]['mssql_db_name'],
-			'Uid'      => $this->datasets[$dataset]['mssql_db_user'],
-			'PWD'      => $this->datasets[$dataset]['mssql_db_password'],
+			'Database' => $this->databases[ $database ]['mssql_db_name'],
+			'Uid'      => $this->databases[ $database ]['mssql_db_user'],
+			'PWD'      => $this->databases[ $database ]['mssql_db_password'],
 		);
 
 		// Open a MS SQL connection using ODBC.
 		if ( $this->show_errors ) {
-			$this->dbh = sqlsrv_connect( $this->datasets[$dataset]['mssql_db_host'], $params );
+			$this->dbh = sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params );
 		} else {
-			$this->dbh = @sqlsrv_connect( $this->datasets[$dataset]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			$this->dbh = @sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 
 		// Check for a successful connection. Return false on error.
