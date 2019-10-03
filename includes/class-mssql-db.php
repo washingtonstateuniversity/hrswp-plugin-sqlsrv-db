@@ -5,7 +5,7 @@
  * The HRSWP Sqlsrv DB connector is comprised of the MSSQL_DB class, which, when
  * instantiated with valid credentials, opens a connection from WordPress to
  * a Microsoft SQL Server database. The class provides a variety of methods for
- * interacting with the SQL Server database using the `sqlsvr` PHP extension.
+ * interacting with the SQL Server database using the `sqlsrv` PHP extension.
  *
  * @package HRSWP_Sqlsrv_DB
  * @since 0.1.0
@@ -69,36 +69,20 @@ class MSSQL_DB {
 	protected $result;
 
 	/**
-	 * Database Username.
+	 * The SQL Server database connection details.
 	 *
-	 * @since 0.1.0
-	 * @var string
+	 * @since 0.2.0
+	 * @var array
 	 */
-	protected $dbuser;
+	protected $datasets = array();
 
 	/**
-	 * Database Password.
+	 * The SQL Server database tables.
 	 *
-	 * @since 0.1.0
-	 * @var string
+	 * @since 0.2.0
+	 * @var array
 	 */
-	protected $dbpassword;
-
-	/**
-	 * Database Name.
-	 *
-	 * @since 0.1.0
-	 * @var string
-	 */
-	protected $dbname;
-
-	/**
-	 * Database Host.
-	 *
-	 * @since 0.1.0
-	 * @var string
-	 */
-	protected $dbhost;
+	protected $tables = array();
 
 	/**
 	 * Database Handle.
@@ -117,30 +101,37 @@ class MSSQL_DB {
 	private $has_connected = false;
 
 	/**
-	 * Connects to a database server and selects a database.
+	 * Prepares to make database connections.
 	 *
-	 * PHP5+ style constructor that sets up the class properties and connection
-	 * to the database.
+	 * PHP5+ style constructor that sets up the class properties and loads the
+	 * database configuration details.
 	 *
 	 * @since 0.1.0
-	 *
-	 * @param string $dbuser     MSSQL database user
-	 * @param string $dbpassword MSSQL database password
-	 * @param string $dbname     MSSQL database name
-	 * @param string $dbhost     MSSQL database host
+	 * @since 0.2.0 No longer opens connection on initialization.
 	 */
-	public function __construct( $dbuser, $dbpassword, $dbname, $dbhost ) {
+	public function __construct() {
 		// Only print errors if debugging is enabled globally.
 		if ( WP_DEBUG && WP_DEBUG_DISPLAY ) {
 			$this->show_errors = true;
 		}
 
-		$this->dbuser     = $dbuser;
-		$this->dbpassword = $dbpassword;
-		$this->dbname     = $dbname;
-		$this->dbhost     = $dbhost;
+		// Load the SQL Server DB configuration file.
+	    if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
 
-		$this->mssql_db_connect();
+	        // The config file exists in ABSPATH.
+	        require_once( ABSPATH . 'hrswp-sqlsrv-config.php' );
+
+	    } elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
+
+	        // The config file exists one level above ABSPATH.
+	        require_once( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
+
+	    } else {
+
+	        // The config file does not exist.
+			$this->print_error(	__( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.' ) );
+
+		}
 	}
 
 	/**
@@ -156,7 +147,32 @@ class MSSQL_DB {
 	}
 
 	/**
-	 * Connects to and selects a database.
+	 * Adds the connection details for a database as a dataset.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $slug                 Required. A reference name for accessing this dataset.
+	 * @param array  $dataset_config {
+	 *     Required. Array of SQL Server database connection details.
+	 *
+	 *     @type string $mssql_db_name     The name of the database to connect to.
+     *     @type string $mssql_db_user     The Microsoft SQL Server user for the database.
+     *     @type string $mssql_db_password The Microsoft SQL Server user password.
+     *     @type string $mssql_db_host     The Microsoft SQL Server host.
+	 * }
+	 */
+	private function add_dataset( $slug, $dataset_config ) {
+		if ( empty( $slug ) || ! is_array( $dataset_config ) ) {
+			$this->print_error(	__( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
+		}
+
+		$slug = sanitize_key( $slug );
+
+		$this->datasets[$slug] = $dataset_config;
+	}
+
+	/**
+	 * Connects to a database server and selects a database.
 	 *
 	 * Uses the `sqlsrv` PHP extension to open a connection to a Microsoft SQL
 	 * Server database.
@@ -165,21 +181,22 @@ class MSSQL_DB {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $dataset Required. The handle corresponding to the database to connect to.
 	 * @return bool True with a successful connection, false on failure.
 	 */
-	public function mssql_db_connect() {
+	public function mssql_db_connect( $dataset ) {
 		// Set the MS SQL Server-style query parameters.
 		$params = array(
-			'Database' => $this->dbname,
-			'Uid'      => $this->dbuser,
-			'PWD'      => $this->dbpassword,
+			'Database' => $this->datasets[$dataset]['mssql_db_name'],
+			'Uid'      => $this->datasets[$dataset]['mssql_db_user'],
+			'PWD'      => $this->datasets[$dataset]['mssql_db_password'],
 		);
 
 		// Open a MS SQL connection using ODBC.
 		if ( $this->show_errors ) {
-			$this->dbh = sqlsrv_connect( $this->dbhost, $params );
+			$this->dbh = sqlsrv_connect( $this->datasets[$dataset]['mssql_db_host'], $params );
 		} else {
-			$this->dbh = @sqlsrv_connect( $this->dbhost, $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			$this->dbh = @sqlsrv_connect( $this->datasets[$dataset]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 
 		// Check for a successful connection. Return false on error.
@@ -524,7 +541,7 @@ class MSSQL_DB {
 	 * @since 0.1.0
 	 *
 	 * @param string $query  An SQL query.
-	 * @param array  $param  Optional. Arguments for a parameterized sqlsvr query.
+	 * @param array  $param  Optional. Arguments for a parameterized sqlsrv query.
 	 * @param string $output Optional. Any of ARRAY_A, ARRAY_N, or OBJECT constants.
 	 *                       All return an arrow of rows indexed from 0 by SQL result row number.
 	 *                       Each row is an associative array (column => value, ...), a numerically
