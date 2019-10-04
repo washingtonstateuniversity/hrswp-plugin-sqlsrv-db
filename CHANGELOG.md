@@ -18,6 +18,22 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.2.0-alpha.1 (:construction: 2019-10-04)
+
+### Changed
+
+- :recycle: Refactor the HRSWP Sqlsrv DB connector class (`MSSQL_DB`) to use its own dedicated database config file and store database connection details as a class property array instead of as globals and to only prepare those connections on initialization instead of immediately connecting to a given database. The connect method will now use the class `datasets` property array.
+
+### Added
+
+- Method to save database connection details in the plugin config file as a class property array.
+- Method to check for the database connections config file and display an admin notice (and a frontend error if debugging is enabled) if it's missing.
+- :lock: A sample configuration file to store database connection details. This file should be treated like the 'wp-config' file: placed in the same directory (either root or one level above) and given restricted permissions (400 or 440).
+
+### Removed
+
+- HRSWP Sqlsrv DB connector class (`MSSQL_DB`) properties for individual databases in favor of a `datasets` array.
+
 ## 0.1.0 (2019-10-01)
 
 ### Changed
