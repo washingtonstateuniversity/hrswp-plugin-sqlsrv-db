@@ -151,8 +151,11 @@ class MSSQL_DB {
 	 *
 	 * @since 0.2.0
 	 *
-	 * @param string $slug                 Required. A reference name for accessing this dataset.
-	 * @param array  $database_config {
+	 * @param string $database_handle      Required. A reference name for accessing this
+	 *                                     database, between 1 and 20 characters in length.
+	 *                                     Allowed characters: Lowercase alphanumeric characters,
+	 *                                     dashes and underscores, @see sanitize_key().
+	 * @param array  $config {
 	 *     Required. Array of SQL Server database connection details.
 	 *
 	 *     @type string $mssql_db_name     The name of the database to connect to.
@@ -161,14 +164,16 @@ class MSSQL_DB {
      *     @type string $mssql_db_host     The Microsoft SQL Server host.
 	 * }
 	 */
-	private function add_database( $slug, $database_config ) {
-		if ( empty( $slug ) || ! is_array( $database_config ) ) {
+	private function add_database( $database_handle, $config = array() ) {
+		if ( empty( $database_handle ) || 20 < strlen( $database_handle ) ) {
 			$this->print_error(	__( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
+			return;
 		}
 
-		$slug = sanitize_key( $slug );
+		// Sanitize database handle.
+		$database_handle = sanitize_key( $database_handle );
 
-		$this->databases[ $slug ] = $database_config;
+		$this->databases[ $database_handle ] = $config;
 	}
 
 	/**
