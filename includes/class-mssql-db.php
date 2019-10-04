@@ -219,6 +219,22 @@ class MSSQL_DB {
 	}
 
 	/**
+	 * Retrieves a database table name for use in an SQL query.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $table_label Required. The label for the table name to be retrieved.
+	 * @return string The database table name for use in an SQL query.
+	 */
+	public function get_table_name( $table_label ) {
+		if ( ! $table_label ) {
+			return;
+		}
+
+		return $this->tables[ $table_label ]['table_name'];
+	}
+
+	/**
 	 * Connects to a database server and selects a database.
 	 *
 	 * Uses the `sqlsrv` PHP extension to open a connection to a Microsoft SQL
