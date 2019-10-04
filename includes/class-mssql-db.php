@@ -72,15 +72,37 @@ class MSSQL_DB {
 	 * The SQL Server database connection details.
 	 *
 	 * @since 0.2.0
-	 * @var array
-	 */
+	 * @var array {
+	 *     Array of database connection entries.
+	 *
+	 *     @type string A reference name for this database.
+	 *     @type array {
+	 *         The database credentials for the given handle.
+	 *
+	 *         @type string $mssql_db_name     The name of the database to connect to.
+	 *         @type string $mssql_db_user     The Microsoft SQL Server user for the database.
+	 *         @type string $mssql_db_password The Microsoft SQL Server user password.
+	 *         @type string $mssql_db_host     The Microsoft SQL Server host.
+	 *     }
+	 * }
+     */
 	protected $databases = array();
 
 	/**
 	 * The SQL Server database tables.
 	 *
 	 * @since 0.2.0
-	 * @var array
+	 * @var array {
+	 *     Array of table labels and database details.
+	 *
+	 *     @type string A reference name for this table.
+	 *     @type array {
+	 *         Database details for each table.
+	 *
+	 *         @type string $table_name The name of the table in the database.
+	 *         @type string $database   The reference name of the database containing the table(s).
+	 *     }
+	 * }
 	 */
 	protected $tables = array();
 
