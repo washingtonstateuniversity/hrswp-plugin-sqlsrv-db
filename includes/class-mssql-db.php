@@ -177,6 +177,48 @@ class MSSQL_DB {
 	}
 
 	/**
+	 * Associates tables with databases and reference handles for selection.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $database_handle Required. The reference name of the database containing the table(s).
+	 * @param array  $tables {
+	 *     Required. Array of SQL Server database table labels and table names.
+	 *
+	 *     @type array {
+	 *         Each table should be defined in an array with a label and the database name.
+	 *
+	 *         @type string $label      Required. A reference name for referring to this table.
+	 *                                  Allowed characters: Lowercase alphanumeric characters,
+	 *                                  dashes and underscores, @see sanitize_key().
+	 *         @type string $table_name Required. The name of the table in the database.
+	 *     }
+	 * }
+	 */
+	private function set_table_names( $database_handle, $tables = array() ) {
+		if ( ! array_key_exists( $database_handle, $this->databases ) ) {
+			$this->print_error(
+				sprintf(
+					/* translators: %s: the database identifier */
+					__( 'Problem in MSSQL_DB->add_tables. The database slug %s does not exist.' ),
+					esc_html( $database_handle )
+				)
+			);
+			return;
+		}
+
+		foreach ( $tables as $table ) {
+			// Sanitize the table label.
+			$label = sanitize_key( $table['label'] );
+
+			$this->tables[ $label ] = array(
+				'table_name' => $table['table_name'],
+				'database'   => $database_handle,
+			);
+		}
+	}
+
+	/**
 	 * Connects to a database server and selects a database.
 	 *
 	 * Uses the `sqlsrv` PHP extension to open a connection to a Microsoft SQL
