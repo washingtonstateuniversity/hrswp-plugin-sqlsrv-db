@@ -201,6 +201,6 @@ class Setup {
 			'<code>hrswp-sqlsrv-config.php</code>'
 		);
 
-	    printf( '<div class="notice notice-error"><p>%s</p></div>', $message );
+		printf( '<div class="notice notice-error"><p>%s</p></div>', $message );
 	}
 }

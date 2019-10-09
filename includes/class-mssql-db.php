@@ -85,7 +85,7 @@ class MSSQL_DB {
 	 *         @type string $mssql_db_host     The Microsoft SQL Server host.
 	 *     }
 	 * }
-     */
+	 */
 	protected $databases = array();
 
 	/**
@@ -138,20 +138,20 @@ class MSSQL_DB {
 		}
 
 		// Load the SQL Server DB configuration file.
-	    if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
+		if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
 
-	        // The config file exists in ABSPATH.
-	        require_once( ABSPATH . 'hrswp-sqlsrv-config.php' );
+			// The config file exists in ABSPATH.
+			require_once( ABSPATH . 'hrswp-sqlsrv-config.php' );
 
-	    } elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
+		} elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
 
-	        // The config file exists one level above ABSPATH.
-	        require_once( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
+			// The config file exists one level above ABSPATH.
+			require_once( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
 
-	    } else {
+		} else {
 
-	        // The config file does not exist.
-			$this->print_error(	__( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.' ) );
+			// The config file does not exist.
+			$this->print_error( __( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.' ) );
 
 		}
 	}
@@ -181,14 +181,14 @@ class MSSQL_DB {
 	 *     Required. Array of SQL Server database connection details.
 	 *
 	 *     @type string $mssql_db_name     The name of the database to connect to.
-     *     @type string $mssql_db_user     The Microsoft SQL Server user for the database.
-     *     @type string $mssql_db_password The Microsoft SQL Server user password.
-     *     @type string $mssql_db_host     The Microsoft SQL Server host.
+	 *     @type string $mssql_db_user     The Microsoft SQL Server user for the database.
+	 *     @type string $mssql_db_password The Microsoft SQL Server user password.
+	 *     @type string $mssql_db_host     The Microsoft SQL Server host.
 	 * }
 	 */
 	private function add_database( $database_handle, $config = array() ) {
 		if ( empty( $database_handle ) || 20 < strlen( $database_handle ) ) {
-			$this->print_error(	__( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
+			$this->print_error( __( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
 			return;
 		}
 
@@ -252,7 +252,7 @@ class MSSQL_DB {
 	public function get_database_label_by( $field, $value ) {
 		if ( 'table' === $field ) {
 			foreach ( $this->tables as $table ) {
-				if ( in_array( $value, $table ) ) {
+				if ( in_array( $value, $table, true ) ) {
 					return $table['database'];
 				}
 			}
