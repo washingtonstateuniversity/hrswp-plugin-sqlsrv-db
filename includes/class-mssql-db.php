@@ -363,15 +363,9 @@ class MSSQL_DB {
 	 * @return string Escaped string.
 	 */
 	private function mssql_escape_string( $string ) {
-		if ( $this->dbh ) {
-			// MS SQL syntax requires single quotes to be escaped.
-			$escaped = str_replace( "'", "''", $string );
-			$escaped = addslashes( $escaped );
-		} else {
-			/* translators: %s: database access class HRS_MSDB */
-			$this->print_error( sprintf( __( '%s must set a database connection for use with escaping.', 'hrs-wsu-edu' ), get_class( $this ) ) );
-			$escaped = str_replace( "'", "''", $string );
-		}
+		// MS SQL syntax requires single quotes to be escaped.
+		$escaped = str_replace( "'", "''", $string );
+		$escaped = addslashes( $escaped );
 
 		return $this->add_placeholder_escape( $escaped );
 	}
