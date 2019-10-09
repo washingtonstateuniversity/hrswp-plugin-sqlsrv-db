@@ -5,7 +5,7 @@
  * The HRSWP Sqlsrv DB connector is comprised of the MSSQL_DB class, which, when
  * instantiated with valid credentials, opens a connection from WordPress to
  * a Microsoft SQL Server database. The class provides a variety of methods for
- * interacting with the SQL Server database using the `sqlsvr` PHP extension.
+ * interacting with the SQL Server database using the `sqlsrv` PHP extension.
  *
  * @package HRSWP_Sqlsrv_DB
  * @since 0.1.0
@@ -69,36 +69,42 @@ class MSSQL_DB {
 	protected $result;
 
 	/**
-	 * Database Username.
+	 * The SQL Server database connection details.
 	 *
-	 * @since 0.1.0
-	 * @var string
+	 * @since 0.2.0
+	 * @var array {
+	 *     Array of database connection entries.
+	 *
+	 *     @type string A reference name for this database.
+	 *     @type array {
+	 *         The database credentials for the given handle.
+	 *
+	 *         @type string $mssql_db_name     The name of the database to connect to.
+	 *         @type string $mssql_db_user     The Microsoft SQL Server user for the database.
+	 *         @type string $mssql_db_password The Microsoft SQL Server user password.
+	 *         @type string $mssql_db_host     The Microsoft SQL Server host.
+	 *     }
+	 * }
 	 */
-	protected $dbuser;
+	protected $databases = array();
 
 	/**
-	 * Database Password.
+	 * The SQL Server database tables.
 	 *
-	 * @since 0.1.0
-	 * @var string
-	 */
-	protected $dbpassword;
-
-	/**
-	 * Database Name.
+	 * @since 0.2.0
+	 * @var array {
+	 *     Array of table labels and database details.
 	 *
-	 * @since 0.1.0
-	 * @var string
-	 */
-	protected $dbname;
-
-	/**
-	 * Database Host.
+	 *     @type string A reference name for this table.
+	 *     @type array {
+	 *         Database details for each table.
 	 *
-	 * @since 0.1.0
-	 * @var string
+	 *         @type string $table_name The name of the table in the database.
+	 *         @type string $database   The reference name of the database containing the table(s).
+	 *     }
+	 * }
 	 */
-	protected $dbhost;
+	protected $tables = array();
 
 	/**
 	 * Database Handle.
@@ -117,30 +123,37 @@ class MSSQL_DB {
 	private $has_connected = false;
 
 	/**
-	 * Connects to a database server and selects a database.
+	 * Prepares to make database connections.
 	 *
-	 * PHP5+ style constructor that sets up the class properties and connection
-	 * to the database.
+	 * PHP5+ style constructor that sets up the class properties and loads the
+	 * database configuration details.
 	 *
 	 * @since 0.1.0
-	 *
-	 * @param string $dbuser     MSSQL database user
-	 * @param string $dbpassword MSSQL database password
-	 * @param string $dbname     MSSQL database name
-	 * @param string $dbhost     MSSQL database host
+	 * @since 0.2.0 No longer opens connection on initialization.
 	 */
-	public function __construct( $dbuser, $dbpassword, $dbname, $dbhost ) {
+	public function __construct() {
 		// Only print errors if debugging is enabled globally.
 		if ( WP_DEBUG && WP_DEBUG_DISPLAY ) {
 			$this->show_errors = true;
 		}
 
-		$this->dbuser     = $dbuser;
-		$this->dbpassword = $dbpassword;
-		$this->dbname     = $dbname;
-		$this->dbhost     = $dbhost;
+		// Load the SQL Server DB configuration file.
+		if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
 
-		$this->mssql_db_connect();
+			// The config file exists in ABSPATH.
+			require_once( ABSPATH . 'hrswp-sqlsrv-config.php' );
+
+		} elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
+
+			// The config file exists one level above ABSPATH.
+			require_once( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
+
+		} else {
+
+			// The config file does not exist.
+			$this->print_error( __( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.' ) );
+
+		}
 	}
 
 	/**
@@ -156,7 +169,118 @@ class MSSQL_DB {
 	}
 
 	/**
-	 * Connects to and selects a database.
+	 * Adds the connection details for a database as a dataset.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $database_handle      Required. A reference name for accessing this
+	 *                                     database, between 1 and 20 characters in length.
+	 *                                     Allowed characters: Lowercase alphanumeric characters,
+	 *                                     dashes and underscores, @see sanitize_key().
+	 * @param array  $config {
+	 *     Required. Array of SQL Server database connection details.
+	 *
+	 *     @type string $mssql_db_name     The name of the database to connect to.
+	 *     @type string $mssql_db_user     The Microsoft SQL Server user for the database.
+	 *     @type string $mssql_db_password The Microsoft SQL Server user password.
+	 *     @type string $mssql_db_host     The Microsoft SQL Server host.
+	 * }
+	 */
+	private function add_database( $database_handle, $config = array() ) {
+		if ( empty( $database_handle ) || 20 < strlen( $database_handle ) ) {
+			$this->print_error( __( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
+			return;
+		}
+
+		// Sanitize database handle.
+		$database_handle = sanitize_key( $database_handle );
+
+		$this->databases[ $database_handle ] = $config;
+	}
+
+	/**
+	 * Associates tables with databases and reference handles for selection.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $database_handle Required. The reference name of the database containing the table(s).
+	 * @param array  $tables {
+	 *     Required. Array of SQL Server database table labels and table names.
+	 *
+	 *     @type array {
+	 *         Each table should be defined in an array with a label and the database name.
+	 *
+	 *         @type string $label      Required. A reference name for referring to this table.
+	 *                                  Allowed characters: Lowercase alphanumeric characters,
+	 *                                  dashes and underscores, @see sanitize_key().
+	 *         @type string $table_name Required. The name of the table in the database.
+	 *     }
+	 * }
+	 */
+	private function set_table_names( $database_handle, $tables = array() ) {
+		if ( ! array_key_exists( $database_handle, $this->databases ) ) {
+			$this->print_error(
+				sprintf(
+					/* translators: %s: the database identifier */
+					__( 'Problem in MSSQL_DB->add_tables. The database slug %s does not exist.' ),
+					esc_html( $database_handle )
+				)
+			);
+			return;
+		}
+
+		foreach ( $tables as $table ) {
+			// Sanitize the table label.
+			$label = sanitize_key( $table['label'] );
+
+			$this->tables[ $label ] = array(
+				'table_name' => $table['table_name'],
+				'database'   => $database_handle,
+			);
+		}
+	}
+
+	/**
+	 * Retrieve the database name by a given field.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $field The field the retrieve the database name by. Accepts 'table'.
+	 * @param string $value A value for $field. A table from the desired database.
+	 * @return string|false The database label on success, false on failure.
+	 */
+	public function get_database_label_by( $field, $value ) {
+		if ( 'table' === $field ) {
+			foreach ( $this->tables as $table ) {
+				if ( in_array( $value, $table, true ) ) {
+					return $table['database'];
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Retrieves a database table name for use in an SQL query.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $table_label Required. The label for the table name to be retrieved.
+	 * @return string|false The database table name for use in an SQL query or false on failure.
+	 */
+	public function get_table_name( $table_label ) {
+		$table = $this->tables[ $table_label ]['table_name'];
+
+		if ( ! $table ) {
+			return false;
+		}
+
+		return $table;
+	}
+
+	/**
+	 * Connects to a database server and selects a database.
 	 *
 	 * Uses the `sqlsrv` PHP extension to open a connection to a Microsoft SQL
 	 * Server database.
@@ -165,21 +289,27 @@ class MSSQL_DB {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $database Required. The label corresponding to the database to connect to.
 	 * @return bool True with a successful connection, false on failure.
 	 */
-	public function mssql_db_connect() {
+	public function mssql_db_connect( $database ) {
+		if ( ! $this->databases[ $database ] ) {
+			$this->print_error( __( 'Invalid database label provided to "mssql_db_connect"' ) );
+			return false;
+		}
+
 		// Set the MS SQL Server-style query parameters.
 		$params = array(
-			'Database' => $this->dbname,
-			'Uid'      => $this->dbuser,
-			'PWD'      => $this->dbpassword,
+			'Database' => $this->databases[ $database ]['mssql_db_name'],
+			'Uid'      => $this->databases[ $database ]['mssql_db_user'],
+			'PWD'      => $this->databases[ $database ]['mssql_db_password'],
 		);
 
 		// Open a MS SQL connection using ODBC.
 		if ( $this->show_errors ) {
-			$this->dbh = sqlsrv_connect( $this->dbhost, $params );
+			$this->dbh = sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params );
 		} else {
-			$this->dbh = @sqlsrv_connect( $this->dbhost, $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			$this->dbh = @sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 
 		// Check for a successful connection. Return false on error.
@@ -233,15 +363,9 @@ class MSSQL_DB {
 	 * @return string Escaped string.
 	 */
 	private function mssql_escape_string( $string ) {
-		if ( $this->dbh ) {
-			// MS SQL syntax requires single quotes to be escaped.
-			$escaped = str_replace( "'", "''", $string );
-			$escaped = addslashes( $escaped );
-		} else {
-			/* translators: %s: database access class HRS_MSDB */
-			$this->print_error( sprintf( __( '%s must set a database connection for use with escaping.', 'hrs-wsu-edu' ), get_class( $this ) ) );
-			$escaped = str_replace( "'", "''", $string );
-		}
+		// MS SQL syntax requires single quotes to be escaped.
+		$escaped = str_replace( "'", "''", $string );
+		$escaped = addslashes( $escaped );
 
 		return $this->add_placeholder_escape( $escaped );
 	}
@@ -524,7 +648,7 @@ class MSSQL_DB {
 	 * @since 0.1.0
 	 *
 	 * @param string $query  An SQL query.
-	 * @param array  $param  Optional. Arguments for a parameterized sqlsvr query.
+	 * @param array  $param  Optional. Arguments for a parameterized sqlsrv query.
 	 * @param string $output Optional. Any of ARRAY_A, ARRAY_N, or OBJECT constants.
 	 *                       All return an arrow of rows indexed from 0 by SQL result row number.
 	 *                       Each row is an associative array (column => value, ...), a numerically

@@ -139,6 +139,9 @@ class Setup {
 	private function includes() {
 		// The Microsoft SQL Server database connection class.
 		require __DIR__ . '/class-mssql-db.php';
+
+		// The Microsoft SQL Server query class.
+		require __DIR__ . '/class-mssql-query.php';
 	}
 
 	/**
@@ -171,5 +174,33 @@ class Setup {
 
 			update_option( self::$slug . '_plugin-status', $status );
 		}
+
+		// Check for the HRSWP Sqlsrv configuration file.
+		if (
+			! file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) &&
+			! file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' )
+		) {
+			// Warn if the HRSWP Sqlsrv configuration file can't be found.
+			add_action( 'admin_notices', array( $this, 'notice__missing_config_file' ) );
+		}
+	}
+
+	/**
+	 * Displays an error message in the WP Admin area if the plugin config file is missing.
+	 *
+	 * The HRSWP Sqlsrv DB plugin relies on a 'hrswp-sqlsrv-config.php' file
+	 * existing alongside the 'wp-config.php' file to store details for the
+	 * external SQL Server databases.
+	 *
+	 * @since 0.2.0
+	 */
+	public function notice__missing_config_file() {
+		$message = sprintf(
+			/* translators: %s: hrswp-sqlsrv-config.php */
+			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.' ),
+			'<code>hrswp-sqlsrv-config.php</code>'
+		);
+
+		printf( '<div class="notice notice-error"><p>%s</p></div>', $message );
 	}
 }
