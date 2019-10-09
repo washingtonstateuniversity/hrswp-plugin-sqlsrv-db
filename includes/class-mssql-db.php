@@ -241,19 +241,42 @@ class MSSQL_DB {
 	}
 
 	/**
+	 * Retrieve the database name by a given field.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param string $field The field the retrieve the database name by. Accepts 'table'.
+	 * @param string $value A value for $field. A table from the desired database.
+	 * @return string|false The database label on success, false on failure.
+	 */
+	public function get_database_label_by( $field, $value ) {
+		if ( 'table' === $field ) {
+			foreach ( $this->tables as $table ) {
+				if ( in_array( $value, $table ) ) {
+					return $table['database'];
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Retrieves a database table name for use in an SQL query.
 	 *
 	 * @since 0.2.0
 	 *
 	 * @param string $table_label Required. The label for the table name to be retrieved.
-	 * @return string The database table name for use in an SQL query.
+	 * @return string|false The database table name for use in an SQL query or false on failure.
 	 */
 	public function get_table_name( $table_label ) {
-		if ( ! $table_label ) {
-			return;
+		$table = $this->tables[ $table_label ]['table_name'];
+
+		if ( ! $table ) {
+			return false;
 		}
 
-		return $this->tables[ $table_label ]['table_name'];
+		return $table;
 	}
 
 	/**
@@ -266,10 +289,15 @@ class MSSQL_DB {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $database Required. The handle corresponding to the database to connect to.
+	 * @param string $database Required. The label corresponding to the database to connect to.
 	 * @return bool True with a successful connection, false on failure.
 	 */
 	public function mssql_db_connect( $database ) {
+		if ( ! $this->databases[ $database ] ) {
+			$this->print_error( __( 'Invalid database label provided to "mssql_db_connect"' ) );
+			return false;
+		}
+
 		// Set the MS SQL Server-style query parameters.
 		$params = array(
 			'Database' => $this->databases[ $database ]['mssql_db_name'],
