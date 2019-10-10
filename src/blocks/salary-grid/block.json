@@ -1,0 +1,8 @@
+{
+	"name": "hrswpsqlsrv/list-courses",
+	"category": "widgets",
+	"supports": {
+		"align": true,
+		"html": false
+	}
+}

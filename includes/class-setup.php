@@ -127,6 +127,8 @@ class Setup {
 	 */
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
+		add_action( 'init', array( $this, 'register_dynamic_blocks' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
 	}
 
 	/**
@@ -183,6 +185,61 @@ class Setup {
 			// Warn if the HRSWP Sqlsrv configuration file can't be found.
 			add_action( 'admin_notices', array( $this, 'notice__missing_config_file' ) );
 		}
+	}
+
+	/**
+	 * Retrieves the block registration file from every dynamic block.
+	 *
+	 * Block registration is managed on a block-by-block basis in 'blocks' directory
+	 * (`src/blocks/{block-name}/index.php`) for dynamic blocks. Each dynamic
+	 * block includes an 'index.php' file that handles registration and the render
+	 * callback function. Because these are dynamic blocks they don’t use default
+	 * block save implementation through the JS client. Instead they use a server
+	 * component to render the output. @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/creating-dynamic-blocks/ Documentation on dynamic blocks.
+	 *
+	 * @since 0.2.0
+	 */
+	function register_dynamic_blocks() {
+		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
+		if ( ! file_exists( $blocks_dir ) ) {
+			return;
+		}
+
+		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'
+		$block_names = array( 'salary-grid.php' => 'hrswpsqlsrv/list-courses' );
+
+		foreach ( $block_names as $file => $block_name ) {
+			if ( ! file_exists( $blocks_dir . $file ) ) {
+				continue;
+			}
+
+			require $blocks_dir . $file;
+		}
+	}
+
+	/**
+	 * Enqueues the plugin editor scripts.
+	 *
+	 * @since 0.2.0
+	 */
+	public function enqueue_editor_scripts() {
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_enqueue_script(
+			self::$slug . '-script',
+			plugins_url( 'build/index.js', self::$basename ),
+			array(
+				'wp-blocks',
+				'wp-block-editor',
+				'wp-components',
+				'wp-element',
+				'wp-i18n',
+				'wp-data',
+				'wp-api-fetch',
+				'wp-url',
+			),
+			$plugin['version']
+		);
 	}
 
 	/**
