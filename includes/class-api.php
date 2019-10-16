@@ -61,7 +61,7 @@ class API {
 	 * @since 0.3.0
 	 */
 	public function register_routes() {
-		// Available tables.
+		// Register a gated route to access available tables.
 		register_rest_route(
 			$this->namespace,
 			'/tables',
@@ -78,9 +78,13 @@ class API {
 	/**
 	 * Returns a list of the available tables.
 	 *
+	 * The returned list is a key-value JSON array where each table has a
+	 * value (the table label) and a label (a generated human-reader-friendly
+	 * version of the table label).
+	 *
 	 * @since 0.3.0
 	 *
-	 * @return array JSON feed of returned objects.
+	 * @return array|null JSON feed of returned objects, null if no tables are found.
 	 */
 	public function get_tables_list() {
 		// Initialize the HRSWP Sqlsrv DB connector.
