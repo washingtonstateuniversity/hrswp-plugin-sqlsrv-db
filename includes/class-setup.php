@@ -144,6 +144,9 @@ class Setup {
 
 		// The Microsoft SQL Server query class.
 		require __DIR__ . '/class-mssql-query.php';
+
+		// The plugin API class.
+		require __DIR__ . '/class-api.php';
 	}
 
 	/**

@@ -280,6 +280,26 @@ class MSSQL_DB {
 	}
 
 	/**
+	 * Retrieves a list of table labels.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @return string[]|false Array of registered table labels or false on failure.
+	 */
+	public function list_tables() {
+		if ( ! $this->tables ) {
+			return false;
+		}
+
+		$tables = array();
+		foreach ( $this->tables as $table => $props ) {
+			$tables[] = $table;
+		}
+
+		return $tables;
+	}
+
+	/**
 	 * Connects to a database server and selects a database.
 	 *
 	 * Uses the `sqlsrv` PHP extension to open a connection to a Microsoft SQL
