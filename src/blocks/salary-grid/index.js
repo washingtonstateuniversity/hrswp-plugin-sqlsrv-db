@@ -27,8 +27,8 @@ export const settings = {
 	keywords: [ __( 'table data salary' ) ],
 	supports,
 	styles: [
-		{ name: 'default', label: _x( 'Default', 'block style' ), isDefault: true },
-		{ name: 'wide', label: _x( 'Wide', 'block style' ) },
+		{ name: 'default', label: _x( 'Table', 'block style' ), isDefault: true },
+		{ name: 'list', label: _x( 'List', 'block style' ) },
 	],
 	edit,
 	save,
