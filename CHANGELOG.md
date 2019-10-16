@@ -18,7 +18,16 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.2.0-alpha.2 (:construction: 2019-10-09)
+## 0.3.0-alpha.1 (:construction: 2019-10-16)
+
+### Added
+
+- A plugin data store for the block editor to allow sharing table groups with the salary grid block using the plugin API route.
+- Database class method to retrieve a list of table labels.
+- :sparkles: A plugin API class to set up a custom route with an endpoint for accessing the table labels list from inside the block editor.
+- :sparkles: Block to handle displaying salary grid data for different groups.
+
+## 0.2.0 (2019-10-09)
 
 ### Changed
 
