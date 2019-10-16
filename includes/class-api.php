@@ -95,7 +95,14 @@ class API {
 			return null;
 		}
 
-		$tables = array();
+		// Initialize the tables array with a default value.
+		$tables = array(
+			array(
+				'value' => '',
+				'label' => __( 'Select an option' ),
+			)
+		);
+
 		foreach ( $db_tables as $db_table ) {
 			$tables[] = array(
 				'value' => $db_table,
