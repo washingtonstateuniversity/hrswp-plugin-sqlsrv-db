@@ -18,14 +18,25 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.3.0-alpha.1 (:construction: 2019-10-16)
+## 0.3.0-alpha.1 (:construction: 2019-10-21)
+
+### Fixed
+
+- :bug: Fix #2 Allow multiple salary data blocks on a single page. Fix issue where table data didn't load for subsequent blocks.
+
+### Changed
+
+- Add style options to salary data table layout option to match default table styles.
+- Add salary data block option to make table searchable.
+- Create a default option for the tables list data object to help clarify its use to users.
+- :memo: Expand API documentation.
 
 ### Added
 
-- A plugin data store for the block editor to allow sharing table groups with the salary grid block using the plugin API route.
+- A plugin data store for the block editor to allow sharing table groups with the salary data block using the plugin API route.
 - Database class method to retrieve a list of table labels.
 - :sparkles: A plugin API class to set up a custom route with an endpoint for accessing the table labels list from inside the block editor.
-- :sparkles: Block to handle displaying salary grid data for different groups.
+- :sparkles: Block to handle displaying salary data for different groups.
 
 ## 0.2.0 (2019-10-09)
 
