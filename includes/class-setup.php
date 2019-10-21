@@ -128,6 +128,7 @@ class Setup {
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
 		add_action( 'init', array( $this, 'register_dynamic_blocks' ) );
+		add_filter( 'block_categories', array( $this, 'add_block_categories' ), 10, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
 	}
 
@@ -220,6 +221,28 @@ class Setup {
 
 			require $blocks_dir . $file;
 		}
+	}
+
+	/**
+	 * Adds a custom block category for the plugin blocks.
+	 *
+	 * Callback function for the `block_categories` WP filter hook.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param array   $default_categories Array of default block categories.
+	 * @param WP_Post $post               The post object of the post being loaded.
+	 * @return array Array of block categories.
+	 */
+	public function add_block_categories( $default_categories, $post ) {
+		$plugin_categories = array(
+			array(
+				'slug'  => self::$slug,
+				'title' => __( 'HRS External Content' ),
+			),
+		);
+
+		return wp_parse_args( $plugin_categories, $default_categories );
 	}
 
 	/**

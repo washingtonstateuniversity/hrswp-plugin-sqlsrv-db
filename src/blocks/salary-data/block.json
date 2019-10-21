@@ -1,6 +1,6 @@
 {
 	"name": "hrswpsqlsrv/salary-data",
-	"category": "widgets",
+	"category": "hrswp_sqlsrv_db",
 	"supports": {
 		"align": true,
 		"html": false
