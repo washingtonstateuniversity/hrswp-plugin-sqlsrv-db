@@ -28,23 +28,47 @@ function render( $attributes ) {
 		),
 	);
 	$data = new MSSQL_Query\MSSQL_Query( $args );
-	$data = $data->records;
 
-	if ( ! $data ) {
+	if ( ! $data->records ) {
 		return '<p>' . __( 'No data found' ) . '</p>';
 	}
 
-	// @todo Add options in block editor for:
-	//   - Class: searchable [toggle control]
-	//   - Class: striped    [toggle control]
-	//   - Class: default||is-style-table || is-style-list [style options]
-	$classes = array();
+	$data = $data->records;
+
+	$classes     = array();
+	$search_form = '';
+	$table_body  = '';
+
 	if ( isset( $attributes['align'] ) ) {
 		$classes[] = 'align' . $attributes['align'];
 	}
 	if ( isset( $attributes['className'] ) ) {
 		$classes[] = $attributes['className'];
 	}
+	if ( isset( $attributes['isStriped'] ) && $attributes['isStriped'] ) {
+		$classes[] = 'is-style-stripes';
+	}
+	if ( isset( $attributes['isSearchable'] ) && $attributes['isSearchable'] ) {
+		$classes[] = 'searchable';
+
+		if ( isset( $attributes['searchKey'] ) ) {
+			$search_form = sprintf(
+				'
+<div class="js-search-form">
+	<label for="search_table_input">
+		%1$s: <input type="search" name="search_table_input" id="search_table_input" data-search-column="%2$d">
+	</label>
+	<div class="wp-block-button is-style-small">
+		<button id="js-search-form-reset" class="wp-block-button__link" type="button">Reset</button>
+	</div>
+</div>
+				',
+				__( 'Search' ),
+				esc_attr( absint( $attributes['searchKey'] ) )
+			);
+		}
+	}
+
 	$classes = implode( ' ', $classes );
 
 	$table_head = '<tr>';
@@ -52,36 +76,10 @@ function render( $attributes ) {
 		if ( 2 > strlen( $key ) ) {
 			$key = "Step {$key}";
 		}
-		$key = ucwords( strtolower( $key ) );
+		$key         = ucwords( strtolower( $key ) );
 		$table_head .= "<th>{$key}</th>";
 	}
 	$table_head .= '</tr>';
-	$table_body = '';
-
-	return sprintf(
-		/* translators: 1: The table head section, 2: The table body section filled with numbers. */
-		__( '<table class="tablepress striped searchable %1$s"><thead>%2$s</thead><tbody>%3$s</tbody></table>', 'hrs-wsu-edu' ),
-		esc_attr( $classes ),
-		$table_head,
-		$table_body,
-	);
-
-
-	/*
-	 *
-	 *
-	 * *** START THE OLD WAY ***
-	 *
-	 *
-	 */
-	$table_head = '<tr><th>Range</th>';
-	foreach ( range( 'A', 'M' ) as $letter ) {
-		/* translators: A letter of the alphabet. */
-		$table_head .= sprintf( __( '<th>Step<br> %s</th>', 'hrs-wsu-edu' ), esc_html( $letter ) );
-	}
-	$table_head .= '</tr>';
-
-	$table_body = '';
 
 	foreach ( $data as $row ) {
 		$table_body .= '<tr>';
@@ -90,15 +88,13 @@ function render( $attributes ) {
 		foreach ( $row as $key => $val ) {
 			if ( 'range' === strtolower( $key ) ) {
 				$table_body .= sprintf(
-					/* translators: 1: The table column title, 2: The range step number. */
-					__( '<td data-column="%1$s" id="%2$s">%2$s</td>', 'hrs-wsu-edu' ),
+					'<td data-column="%1$s" id="%2$s">%2$s</td>',
 					esc_attr( ucfirst( strtolower( $key ) ) ),
 					esc_html( $val )
 				);
 			} else {
 				$table_body .= sprintf(
-					/* translators: 1: The table column title, 2: The salary number with a comma in the thousands place. */
-					__( '<td data-column="%1$s">%2$s</td>', 'hrs-wsu-edu' ),
+					'<td data-column="%1$s">%2$s</td>',
 					esc_attr( ucfirst( strtolower( $key ) ) ),
 					esc_html( number_format( $val ) )
 				);
@@ -109,18 +105,12 @@ function render( $attributes ) {
 	}
 
 	return sprintf(
-		/* translators: 1: The table head section, 2: The table body section filled with numbers. */
-		__( '<table class="tablepress striped searchable"><thead>%1$s</thead><tbody>%2$s</tbody></table>', 'hrs-wsu-edu' ), // phpcs:ignore WordPress.Security.EscapeOutput
-		$table_head, // phpcs:ignore WordPress.Security.EscapeOutput
-		$table_body, // phpcs:ignore WordPress.Security.EscapeOutput
+		'%1$s<table class="wp-block-table %2$s"><thead>%3$s</thead><tbody>%4$s</tbody></table>',
+		$search_form,
+		esc_attr( $classes ),
+		$table_head,
+		$table_body
 	);
-	/*
-	 *
-	 *
-	 * *** END THE OLD WAY ***
-	 *
-	 *
-	 */
 }
 
 /**
@@ -133,14 +123,25 @@ function register_block_salary_grid() {
 		'hrswpsqlsrv/salary-grid',
 		array(
 			'attributes'      => array(
-				'align'     => array(
+				'align'        => array(
 					'type' => 'string',
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
 				),
-				'className' => array(
+				'className'    => array(
 					'type' => 'string',
 				),
-				'queryTable' => array(
+				'isSearchable' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'isStriped'    => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'searchKey'    => array(
+					'type' => 'string',
+				),
+				'queryTable'   => array(
 					'type' => 'string',
 				),
 			),
