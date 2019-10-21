@@ -20,11 +20,11 @@ const {
 export { name };
 
 export const settings = {
-	title: __( 'HRS Salary Grid' ),
+	title: __( 'HRS Salary Data' ),
 	category,
-	description: __( 'Display a table of WSU salary grid data.' ),
+	description: __( 'Display WSU salary data.' ),
 	icon,
-	keywords: [ __( 'table data salary' ) ],
+	keywords: [ __( 'table data compensation' ) ],
 	supports,
 	styles: [
 		{ name: 'default', label: _x( 'Table', 'block style' ), isDefault: true },

@@ -6,10 +6,10 @@ const { registerBlockType } = wp.blocks;
 /**
  * Internal dependencies
  */
-import * as salaryGrid from './salary-grid';
+import * as salaryData from './salary-data';
 
 /**
- * Function to register WSUWP HRS Courses blocks.
+ * Function to register plugin blocks.
  *
  * @example
  * ```js
@@ -20,7 +20,7 @@ import * as salaryGrid from './salary-grid';
  */
 export const registerBlocks = () => {
 	[
-		salaryGrid,
+		salaryData,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;

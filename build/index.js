@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
@@ -221,6 +236,62 @@ module.exports = _inherits;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableRest.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+module.exports = _nonIterableRest;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
@@ -264,6 +335,27 @@ module.exports = _setPrototypeOf;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js");
+
+var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js");
+
+var nonIterableRest = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime/helpers/nonIterableRest.js");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/typeof.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
@@ -301,7 +393,7 @@ module.exports = _typeof;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerBlocks", function() { return registerBlocks; });
-/* harmony import */ var _salary_grid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./salary-grid */ "./src/blocks/salary-grid/index.js");
+/* harmony import */ var _salary_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./salary-data */ "./src/blocks/salary-data/index.js");
 /**
  * WordPress dependencies
  */
@@ -312,7 +404,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 /**
- * Function to register WSUWP HRS Courses blocks.
+ * Function to register plugin blocks.
  *
  * @example
  * ```js
@@ -323,7 +415,7 @@ var registerBlockType = wp.blocks.registerBlockType;
  */
 
 var registerBlocks = function registerBlocks() {
-  [_salary_grid__WEBPACK_IMPORTED_MODULE_0__].forEach(function (block) {
+  [_salary_data__WEBPACK_IMPORTED_MODULE_0__].forEach(function (block) {
     if (!block) {
       return;
     }
@@ -336,38 +428,41 @@ var registerBlocks = function registerBlocks() {
 
 /***/ }),
 
-/***/ "./src/blocks/salary-grid/block.json":
+/***/ "./src/blocks/salary-data/block.json":
 /*!*******************************************!*\
-  !*** ./src/blocks/salary-grid/block.json ***!
+  !*** ./src/blocks/salary-data/block.json ***!
   \*******************************************/
 /*! exports provided: name, category, supports, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"hrswpsqlsrv/salary-grid\",\"category\":\"widgets\",\"supports\":{\"align\":true,\"html\":false}}");
+module.exports = JSON.parse("{\"name\":\"hrswpsqlsrv/salary-data\",\"category\":\"widgets\",\"supports\":{\"align\":true,\"html\":false}}");
 
 /***/ }),
 
-/***/ "./src/blocks/salary-grid/edit.js":
+/***/ "./src/blocks/salary-data/edit.js":
 /*!****************************************!*\
-  !*** ./src/blocks/salary-grid/edit.js ***!
+  !*** ./src/blocks/salary-data/edit.js ***!
   \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -379,44 +474,119 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
-var _wp$data = wp.data,
-    select = _wp$data.select,
-    withSelect = _wp$data.withSelect;
+var withSelect = wp.data.withSelect;
 var Component = wp.element.Component;
 var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$components = wp.components,
     Disabled = _wp$components.Disabled,
     PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
     Placeholder = _wp$components.Placeholder,
     SelectControl = _wp$components.SelectControl,
     ServerSideRender = _wp$components.ServerSideRender,
-    Spinner = _wp$components.Spinner;
+    Spinner = _wp$components.Spinner,
+    ToggleControl = _wp$components.ToggleControl;
 
-var SalaryGrid =
+var SalaryData =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(SalaryGrid, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(SalaryData, _Component);
 
-  function SalaryGrid() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, SalaryGrid);
+  function SalaryData() {
+    var _this;
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(SalaryGrid).apply(this, arguments));
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, SalaryData);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(SalaryData).apply(this, arguments));
+    _this.state = {
+      searchableKeys: []
+    };
+    return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SalaryGrid, [{
-    key: "render",
-    value: function render() {
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(SalaryData, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
       var _this$props = this.props,
           attributes = _this$props.attributes,
-          setAttributes = _this$props.setAttributes,
-          tables = _this$props.tables;
-      var queryTable = attributes.queryTable;
-      var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
-        title: __('Select Salary Grid')
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(SelectControl, {
-        className: 'salary-grid-table-picker__select',
-        label: __('Select desired group to display grid:'),
+          clientId = _this$props.clientId;
+      var isSearchable = attributes.isSearchable;
+
+      if (isSearchable) {
+        var blockNode = document.querySelector('[data-block="' + clientId + '"]');
+
+        if (blockNode) {
+          var headNodes = blockNode.getElementsByTagName('th');
+          var headArray = [{
+            value: null,
+            label: 'Select a column',
+            disabled: true
+          }];
+
+          for (var _i = 0, _Object$entries = Object.entries(headNodes); _i < _Object$entries.length; _i++) {
+            var _Object$entries$_i = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_Object$entries[_i], 2),
+                key = _Object$entries$_i[0],
+                node = _Object$entries$_i[1];
+
+            headArray.push({
+              value: key,
+              label: node.innerText
+            });
+          }
+
+          if (JSON.stringify(this.state.searchableKeys) !== JSON.stringify(headArray)) {
+            this.setState({
+              searchableKeys: headArray
+            });
+          }
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var searchableKeys = this.state.searchableKeys;
+      var _this$props2 = this.props,
+          attributes = _this$props2.attributes,
+          setAttributes = _this$props2.setAttributes,
+          tables = _this$props2.tables;
+      var className = attributes.className,
+          isSearchable = attributes.isSearchable,
+          isStriped = attributes.isStriped,
+          searchKey = attributes.searchKey,
+          queryTable = attributes.queryTable;
+      var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(InspectorControls, null, 'is-style-list' !== className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
+        title: __('Table Settings')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToggleControl, {
+        label: __('Striped table rows'),
+        checked: isStriped,
+        onChange: function onChange(value) {
+          return setAttributes({
+            isStriped: value
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToggleControl, {
+        label: __('Allow searching table by column'),
+        checked: isSearchable,
+        onChange: function onChange(value) {
+          return setAttributes({
+            isSearchable: value
+          });
+        }
+      }), isSearchable && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(SelectControl, {
+        className: 'salary-data-search-column-picker__select',
+        label: __('Select column to allow searching in:'),
+        value: searchKey,
+        options: searchableKeys,
+        onChange: function onChange(value) {
+          return setAttributes({
+            searchKey: value
+          });
+        }
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
+        title: __('Select Data Source')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(SelectControl, {
+        className: 'salary-data-table-picker__select',
+        label: __('Select desired group:'),
         value: queryTable,
         options: tables,
         onChange: function onChange(value) {
@@ -424,36 +594,36 @@ function (_Component) {
             queryTable: value
           });
         }
-      }))));
+      })));
 
       if (!queryTable) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Placeholder, {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Placeholder, {
           icon: "admin-post",
-          label: __('Salary Grid')
-        }, !Array.isArray(tables) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Spinner, null) : __('Select a Salary Grid group to display data.')));
+          label: __('Salary Data')
+        }, !Array.isArray(tables) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Spinner, null) : __('Select a salary data group to display results.')));
       }
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ServerSideRender, {
-        block: "hrswpsqlsrv/salary-grid",
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ServerSideRender, {
+        block: "hrswpsqlsrv/salary-data",
         attributes: attributes
       })));
     }
   }]);
 
-  return SalaryGrid;
+  return SalaryData;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select, props) {
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
   return {
-    tables: select('hrswpsqlsrv/salary-grid').getTableNames()
+    tables: select('hrswpsqlsrv/salary-data').getTableNames()
   };
-})(SalaryGrid));
+})(SalaryData));
 
 /***/ }),
 
-/***/ "./src/blocks/salary-grid/icon.js":
+/***/ "./src/blocks/salary-data/icon.js":
 /*!****************************************!*\
-  !*** ./src/blocks/salary-grid/icon.js ***!
+  !*** ./src/blocks/salary-data/icon.js ***!
   \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -513,9 +683,9 @@ var _wp$components = wp.components,
 
 /***/ }),
 
-/***/ "./src/blocks/salary-grid/index.js":
+/***/ "./src/blocks/salary-data/index.js":
 /*!*****************************************!*\
-  !*** ./src/blocks/salary-grid/index.js ***!
+  !*** ./src/blocks/salary-data/index.js ***!
   \*****************************************/
 /*! exports provided: name, settings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -524,11 +694,11 @@ var _wp$components = wp.components,
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/salary-grid/edit.js");
-/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon */ "./src/blocks/salary-grid/icon.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/salary-grid/block.json");
-var _block_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/salary-grid/block.json", 1);
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/salary-grid/save.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/salary-data/edit.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon */ "./src/blocks/salary-data/icon.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/salary-data/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/salary-data/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/salary-data/save.js");
 /**
  * WordPress dependencies
  */
@@ -548,11 +718,11 @@ var name = _block_json__WEBPACK_IMPORTED_MODULE_2__.name,
     supports = _block_json__WEBPACK_IMPORTED_MODULE_2__.supports;
 
 var settings = {
-  title: __('HRS Salary Grid'),
+  title: __('HRS Salary Data'),
   category: category,
-  description: __('Display a table of WSU salary grid data.'),
+  description: __('Display WSU salary data.'),
   icon: _icon__WEBPACK_IMPORTED_MODULE_1__["default"],
-  keywords: [__('table data salary')],
+  keywords: [__('table data compensation')],
   supports: supports,
   styles: [{
     name: 'default',
@@ -568,9 +738,9 @@ var settings = {
 
 /***/ }),
 
-/***/ "./src/blocks/salary-grid/save.js":
+/***/ "./src/blocks/salary-data/save.js":
 /*!****************************************!*\
-  !*** ./src/blocks/salary-grid/save.js ***!
+  !*** ./src/blocks/salary-data/save.js ***!
   \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -656,7 +826,7 @@ var actions = {
     };
   }
 };
-var registerStores = registerStore('hrswpsqlsrv/salary-grid', {
+var registerStores = registerStore('hrswpsqlsrv/salary-data', {
   reducer: function reducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
     var action = arguments.length > 1 ? arguments[1] : undefined;

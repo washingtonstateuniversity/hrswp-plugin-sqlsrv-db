@@ -23,7 +23,7 @@ const actions = {
 	},
 };
 
-const registerStores = registerStore( 'hrswpsqlsrv/salary-grid', {
+const registerStores = registerStore( 'hrswpsqlsrv/salary-data', {
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'GET_TABLE_NAMES':

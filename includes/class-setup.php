@@ -209,7 +209,9 @@ class Setup {
 		}
 
 		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'
-		$block_names = array( 'salary-grid.php' => 'hrswpsqlsrv/list-courses' );
+		$block_names = array(
+			'salary-data.php' => 'hrswpsqlsrv/salary-data',
+		);
 
 		foreach ( $block_names as $file => $block_name ) {
 			if ( ! file_exists( $blocks_dir . $file ) ) {

@@ -1,19 +1,19 @@
 <?php
 /**
- * Server-side rendering of the `hrswpsqlsrv/salary-grid` block.
+ * Server-side rendering of the `hrswpsqlsrv/salary-data` block.
  *
  * @package HRSWP_Sqlsrv_DB
  * @since 0.2.0
  */
 
-namespace HRSWP\SQLSRV\salary_grid;
+namespace HRSWP\SQLSRV\salary_data;
 use HRSWP\SQLSRV\MSSQL_Query;
 use HRSWP\SQLSRV\API;
 
 /**
- * Renders the `hrswpsqlsrv/salary-grid` dynamic block contents.
+ * Renders the `hrswpsqlsrv/salary-data` dynamic block contents.
  *
- * Displays a grid of salary data for whichever data source has been selected.
+ * Displays a data of salary data for whichever data source has been selected.
  *
  * @param array $attributes The block attributes passed from `register_block_type`.
  *
@@ -114,13 +114,13 @@ function render( $attributes ) {
 }
 
 /**
- * Registers the `hrswpsqlsrv/salary-grid` on the server.
+ * Registers the `hrswpsqlsrv/salary-data` on the server.
  *
  * @since 0.2.0
  */
-function register_block_salary_grid() {
+function register_block_salary_data() {
 	register_block_type(
-		'hrswpsqlsrv/salary-grid',
+		'hrswpsqlsrv/salary-data',
 		array(
 			'attributes'      => array(
 				'align'        => array(
@@ -149,8 +149,8 @@ function register_block_salary_grid() {
 		)
 	);
 
-	// Start the API for the salary grid block table group list.
+	// Start the API for the salary data block table group list.
 	$api = new API\API();
 }
 // Use later priority to make sure required resources are ready.
-add_action( 'init', __NAMESPACE__ . '\register_block_salary_grid', 25 );
+add_action( 'init', __NAMESPACE__ . '\register_block_salary_data', 25 );

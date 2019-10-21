@@ -15,7 +15,7 @@ const {
 	ToggleControl,
 } = wp.components;
 
-class SalaryGrid extends Component {
+class SalaryData extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = { searchableKeys: [] };
@@ -77,7 +77,7 @@ class SalaryGrid extends Component {
 						/>
 						{ isSearchable &&
 							<SelectControl
-								className={ 'salary-grid-search-column-picker__select' }
+								className={ 'salary-data-search-column-picker__select' }
 								label={ __( 'Select column to allow searching in:' ) }
 								value={ searchKey }
 								options={ searchableKeys }
@@ -86,10 +86,10 @@ class SalaryGrid extends Component {
 						}
 					</PanelBody>
 				}
-				<PanelBody title={ __( 'Select Salary Grid' ) }>
+				<PanelBody title={ __( 'Select Data Source' ) }>
 					<SelectControl
-						className={ 'salary-grid-table-picker__select' }
-						label={ __( 'Select desired group to display grid:' ) }
+						className={ 'salary-data-table-picker__select' }
+						label={ __( 'Select desired group:' ) }
 						value={ queryTable }
 						options={ tables }
 						onChange={ ( value ) => setAttributes( { queryTable: value } ) }
@@ -102,10 +102,10 @@ class SalaryGrid extends Component {
 			return (
 				<>
 					{ inspectorControls }
-					<Placeholder icon="admin-post" label={ __( 'Salary Grid' ) }>
+					<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
 						{ ! Array.isArray( tables ) ?
 							<Spinner /> :
-							__( 'Select a Salary Grid group to display data.' )
+							__( 'Select a salary data group to display results.' )
 						}
 					</Placeholder>
 				</>
@@ -116,7 +116,7 @@ class SalaryGrid extends Component {
 			<>
 				{ inspectorControls }
 				<Disabled>
-					<ServerSideRender block="hrswpsqlsrv/salary-grid" attributes={ attributes } />
+					<ServerSideRender block="hrswpsqlsrv/salary-data" attributes={ attributes } />
 				</Disabled>
 			</>
 		);
@@ -125,6 +125,6 @@ class SalaryGrid extends Component {
 
 export default withSelect( ( select ) => {
 	return {
-		tables: select( 'hrswpsqlsrv/salary-grid' ).getTableNames(),
+		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
 	};
-} )( SalaryGrid );
+} )( SalaryData );
