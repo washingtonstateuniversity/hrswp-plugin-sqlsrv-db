@@ -7,7 +7,6 @@ const { __, _x } = wp.i18n;
  * Internal dependencies
  */
 import edit from './edit';
-import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -23,7 +22,7 @@ export const settings = {
 	title: __( 'HRS Salary Data' ),
 	category,
 	description: __( 'Display WSU salary data.' ),
-	icon,
+	icon: 'archive',
 	keywords: [ __( 'table data compensation' ) ],
 	supports,
 	styles: [
