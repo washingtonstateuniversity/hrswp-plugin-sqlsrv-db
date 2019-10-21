@@ -66,11 +66,11 @@ class API {
 			$this->namespace,
 			'/tables',
 			array(
-				'methods' => 'GET',
-				'callback' => array( $this, 'get_tables_list' ),
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_tables_list' ),
 				'permission_callback' => function () {
 					return current_user_can( 'edit_others_posts' );
-				}
+				},
 			)
 		);
 	}
@@ -100,7 +100,7 @@ class API {
 			array(
 				'value' => '',
 				'label' => __( 'Select an option' ),
-			)
+			),
 		);
 
 		foreach ( $db_tables as $db_table ) {
@@ -110,6 +110,6 @@ class API {
 			);
 		}
 
-		return new \WP_REST_Response ( $tables, 200 );
+		return new \WP_REST_Response( $tables, 200 );
 	}
 }
