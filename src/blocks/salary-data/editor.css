@@ -1,0 +1,32 @@
+.hrswp-sqlsrv-block.wp-block-columns {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.hrswp-sqlsrv-block.wp-block-columns ul {
+	padding: 0.3em 2em 1em 2em;
+}
+
+@media (min-width: 34em) {
+
+	.hrswp-sqlsrv-block.has-2-columns .wp-block-column {
+		flex-basis: calc((100% / 2) - 1rem);
+	}
+
+	.hrswp-sqlsrv-block.has-3-columns .wp-block-column {
+		flex-basis: calc((100% / 3) - 2rem);
+	}
+
+	.hrswp-sqlsrv-block.has-4-columns .wp-block-column {
+		flex-basis: calc((100% / 4) - 3rem);
+	}
+
+	.hrswp-sqlsrv-block.has-5-columns .wp-block-column {
+		flex-basis: calc((100% / 5) - 4rem);
+	}
+
+	.hrswp-sqlsrv-block.has-6-columns .wp-block-column {
+		flex-basis: calc((100% / 6) - 5rem);
+	}
+
+}

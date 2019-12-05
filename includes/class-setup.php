@@ -130,6 +130,7 @@ class Setup {
 		add_action( 'init', array( $this, 'register_dynamic_blocks' ) );
 		add_filter( 'block_categories', array( $this, 'add_block_categories' ), 10, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -266,6 +267,29 @@ class Setup {
 				'wp-api-fetch',
 				'wp-url',
 			),
+			$plugin['version']
+		);
+
+		wp_enqueue_style(
+			self::$slug . 'editor-style',
+			plugins_url( 'build/editor.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+	}
+
+	/**
+	 * Enqueues the plugin frontend scripts.
+	 *
+	 * @since 0.3.0
+	 */
+	public function enqueue_scripts() {
+		$plugin = get_option( self::$slug . '_plugin-status' );
+
+		wp_enqueue_style(
+			self::$slug . '-style',
+			plugins_url( 'build/style.css', self::$basename ),
+			array(),
 			$plugin['version']
 		);
 	}
