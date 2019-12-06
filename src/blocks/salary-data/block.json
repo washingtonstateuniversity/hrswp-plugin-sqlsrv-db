@@ -1,0 +1,8 @@
+{
+	"name": "hrswpsqlsrv/salary-data",
+	"category": "hrswp_sqlsrv_db",
+	"supports": {
+		"align": true,
+		"html": false
+	}
+}

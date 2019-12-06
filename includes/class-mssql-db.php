@@ -141,12 +141,12 @@ class MSSQL_DB {
 		if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
 
 			// The config file exists in ABSPATH.
-			require_once( ABSPATH . 'hrswp-sqlsrv-config.php' );
+			require( ABSPATH . 'hrswp-sqlsrv-config.php' );
 
 		} elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
 
 			// The config file exists one level above ABSPATH.
-			require_once( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
+			require( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
 
 		} else {
 
@@ -277,6 +277,26 @@ class MSSQL_DB {
 		}
 
 		return $table;
+	}
+
+	/**
+	 * Retrieves a list of table labels.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @return string[]|false Array of registered table labels or false on failure.
+	 */
+	public function list_tables() {
+		if ( ! $this->tables ) {
+			return false;
+		}
+
+		$tables = array();
+		foreach ( $this->tables as $table => $props ) {
+			$tables[] = $table;
+		}
+
+		return $tables;
 	}
 
 	/**

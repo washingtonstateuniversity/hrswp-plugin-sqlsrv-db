@@ -18,6 +18,42 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.3.0 (2019-12-06)
+
+### Fixed
+
+- :bug: Fix #2 Allow multiple salary data blocks on a single page. Fix issue where table data didn't load for subsequent blocks.
+
+### Changed
+
+- Use built-in Dashicon for block icon instead of custom SVG.
+- Add style options to salary data table layout option to match default table styles.
+- Add salary data block option to make table searchable.
+- Create a default option for the tables list data object to help clarify its use to users.
+- :memo: Expand API documentation.
+- Increment WP tested version to 5.3.
+- :arrow_up: @wordpress/babel-preset-default 4.6.0 -> 4.7.0
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin 2.0.0 -> 2.1.0
+- :arrow_up: @wordpress/eslint-plugin 3.1.0 -> 3.2.0
+- :arrow_up: @wordpress/jest-preset-default 5.1.0 -> 5.2.0
+- :arrow_up: copy-webpack-plugin 5.0.4 -> 5.0.5
+- :arrow_up: eslint 6.4.0 -> 6.7.2
+- :arrow_up: npm-package-json-lint 3.7.0 -> 4.4.0
+- :arrow_up: stylelint 11.0.0 -> 11.1.1
+- :arrow_up: webpack 4.40.2 -> 4.41.2
+- :arrow_up: webpack-bundle-analyzer 3.5.1 -> 3.6.0
+- :arrow_up: webpack-cli 3.3.0 -> 3.3.10
+- :arrow_up: wp-coding-standards/wpcs 2.1.1 -> 2.2.0
+
+### Added
+
+- :art: Frontend styling with editor styling to match.
+- Custom WP blocks category for plugin blocks.
+- A plugin data store for the block editor to allow sharing table groups with the salary data block using the plugin API route.
+- Database class method to retrieve a list of table labels.
+- :sparkles: A plugin API class to set up a custom route with an endpoint for accessing the table labels list from inside the block editor.
+- :sparkles: Block to handle displaying salary data for different groups in either table or list format.
+
 ## 0.2.0 (2019-10-09)
 
 ### Changed
