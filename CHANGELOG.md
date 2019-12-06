@@ -18,6 +18,14 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.3.1 (2019-12-06)
+
+### Changed
+
+- :arrow_up: puppeteer 1.20.0 -> 2.0.0
+- :arrow_up: stylelint 11.1.1 -> 12.0.0
+- :arrow_up: stylelint-config-wordpress 12.0.0 -> 15.0.0
+
 ## 0.3.0 (2019-12-06)
 
 ### Fixed
