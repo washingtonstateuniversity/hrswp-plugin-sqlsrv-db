@@ -1,6 +1,18 @@
+.wp-block[data-type="hrswpsqlsrv/salary-data"] {
+	overflow: auto;
+}
+
 .hrswp-sqlsrv-block.wp-block-columns {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.hrswp-sqlsrv-block.has-1-columns {
+	display: block;
+}
+
+.hrswp-sqlsrv-block.has-1-columns .wp-block-column {
+	margin-left: 0;
 }
 
 .hrswp-sqlsrv-block.wp-block-columns ul {
@@ -10,7 +22,7 @@
 @media (min-width: 34em) {
 
 	.hrswp-sqlsrv-block.has-2-columns .wp-block-column {
-		flex-basis: calc((100% / 2) - 1rem);
+		flex-basis: calc((100% / 2) - 2rem);
 	}
 
 	.hrswp-sqlsrv-block.has-3-columns .wp-block-column {
@@ -18,15 +30,25 @@
 	}
 
 	.hrswp-sqlsrv-block.has-4-columns .wp-block-column {
-		flex-basis: calc((100% / 4) - 3rem);
+		flex-basis: calc((100% / 4) - 2rem);
 	}
 
 	.hrswp-sqlsrv-block.has-5-columns .wp-block-column {
-		flex-basis: calc((100% / 5) - 4rem);
+		flex-basis: calc((100% / 5) - 2rem);
 	}
 
 	.hrswp-sqlsrv-block.has-6-columns .wp-block-column {
-		flex-basis: calc((100% / 6) - 5rem);
+		flex-basis: calc((100% / 6) - 2rem);
 	}
 
+}
+
+.hrswp-sqlsrv-block.search-form {
+	margin: 0;
+	display: flex;
+	align-items: last baseline;
+}
+
+.hrswp-sqlsrv-block.search-form .wp-block-button {
+	margin-left: 1em;
 }

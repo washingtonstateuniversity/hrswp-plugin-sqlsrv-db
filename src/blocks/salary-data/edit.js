@@ -9,6 +9,7 @@ const {
 	Disabled,
 	PanelBody,
 	Placeholder,
+	RangeControl,
 	SelectControl,
 	ServerSideRender,
 	Spinner,
@@ -55,6 +56,7 @@ class SalaryData extends Component {
 		} = this.props;
 		const {
 			className,
+			columns,
 			isSearchable,
 			isStriped,
 			searchKey,
@@ -84,6 +86,17 @@ class SalaryData extends Component {
 								onChange={ ( value ) => setAttributes( { searchKey: value } ) }
 							/>
 						}
+					</PanelBody>
+				}
+				{ 'is-style-list' === className &&
+					<PanelBody title={ __( 'List Settings' ) }>
+						<RangeControl
+							label={ __( 'List Columns' ) }
+							value={ columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 1 }
+							max={ 6 }
+						/>
 					</PanelBody>
 				}
 				<PanelBody title={ __( 'Select Data Source' ) }>
