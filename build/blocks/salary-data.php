@@ -48,13 +48,16 @@ function render( $attributes ) {
 	if ( isset( $attributes['isStriped'] ) && $attributes['isStriped'] ) {
 		$classes[] = 'is-style-stripes';
 	}
+	if ( isset( $attributes['columns'] ) && 0 < $attributes['columns'] ) {
+		$classes[] = "has-{$attributes['columns']}-columns";
+	}
 	if ( isset( $attributes['isSearchable'] ) && $attributes['isSearchable'] ) {
 		$classes[] = 'searchable';
 
 		if ( isset( $attributes['searchKey'] ) ) {
 			$search_form = sprintf(
 				'
-<div class="js-search-form">
+<div class="hrswp-sqlsrv-block search-form js-search-form">
 	<label for="search_table_input">
 		%1$s: <input type="search" name="search_table_input" id="search_table_input" data-search-column="%2$d">
 	</label>
@@ -71,6 +74,39 @@ function render( $attributes ) {
 
 	$classes = implode( ' ', $classes );
 
+	// List layout output.
+	if ( false !== strpos( $classes, 'is-style-list' ) ) {
+		$output = '';
+		foreach ( $data as $item ) {
+			if ( isset( $item->RANGE ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				$title = 'Range ' . $item->RANGE; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			}
+			$list = '';
+			foreach ( $item as $key => $value ) {
+				if ( 'RANGE' !== $key ) {
+					$list .= sprintf(
+						'<li>Step %1$s: %2$s</li>',
+						esc_html( $key ),
+						esc_html( number_format( $value ) )
+					);
+				}
+			}
+
+			$output .= sprintf(
+				'<div class="wp-block-column"><h2>%1$s</h2><ul>%2$s</ul></div>',
+				esc_html( $title ),
+				$list
+			);
+		}
+
+		return sprintf(
+			'<div class="hrswp-sqlsrv-block wp-block-columns %1$s">%2$s</div>',
+			esc_attr( $classes ),
+			$output
+		);
+	}
+
+	// Table layout output.
 	$table_head = '<tr>';
 	foreach ( $data[0] as $key => $value ) {
 		if ( 2 > strlen( $key ) ) {
@@ -105,7 +141,7 @@ function render( $attributes ) {
 	}
 
 	return sprintf(
-		'%1$s<table class="wp-block-table %2$s"><thead>%3$s</thead><tbody>%4$s</tbody></table>',
+		'%1$s<table class="hrswp-sqlsrv-block wp-block-table %2$s"><thead>%3$s</thead><tbody>%4$s</tbody></table>',
 		$search_form,
 		esc_attr( $classes ),
 		$table_head,
@@ -126,6 +162,9 @@ function register_block_salary_data() {
 				'align'        => array(
 					'type' => 'string',
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
+				),
+				'columns'      => array(
+					'type' => 'number',
 				),
 				'className'    => array(
 					'type' => 'string',
