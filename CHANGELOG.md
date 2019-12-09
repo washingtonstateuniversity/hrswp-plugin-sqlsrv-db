@@ -18,6 +18,16 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.4.0-beta.1 (:construction: 2019-12-09)
+
+### Fixed
+
+- Set a default column number for the Salary Data block.
+
+### Added
+
+- :sparkles: Block to handle displaying job classification data for different groups in either table or list format.
+
 ## 0.3.1 (2019-12-06)
 
 ### Changed

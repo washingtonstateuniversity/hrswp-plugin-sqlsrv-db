@@ -16,7 +16,7 @@ const {
 	ToggleControl,
 } = wp.components;
 
-class SalaryData extends Component {
+class JobClassifications extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = { searchableKeys: [] };
@@ -99,7 +99,7 @@ class SalaryData extends Component {
 						/>
 					</PanelBody>
 				}
-				<PanelBody title={ __( 'Select Data Source' ) }>
+				<PanelBody title={ __( 'Select Job Data Source' ) }>
 					<SelectControl
 						className={ 'salary-data-table-picker__select' }
 						label={ __( 'Select desired group:' ) }
@@ -115,10 +115,10 @@ class SalaryData extends Component {
 			return (
 				<>
 					{ inspectorControls }
-					<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
+					<Placeholder icon="admin-post" label={ __( 'Job Classification Data' ) }>
 						{ ! Array.isArray( tables ) ?
 							<Spinner /> :
-							__( 'Select a salary data group to display results.' )
+							__( 'Select a job classification data group to display results.' )
 						}
 					</Placeholder>
 				</>
@@ -129,7 +129,7 @@ class SalaryData extends Component {
 			<>
 				{ inspectorControls }
 				<Disabled>
-					<ServerSideRender block="hrswpsqlsrv/salary-data" attributes={ attributes } />
+					<ServerSideRender block="hrswpsqlsrv/job-classifications" attributes={ attributes } />
 				</Disabled>
 			</>
 		);
@@ -140,4 +140,4 @@ export default withSelect( ( select ) => {
 	return {
 		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
 	};
-} )( SalaryData );
+} )( JobClassifications );
