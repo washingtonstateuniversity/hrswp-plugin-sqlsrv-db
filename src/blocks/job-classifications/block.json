@@ -1,0 +1,8 @@
+{
+	"name": "hrswpsqlsrv/job-classifications",
+	"category": "hrswp_sqlsrv_db",
+	"supports": {
+		"align": true,
+		"html": false
+	}
+}

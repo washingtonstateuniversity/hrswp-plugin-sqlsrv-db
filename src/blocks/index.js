@@ -7,6 +7,7 @@ const { registerBlockType } = wp.blocks;
  * Internal dependencies
  */
 import * as salaryData from './salary-data';
+import * as jobClassifications from './job-classifications';
 
 /**
  * Function to register plugin blocks.
@@ -21,6 +22,7 @@ import * as salaryData from './salary-data';
 export const registerBlocks = () => {
 	[
 		salaryData,
+		jobClassifications,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
