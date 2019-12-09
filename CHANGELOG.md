@@ -18,11 +18,15 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta.1 (:construction: 2019-12-09)
+## 0.4.0-beta.2 (:construction: 2019-12-09)
 
 ### Fixed
 
 - Set a default column number for the Salary Data block.
+
+### Changed
+
+- :arrow_up: copy-webpack-plugin 5.0.5 -> 5.1.0
 
 ### Added
 
