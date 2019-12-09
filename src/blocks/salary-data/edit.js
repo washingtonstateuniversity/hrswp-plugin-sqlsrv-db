@@ -92,7 +92,7 @@ class SalaryData extends Component {
 					<PanelBody title={ __( 'List Settings' ) }>
 						<RangeControl
 							label={ __( 'List Columns' ) }
-							value={ columns }
+							value={ columns || 3 }
 							onChange={ ( value ) => setAttributes( { columns: value } ) }
 							min={ 1 }
 							max={ 6 }
