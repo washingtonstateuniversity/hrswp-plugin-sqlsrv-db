@@ -509,7 +509,7 @@ class MSSQL_DB {
 			$this->print_error( 'The query argument of %s must have a placeholder.', 'hrswp-sqlsrv-db' );
 		}
 
-		$args = func_get_args();
+		$args = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue
 		array_shift( $args );
 
 		// If $args was passed as an array (as in vsprintf), move them up.
