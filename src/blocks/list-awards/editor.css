@@ -1,0 +1,41 @@
+.hrswp-sqlsrv-block .awards-list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style-type: none;
+	padding: 0;
+}
+
+.hrswp-sqlsrv-block .award-item {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 1em 1em 0;
+	margin-right: 1em;
+	padding: 0;
+	position: relative;
+}
+
+@media (min-width: 34em) {
+
+	.hrswp-sqlsrv-block.has-2-columns .award-item {
+		flex-basis: calc((100% - 2em) / 2);
+	}
+
+	.hrswp-sqlsrv-block.has-3-columns .award-item {
+		flex-basis: calc((100% - 2em) / 3);
+	}
+
+	.hrswp-sqlsrv-block.has-4-columns .award-item {
+		flex-basis: calc((100% - 2em) / 4);
+	}
+
+	.hrswp-sqlsrv-block.has-5-columns .award-item {
+		flex-basis: calc((100% - 2em) / 5);
+	}
+
+	.hrswp-sqlsrv-block.has-6-columns .award-item {
+		flex-basis: calc((100% - 2em) / 6);
+	}
+
+}
