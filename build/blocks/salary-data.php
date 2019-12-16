@@ -7,7 +7,7 @@
  */
 
 namespace HRSWP\SQLSRV\salary_data;
-use HRSWP\SQLSRV\MSSQL_Query;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 use HRSWP\SQLSRV\API;
 
 /**
@@ -27,10 +27,10 @@ function render( $attributes ) {
 			),
 		),
 	);
-	$data = new MSSQL_Query\MSSQL_Query( $args );
+	$data = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 	if ( ! $data->records ) {
-		return '<p>' . __( 'No data found' ) . '</p>';
+		return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
 	}
 
 	$data = $data->records;
@@ -66,7 +66,7 @@ function render( $attributes ) {
 	</div>
 </div>
 				',
-				__( 'Search' ),
+				__( 'Search', 'hrswp-sqlsrv-db' ),
 				esc_attr( absint( $attributes['searchKey'] ) )
 			);
 		}
@@ -189,7 +189,7 @@ function register_block_salary_data() {
 	);
 
 	// Start the API for the salary data block table group list.
-	$api = new API\API();
+	new API\API();
 }
 // Use later priority to make sure required resources are ready.
 add_action( 'init', __NAMESPACE__ . '\register_block_salary_data', 25 );

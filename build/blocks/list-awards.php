@@ -8,7 +8,7 @@
 
 namespace HRSWP\SQLSRV\list_awards;
 use HRSWP\SQLSRV\Setup;
-use HRSWP\SQLSRV\MSSQL_Query;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 use HRSWP\SQLSRV\API;
 use HRSWP\SQLSRV\Sideload_Image;
 
@@ -23,9 +23,7 @@ use HRSWP\SQLSRV\Sideload_Image;
  * @return string The formatted HTML to display.
  */
 function render( $attributes ) {
-	$classes     = array();
-	$search_form = '';
-	$table_body  = '';
+	$classes = array();
 
 	if ( isset( $attributes['align'] ) ) {
 		$classes[] = 'align' . $attributes['align'];
@@ -59,10 +57,10 @@ function render( $attributes ) {
 			'orderby' => 'GroupYear',
 		);
 
-		$awards = new MSSQL_Query\MSSQL_Query( $args );
+		$awards = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 		if ( ! $awards->records ) {
-			return '<p>' . __( 'No data found' ) . '</p>';
+			return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
 		}
 
 		$awards = $awards->records;
@@ -79,6 +77,10 @@ function render( $attributes ) {
 			// phpcs:enable
 
 			$image = new Sideload_Image\Sideload_Image( $image_props );
+
+			if ( is_wp_error( $image ) ) {
+				return $image;
+			}
 		}
 	}
 
@@ -191,7 +193,7 @@ function register_block_list_awards() {
 	);
 
 	// Start the API for the job classifications block.
-	$api = new API\API();
+	new API\API();
 }
 // Use later priority to make sure required resources are ready.
 add_action( 'init', __NAMESPACE__ . '\register_block_list_awards', 25 );
