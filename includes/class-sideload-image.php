@@ -46,7 +46,7 @@ class Sideload_Image {
 	 *
 	 * @since 0.4.0
 	 *
-	 * @param array {
+	 * @var array {
 	 *     Array of sideloaded file attributes.
 	 *
 	 *     @type string      $file  Full path to the newly sideloaded file.
@@ -62,7 +62,7 @@ class Sideload_Image {
 	 *
 	 * @since 0.4.0
 	 *
-	 * @param array {
+	 * @var array {
 	 *     Array of sideloaded attachment attributes.
 	 *
 	 *     @type int    $id        The attachment ID.
@@ -77,12 +77,16 @@ class Sideload_Image {
 	 *
 	 * @since 0.3.0
 	 *
-	 * @param string $title          The image name.
-	 * @param string $image_contents The binary data string.
-	 * @param string $description    Optional. A textual description of the image.
-	 * @param int    $page_id        Optional. The page ID of the post/page originating the request.
-	 * @param string $group_year     Optional. The group year assigned to the image.
-	 * @param bool   $skip_if_exists Optional. Whether to skip sideloading images that already exist with the same post title. Default false.
+	 * @param array $props {
+	 *     Properties of the image to sideload.
+	 *
+	 *     @type string $title          The image name.
+	 *     @type string $image_contents The binary data string.
+	 *     @type string $description    Optional. A textual description of the image.
+	 *     @type int    $page_id        Optional. The page ID of the post/page originating the request.
+	 *     @type string $group_year     Optional. The group year assigned to the image.
+	 *     @type bool   $skip_if_exists Optional. Whether to skip sideloading images that already exist with the same post title. Default false.
+	 * }
 	 */
 	public function __construct( $props ) {
 		$defaults = array(

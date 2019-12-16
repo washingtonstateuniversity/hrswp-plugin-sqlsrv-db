@@ -648,7 +648,7 @@ class MSSQL_DB {
 	 * @since 0.1.0
 	 *
 	 * @param string $query The query to run.
-	 * @param array $param  Optional. Arguments for a parameterized query.
+	 * @param array  $param  Optional. Arguments for a parameterized query.
 	 */
 	private function do_query( $query, $param = array() ) {
 		if ( ! empty( $this->dbh ) ) {

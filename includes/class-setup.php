@@ -5,6 +5,7 @@
  * @package HRSWP_Sqlsrv_DB
  * @since 0.1.0
  */
+
 namespace HRSWP\SQLSRV\Setup;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,6 +39,7 @@ class Setup {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $file The full path and filename of the instantiating file.
 	 * @return Setup An instance of the HRSWP Sqlsrv DB Setup class.
 	 */
 	public static function get_instance( $file ) {
@@ -213,7 +215,7 @@ class Setup {
 			return;
 		}
 
-		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'
+		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'.
 		$block_names = array(
 			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
 			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',

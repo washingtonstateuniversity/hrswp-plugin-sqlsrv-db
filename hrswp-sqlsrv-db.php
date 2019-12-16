@@ -1,16 +1,20 @@
 <?php
-/*
-Plugin Name: HRSWP Sqlsrv DB
-Version: 0.4.0-beta.2
-Description: A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.
-Author: Adam Turner, washingtonstateuniversity
-Author URI: https://hrs.wsu.edu/
-Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db
-Text Domain: hrswp-sqlsrv-db
-Requires at least: 5.0
-Tested up to: 5.3.0
-Requires PHP: 7.0
-*/
+/**
+ * Plugin Name: HRSWP Sqlsrv DB
+ * Version: 0.4.0-beta.2
+ * Description: A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.
+ * Author: Adam Turner, washingtonstateuniversity
+ * Author URI: https://hrs.wsu.edu/
+ * Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db
+ * Text Domain: hrswp-sqlsrv-db
+ * Requires at least: 5.0
+ * Tested up to: 5.3.0
+ * Requires PHP: 7.0
+ *
+ * @package HRSWP_Sqlsrv_DB
+ * @since 0.1.0
+ */
+
 namespace HRSWP\SQLSRV;
 
 // If this file is called directly, abort.
