@@ -226,7 +226,6 @@ class MSSQL_Query {
 		$tables            = '';
 		$join              = '';
 		$where             = '';
-		$limits            = '';
 		$groupby           = '';
 
 		// Build field => table array and tables array from query vars.

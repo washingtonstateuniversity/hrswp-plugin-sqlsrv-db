@@ -268,7 +268,7 @@ function register_block_job_classifications() {
 	);
 
 	// Start the API for the job classifications block.
-	$api = new API\API();
+	new API\API();
 }
 // Use later priority to make sure required resources are ready.
 add_action( 'init', __NAMESPACE__ . '\register_block_job_classifications', 25 );

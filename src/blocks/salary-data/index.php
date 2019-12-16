@@ -189,7 +189,7 @@ function register_block_salary_data() {
 	);
 
 	// Start the API for the salary data block table group list.
-	$api = new API\API();
+	new API\API();
 }
 // Use later priority to make sure required resources are ready.
 add_action( 'init', __NAMESPACE__ . '\register_block_salary_data', 25 );
