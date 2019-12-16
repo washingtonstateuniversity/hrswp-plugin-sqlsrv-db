@@ -18,19 +18,38 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta.2 (:construction: 2019-12-09)
+## 0.4.0-beta.3 (:construction: 2019-12-16)
 
 ### Fixed
 
+- :alien: Rename MS SQL connector class from `mssql` to `sqlsrv` to resolve confusion with 'mssql' PHP extension removed in PHP 7.0.
+- :warning: Fix php lint function inspection warning.
+- :warning: Fix php lint unused variable warnings.
+- :warning: Fix php lint docblock and line spacing warnings.
+- :warning: Fix php lint textdomain warnings.
 - Set a default column number for the Salary Data block.
 
 ### Changed
 
-- :arrow_up: copy-webpack-plugin 5.0.5 -> 5.1.0
+- :wrench: Update php sniffing rules.
+- Replace block icons and use local SVG includes for missing dashicon hooks.
+- :arrow_up: copy-webpack-plugin 5.0.5 -> 5.1.1
+- :arrow_up: npm-package-json-lint 4.4.0 -> 4.5.0
+- :arrow_up: webpack 4.41.2 -> 4.41.3
 
 ### Added
 
+- :art: Preliminary styling of awards list block.
+- :sparkles: Class to handle sideloading images into the WP uploads directory and media library from binary data.
+- :sparkles: Block to handle displaying awards in grid or list format.
 - :sparkles: Block to handle displaying job classification data for different groups in either table or list format.
+- :heavy_plus_sign: squizlabs/php_codesniffer Composer dev dependency.
+- :heavy_plus_sign: sirbrillig/phpcs-variable-analysis Composer dev dependency to sniff unused variables.
+- :heavy_plus_sign: roave/security-advisories Composer dev dependency to monitor Composer dependency security.
+
+### Removed
+
+- Remove unit tests until they are working correctly.
 
 ## 0.3.1 (2019-12-06)
 
