@@ -1,8 +1,8 @@
 <?php
 /**
- * HRSWP Sqlsrv DB Connector Class: MSSQL_DB
+ * HRSWP Sqlsrv DB Connector Class: Sqlsrv_DB
  *
- * The HRSWP Sqlsrv DB connector is comprised of the MSSQL_DB class, which, when
+ * The HRSWP Sqlsrv DB connector is comprised of the Sqlsrv_DB class, which, when
  * instantiated with valid credentials, opens a connection from WordPress to
  * a Microsoft SQL Server database. The class provides a variety of methods for
  * interacting with the SQL Server database using the `sqlsrv` PHP extension.
@@ -11,7 +11,7 @@
  * @since 0.1.0
  */
 
-namespace HRSWP\SQLSRV\MSSQL_DB;
+namespace HRSWP\SQLSRV\Sqlsrv_DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 0.1.0
  */
-class MSSQL_DB {
+class Sqlsrv_DB {
 	/**
 	 * Whether to show SQL/DB errors.
 	 *
@@ -222,7 +222,7 @@ class MSSQL_DB {
 			$this->print_error(
 				sprintf(
 					/* translators: %s: the database identifier */
-					__( 'Problem in MSSQL_DB->add_tables. The database slug %s does not exist.', 'hrswp-sqlsrv-db' ),
+					__( 'Problem in Sqlsrv_DB->add_tables. The database slug %s does not exist.', 'hrswp-sqlsrv-db' ),
 					esc_html( $database_handle )
 				)
 			);

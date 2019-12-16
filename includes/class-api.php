@@ -1,6 +1,6 @@
 <?php
 /**
- * HRSWP Sqlsrv DB Query API: MSSQL_Query class
+ * HRSWP Sqlsrv DB API: API class
  *
  * @package HRSWP_Sqlsrv_DB
  * @since 0.3.0
@@ -8,7 +8,7 @@
 
 namespace HRSWP\SQLSRV\API;
 use HRSWP\SQLSRV\Setup;
-use HRSWP\SQLSRV\MSSQL_DB;
+use HRSWP\SQLSRV\Sqlsrv_DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -88,7 +88,7 @@ class API {
 	 */
 	public function get_tables_list() {
 		// Initialize the HRSWP Sqlsrv DB connector.
-		$msdb      = new MSSQL_DB\MSSQL_DB();
+		$msdb      = new Sqlsrv_DB\Sqlsrv_DB();
 		$db_tables = $msdb->list_tables();
 
 		if ( ! $db_tables ) {

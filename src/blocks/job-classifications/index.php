@@ -7,7 +7,7 @@
  */
 
 namespace HRSWP\SQLSRV\job_classifications;
-use HRSWP\SQLSRV\MSSQL_Query;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 use HRSWP\SQLSRV\API;
 
 /**
@@ -69,7 +69,7 @@ function render( $attributes ) {
 		),
 		'orderby' => 'JobTitle',
 	);
-	$data = new MSSQL_Query\MSSQL_Query( $args );
+	$data = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 	if ( ! $data->records ) {
 		return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';

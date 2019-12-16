@@ -144,10 +144,10 @@ class Setup {
 	 */
 	private function includes() {
 		// The Microsoft SQL Server database connection class.
-		require __DIR__ . '/class-mssql-db.php';
+		require __DIR__ . '/class-sqlsrv-db.php';
 
 		// The Microsoft SQL Server query class.
-		require __DIR__ . '/class-mssql-query.php';
+		require __DIR__ . '/class-sqlsrv-query.php';
 
 		// The plugin API class.
 		require __DIR__ . '/class-api.php';

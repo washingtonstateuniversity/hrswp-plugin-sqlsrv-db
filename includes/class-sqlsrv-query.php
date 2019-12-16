@@ -1,13 +1,13 @@
 <?php
 /**
- * HRSWP Sqlsrv DB Query API: MSSQL_Query class
+ * HRSWP Sqlsrv DB Query API: Sqlsrv_Query class
  *
  * @package HRSWP_Sqlsrv_DB
  * @since 0.1.0
  */
 
-namespace HRSWP\SQLSRV\MSSQL_Query;
-use HRSWP\SQLSRV\MSSQL_DB;
+namespace HRSWP\SQLSRV\Sqlsrv_Query;
+use HRSWP\SQLSRV\Sqlsrv_DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 0.1.0
  */
-class MSSQL_Query {
+class Sqlsrv_Query {
 	/**
 	 * Query vars set by the user
 	 *
@@ -213,7 +213,7 @@ class MSSQL_Query {
 	 */
 	public function get_records() {
 		// Initialize the HRSWP Sqlsrv DB connector.
-		$msdb = new MSSQL_DB\MSSQL_DB();
+		$msdb = new Sqlsrv_DB\Sqlsrv_DB();
 
 		$this->parse_query();
 

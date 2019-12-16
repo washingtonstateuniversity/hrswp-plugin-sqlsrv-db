@@ -8,7 +8,7 @@
 
 namespace HRSWP\SQLSRV\list_awards;
 use HRSWP\SQLSRV\Setup;
-use HRSWP\SQLSRV\MSSQL_Query;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 use HRSWP\SQLSRV\API;
 use HRSWP\SQLSRV\Sideload_Image;
 
@@ -57,7 +57,7 @@ function render( $attributes ) {
 			'orderby' => 'GroupYear',
 		);
 
-		$awards = new MSSQL_Query\MSSQL_Query( $args );
+		$awards = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 		if ( ! $awards->records ) {
 			return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
