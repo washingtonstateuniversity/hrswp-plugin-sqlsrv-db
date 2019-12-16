@@ -160,7 +160,7 @@ class Sideload_Image {
 
 		// Check that the sideloaded image file is an allowed type.
 		if ( ! in_array( $mime, $allowed, true ) ) {
-			return new \WP_Error( 'disallowed_file_type', __( 'Sorry, this file type is not permitted for security reasons.' ) );
+			return new \WP_Error( 'disallowed_file_type', __( 'Sorry, this file type is not permitted for security reasons.', 'hrswp-sqlsrv-db' ) );
 		}
 
 		// Retrieve the file extension from the WP allowed mime types array.
@@ -208,7 +208,7 @@ class Sideload_Image {
 		$attachment_id = wp_insert_attachment( $attachment, $this->image['file'], absint( $page_id ) );
 
 		if ( 0 === $attachment_id ) {
-			return new \WP_Error( 'insert_attachment_error', __( 'There was a problem inserting a new attachment.' ) );
+			return new \WP_Error( 'insert_attachment_error', __( 'There was a problem inserting a new attachment.', 'hrswp-sqlsrv-db' ) );
 		}
 
 		// Generate the attachment metadata and update the database.

@@ -99,7 +99,7 @@ class API {
 		$tables = array(
 			array(
 				'value' => '',
-				'label' => __( 'Select an option' ),
+				'label' => __( 'Select an option', 'hrswp-sqlsrv-db' ),
 			),
 		);
 

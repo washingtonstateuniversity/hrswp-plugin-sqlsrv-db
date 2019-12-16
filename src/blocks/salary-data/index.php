@@ -30,7 +30,7 @@ function render( $attributes ) {
 	$data = new MSSQL_Query\MSSQL_Query( $args );
 
 	if ( ! $data->records ) {
-		return '<p>' . __( 'No data found' ) . '</p>';
+		return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
 	}
 
 	$data = $data->records;
@@ -66,7 +66,7 @@ function render( $attributes ) {
 	</div>
 </div>
 				',
-				__( 'Search' ),
+				__( 'Search', 'hrswp-sqlsrv-db' ),
 				esc_attr( absint( $attributes['searchKey'] ) )
 			);
 		}

@@ -151,7 +151,7 @@ class MSSQL_DB {
 		} else {
 
 			// The config file does not exist.
-			$this->print_error( __( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.' ) );
+			$this->print_error( __( 'There does not seem to be a "hrswp-sqlsrv-config.php" file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' ) );
 
 		}
 	}
@@ -188,7 +188,7 @@ class MSSQL_DB {
 	 */
 	private function add_database( $database_handle, $config = array() ) {
 		if ( empty( $database_handle ) || 20 < strlen( $database_handle ) ) {
-			$this->print_error( __( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."' ) );
+			$this->print_error( __( 'There is a problem with one of the datasets in "hrswp-sqlsrv-config.php."', 'hrswp-sqlsrv-db' ) );
 			return;
 		}
 
@@ -222,7 +222,7 @@ class MSSQL_DB {
 			$this->print_error(
 				sprintf(
 					/* translators: %s: the database identifier */
-					__( 'Problem in MSSQL_DB->add_tables. The database slug %s does not exist.' ),
+					__( 'Problem in MSSQL_DB->add_tables. The database slug %s does not exist.', 'hrswp-sqlsrv-db' ),
 					esc_html( $database_handle )
 				)
 			);
@@ -314,7 +314,7 @@ class MSSQL_DB {
 	 */
 	public function mssql_db_connect( $database ) {
 		if ( ! $this->databases[ $database ] ) {
-			$this->print_error( __( 'Invalid database label provided to "mssql_db_connect"' ) );
+			$this->print_error( __( 'Invalid database label provided to "mssql_db_connect"', 'hrswp-sqlsrv-db' ) );
 			return false;
 		}
 
@@ -506,7 +506,7 @@ class MSSQL_DB {
 
 		// This is not meant to be foolproof, but it will catch obviously incorrect usage.
 		if ( strpos( $query, '%' ) === false ) {
-			$this->print_error( 'The query argument of %s must have a placeholder.' );
+			$this->print_error( 'The query argument of %s must have a placeholder.', 'hrswp-sqlsrv-db' );
 		}
 
 		$args = func_get_args();
@@ -556,7 +556,7 @@ class MSSQL_DB {
 		if ( count( $args ) !== $placeholders ) {
 			if ( 1 === $placeholders && $passed_as_array ) {
 				// If the passed query only expected one argument, but the wrong number of arguments were sent as an array, bail.
-				$this->print_error( 'The query only expected one placeholder, but an array of multiple placeholders was sent.' );
+				$this->print_error( 'The query only expected one placeholder, but an array of multiple placeholders was sent.', 'hrswp-sqlsrv-db' );
 				return;
 			} else {
 				/*
@@ -566,7 +566,7 @@ class MSSQL_DB {
 				$this->print_error(
 					sprintf(
 						/* translators: 1: number of placeholders, 2: number of arguments passed */
-						__( 'The query does not contain the correct number of placeholders (%1$d) for the number of arguments passed (%2$d).' ),
+						__( 'The query does not contain the correct number of placeholders (%1$d) for the number of arguments passed (%2$d).', 'hrswp-sqlsrv-db' ),
 						$placeholders,
 						count( $args )
 					)
@@ -648,7 +648,7 @@ class MSSQL_DB {
 	 * @since 0.1.0
 	 *
 	 * @param string $query The query to run.
-	 * @param array $param Optional. Arguments for a parameterized query.
+	 * @param array $param  Optional. Arguments for a parameterized query.
 	 */
 	private function do_query( $query, $param = array() ) {
 		if ( ! empty( $this->dbh ) ) {
@@ -775,7 +775,7 @@ class MSSQL_DB {
 			foreach ( $str as $err ) {
 				printf(
 					'<div id="error"><p class="wpdberror"><strong>%s</strong> [SQLSTATE %s]<br /><code>Code %s %s</code></p></div>',
-					esc_html__( 'WP HRS_MSDB error:' ),
+					esc_html__( 'WP HRS_MSDB error:', 'hrswp-sqlsrv-db' ),
 					esc_html( $err['SQLSTATE'] ),
 					esc_html( $err['code'] ),
 					esc_html( $err['message'] )
@@ -784,7 +784,7 @@ class MSSQL_DB {
 		} else {
 			printf(
 				'<div id="error"><p class="wpdberror"><strong>%s</strong> <code>%s</code></p></div>',
-				esc_html__( 'WP HRS_MSDB error:' ),
+				esc_html__( 'WP HRS_MSDB error:', 'hrswp-sqlsrv-db' ),
 				esc_html( $str )
 			);
 		}

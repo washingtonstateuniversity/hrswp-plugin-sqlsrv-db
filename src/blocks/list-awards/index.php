@@ -62,7 +62,7 @@ function render( $attributes ) {
 		$awards = new MSSQL_Query\MSSQL_Query( $args );
 
 		if ( ! $awards->records ) {
-			return '<p>' . __( 'No data found' ) . '</p>';
+			return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
 		}
 
 		$awards = $awards->records;

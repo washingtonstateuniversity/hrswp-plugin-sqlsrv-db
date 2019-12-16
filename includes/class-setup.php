@@ -244,7 +244,7 @@ class Setup {
 		$plugin_categories = array(
 			array(
 				'slug'  => self::$slug,
-				'title' => __( 'HRS External Content' ),
+				'title' => __( 'HRS External Content', 'hrswp-sqlsrv-db' ),
 			),
 		);
 
@@ -311,7 +311,7 @@ class Setup {
 	public function notice__missing_config_file() {
 		$message = sprintf(
 			/* translators: %s: hrswp-sqlsrv-config.php */
-			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.' ),
+			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' ),
 			'<code>hrswp-sqlsrv-config.php</code>'
 		);
 
