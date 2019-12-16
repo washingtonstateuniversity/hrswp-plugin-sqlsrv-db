@@ -214,6 +214,7 @@ class Setup {
 		$block_names = array(
 			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
 			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',
+			'list-awards.php'         => 'hrswpsqlsrv/list-awards',
 		);
 
 		foreach ( $block_names as $file => $block_name ) {
