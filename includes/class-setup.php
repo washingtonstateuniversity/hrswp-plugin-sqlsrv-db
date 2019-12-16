@@ -149,6 +149,9 @@ class Setup {
 
 		// The plugin API class.
 		require __DIR__ . '/class-api.php';
+
+		// The plugin Sideload Image class.
+		require __DIR__ . '/class-sideload-image.php';
 	}
 
 	/**
