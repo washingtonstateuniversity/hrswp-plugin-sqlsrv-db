@@ -9,6 +9,7 @@ const { __, _x } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from './icon';
 
 const {
 	name,
@@ -22,7 +23,7 @@ export const settings = {
 	title: __( 'HRS Job Classifications' ),
 	category,
 	description: __( 'Display WSU job classification data.' ),
-	icon: 'archive',
+	icon,
 	keywords: [ __( 'table data compensation jobs' ) ],
 	supports,
 	styles: [
