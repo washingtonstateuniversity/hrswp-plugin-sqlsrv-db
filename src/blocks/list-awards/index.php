@@ -111,19 +111,13 @@ function render( $attributes ) {
 			$award_group = ( '-1' === $award_group[0] ) ? 'All' : $award_group[0];
 
 			if ( $award_group === $group ) {
-				if ( false !== strpos( $classes, 'is-style-list' ) ) {
-					// List layout variant.
-					$group_display .= "<ul><li>{$attachment->post_title}</li></ul>";
-				} else {
-					// Grid layout default.
-					$group_display .= sprintf(
-						'<div class="award-item"><figure class="wp-block-image size-small">%1$s</figure><p class="award-title">%2$s</p><p class="award-description">%3$s</p><p class="award-meta">%4$s Years</p></div>',
-						wp_get_attachment_image( $attachment->ID, 'small' ),
-						esc_html( $attachment->post_title ),
-						$attachment->post_content,
-						$award_group
-					);
-				}
+				$group_display .= sprintf(
+					'<div class="award-item"><figure class="wp-block-image size-small">%1$s</figure><p class="award-title">%2$s</p><p class="award-description">%3$s</p><p class="award-meta">%4$s Years</p></div>',
+					wp_get_attachment_image( $attachment->ID, 'small' ),
+					esc_html( $attachment->post_title ),
+					$attachment->post_content,
+					$award_group
+				);
 			}
 		}
 

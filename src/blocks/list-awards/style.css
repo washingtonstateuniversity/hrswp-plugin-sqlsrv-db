@@ -9,8 +9,9 @@
 	background-color: var(--body-background-color);
 	border-radius: 1em;
 	display: flex;
+	flex-basis: 100%;
 	flex-direction: column;
-	margin: 0 2em 3em 0;
+	margin: 0 0 3em 0;
 	position: relative;
 	overflow: hidden;
 }
@@ -51,30 +52,38 @@
 	width: 100%;
 }
 
-.hrswp-sqlsrv-block.has-1-columns .award-item {
-	flex-basis: 100%;
-}
+@media (min-width: 34em) {
 
-@media (min-width: 43em) {
+	.hrswp-sqlsrv-block .award-item {
+		margin-right: 2em;
+	}
 
 	.hrswp-sqlsrv-block.has-2-columns .award-item {
-		flex-basis: calc((100% / 2) - 2rem);
+		flex-basis: calc((100% / 2) - 1.25rem);
 	}
 
 	.hrswp-sqlsrv-block.has-3-columns .award-item {
-		flex-basis: calc((100% / 3) - 2rem);
+		flex-basis: calc((100% / 3) - 1.5rem);
 	}
 
 	.hrswp-sqlsrv-block.has-4-columns .award-item {
-		flex-basis: calc((100% / 4) - 2rem);
+		flex-basis: calc((100% / 4) - 1.75rem);
 	}
 
 	.hrswp-sqlsrv-block.has-5-columns .award-item {
-		flex-basis: calc((100% / 5) - 2rem);
+		flex-basis: calc((100% / 5) - 1.85rem);
 	}
 
 	.hrswp-sqlsrv-block.has-6-columns .award-item {
-		flex-basis: calc((100% / 6) - 2rem);
+		flex-basis: calc((100% / 6) - 1.9rem);
+	}
+
+	.hrswp-sqlsrv-block.has-2-columns .award-item:nth-child(2n),
+	.hrswp-sqlsrv-block.has-3-columns .award-item:nth-child(3n),
+	.hrswp-sqlsrv-block.has-4-columns .award-item:nth-child(4n),
+	.hrswp-sqlsrv-block.has-5-columns .award-item:nth-child(5n),
+	.hrswp-sqlsrv-block.has-6-columns .award-item:nth-child(6n) {
+		margin-right: 0;
 	}
 
 }
@@ -96,6 +105,35 @@
 
 }
 
-.hrswp-sqlsrv-block .award-item:last-child {
-	margin-right: 0;
+@media (min-width: 34em) {
+
+	.hrswp-sqlsrv-block .award-item:last-child {
+		margin-right: 0;
+	}
+
+	.hrswp-sqlsrv-block.is-style-list .awards-list {
+		display: block;
+	}
+
+	.hrswp-sqlsrv-block.is-style-list .award-item {
+		align-items: center;
+		flex-flow: row nowrap;
+		margin-right: 0;
+	}
+
+	.hrswp-sqlsrv-block.is-style-list .award-item figure {
+		margin-bottom: 0;
+	}
+
+	.hrswp-sqlsrv-block.is-style-list .award-description {
+		padding-top: 1em;
+		padding-bottom: 1em;
+	}
+
+	.hrswp-sqlsrv-block.is-style-list .award-meta {
+		padding: 0.25em 1em;
+		right: 0;
+		width: auto;
+	}
+
 }
