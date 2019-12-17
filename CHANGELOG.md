@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta.3 (:construction: 2019-12-16)
+## 0.4.0-beta.4 (:construction: 2019-12-17)
 
 ### Fixed
 
@@ -39,7 +39,7 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
-- :art: Preliminary styling of awards list block.
+- :art: Style awards list block grid and list layouts.
 - :sparkles: Class to handle sideloading images into the WP uploads directory and media library from binary data.
 - :sparkles: Block to handle displaying awards in grid or list format.
 - :sparkles: Block to handle displaying job classification data for different groups in either table or list format.
