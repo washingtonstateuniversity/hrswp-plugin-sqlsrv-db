@@ -5,6 +5,7 @@
  * @package HRSWP_Sqlsrv_DB
  * @since 0.1.0
  */
+
 namespace HRSWP\SQLSRV\Setup;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,6 +39,7 @@ class Setup {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $file The full path and filename of the instantiating file.
 	 * @return Setup An instance of the HRSWP Sqlsrv DB Setup class.
 	 */
 	public static function get_instance( $file ) {
@@ -142,13 +144,16 @@ class Setup {
 	 */
 	private function includes() {
 		// The Microsoft SQL Server database connection class.
-		require __DIR__ . '/class-mssql-db.php';
+		require __DIR__ . '/class-sqlsrv-db.php';
 
 		// The Microsoft SQL Server query class.
-		require __DIR__ . '/class-mssql-query.php';
+		require __DIR__ . '/class-sqlsrv-query.php';
 
 		// The plugin API class.
 		require __DIR__ . '/class-api.php';
+
+		// The plugin Sideload Image class.
+		require __DIR__ . '/class-sideload-image.php';
 	}
 
 	/**
@@ -210,10 +215,11 @@ class Setup {
 			return;
 		}
 
-		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'
+		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'.
 		$block_names = array(
 			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
 			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',
+			'list-awards.php'         => 'hrswpsqlsrv/list-awards',
 		);
 
 		foreach ( $block_names as $file => $block_name ) {
@@ -240,7 +246,7 @@ class Setup {
 		$plugin_categories = array(
 			array(
 				'slug'  => self::$slug,
-				'title' => __( 'HRS External Content' ),
+				'title' => __( 'HRS External Content', 'hrswp-sqlsrv-db' ),
 			),
 		);
 
@@ -307,7 +313,7 @@ class Setup {
 	public function notice__missing_config_file() {
 		$message = sprintf(
 			/* translators: %s: hrswp-sqlsrv-config.php */
-			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.' ),
+			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' ),
 			'<code>hrswp-sqlsrv-config.php</code>'
 		);
 

@@ -22,7 +22,7 @@ export const settings = {
 	title: __( 'HRS Salary Data' ),
 	category,
 	description: __( 'Display WSU salary data.' ),
-	icon: 'archive',
+	icon: 'portfolio',
 	keywords: [ __( 'table data compensation' ) ],
 	supports,
 	styles: [

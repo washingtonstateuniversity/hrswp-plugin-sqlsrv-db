@@ -20,14 +20,14 @@ const {
 export { name };
 
 export const settings = {
-	title: __( 'HRS Job Classifications' ),
+	title: __( 'HRS Awards' ),
 	category,
-	description: __( 'Display WSU job classification data.' ),
+	description: __( 'Display employee recognition awards.' ),
 	icon,
-	keywords: [ __( 'table data compensation jobs' ) ],
+	keywords: [ __( 'awards employees recognition' ) ],
 	supports,
 	styles: [
-		{ name: 'default', label: _x( 'Table', 'block style' ), isDefault: true },
+		{ name: 'default', label: _x( 'Grid', 'block style' ), isDefault: true },
 		{ name: 'list', label: _x( 'List', 'block style' ) },
 	],
 	edit,

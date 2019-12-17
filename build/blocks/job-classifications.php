@@ -7,7 +7,7 @@
  */
 
 namespace HRSWP\SQLSRV\job_classifications;
-use HRSWP\SQLSRV\MSSQL_Query;
+use HRSWP\SQLSRV\Sqlsrv_Query;
 use HRSWP\SQLSRV\API;
 
 /**
@@ -20,22 +20,22 @@ use HRSWP\SQLSRV\API;
  */
 function filter_data_name( $data_name ) {
 	if ( 'ClassCode' === $data_name ) {
-		return __( 'Job Class' );
+		return __( 'Job Class', 'hrswp-sqlsrv-db' );
 	}
 	if ( 'JobGroupCode' === $data_name ) {
-		return __( 'Job Group' );
+		return __( 'Job Group', 'hrswp-sqlsrv-db' );
 	}
 	if ( 'JobTitle' === $data_name ) {
-		return __( 'Job Title' );
+		return __( 'Job Title', 'hrswp-sqlsrv-db' );
 	}
 	if ( 'SalrangeWExceptions' === $data_name ) {
-		return __( 'Range' );
+		return __( 'Range', 'hrswp-sqlsrv-db' );
 	}
 	if ( 'Salary_Min' === $data_name ) {
-		return __( 'Salary Min' );
+		return __( 'Salary Min', 'hrswp-sqlsrv-db' );
 	}
 	if ( 'Salary_Max' === $data_name ) {
-		return __( 'Salary Max' );
+		return __( 'Salary Max', 'hrswp-sqlsrv-db' );
 	}
 
 	return $data_name;
@@ -69,10 +69,10 @@ function render( $attributes ) {
 		),
 		'orderby' => 'JobTitle',
 	);
-	$data = new MSSQL_Query\MSSQL_Query( $args );
+	$data = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 	if ( ! $data->records ) {
-		return '<p>' . __( 'No data found' ) . '</p>';
+		return '<p>' . __( 'No data found', 'hrswp-sqlsrv-db' ) . '</p>';
 	}
 
 	$data = $data->records;
@@ -108,7 +108,7 @@ function render( $attributes ) {
 	</div>
 </div>
 				',
-				__( 'Search' ),
+				__( 'Search', 'hrswp-sqlsrv-db' ),
 				esc_attr( absint( $attributes['searchKey'] ) )
 			);
 		}
@@ -268,7 +268,7 @@ function register_block_job_classifications() {
 	);
 
 	// Start the API for the job classifications block.
-	$api = new API\API();
+	new API\API();
 }
 // Use later priority to make sure required resources are ready.
 add_action( 'init', __NAMESPACE__ . '\register_block_job_classifications', 25 );
