@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta.4 (:construction: 2019-12-17)
+## 0.4.0-rc.1 (:construction: 2019-12-17)
 
 ### Fixed
 
@@ -31,6 +31,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Increment "tested up to" to WordPress 5.3.1.
 - :wrench: Update php sniffing rules.
 - Replace block icons and use local SVG includes for missing dashicon hooks.
 - :arrow_up: copy-webpack-plugin 5.0.5 -> 5.1.1
