@@ -18,10 +18,11 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-rc.1 (:construction: 2019-12-17)
+## 0.4.0-rc.2 (:construction: 2019-12-18)
 
 ### Fixed
 
+- :bug: Fix #9 Add missing "years of experience" row to the nurses salary data tables.
 - :alien: Rename MS SQL connector class from `mssql` to `sqlsrv` to resolve confusion with 'mssql' PHP extension removed in PHP 7.0.
 - :warning: Fix php lint function inspection warning.
 - :warning: Fix php lint unused variable warnings.
