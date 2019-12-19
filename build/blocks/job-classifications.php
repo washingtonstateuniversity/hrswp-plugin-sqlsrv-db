@@ -264,6 +264,7 @@ function register_block_job_classifications() {
 				),
 			),
 			'render_callback' => __NAMESPACE__ . '\render',
+			'script'          => 'hrs-filter-script',
 		)
 	);
 

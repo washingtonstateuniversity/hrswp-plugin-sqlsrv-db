@@ -35,6 +35,14 @@ class Setup {
 	public static $basename;
 
 	/**
+	 * The plugin blocks to register.
+	 *
+	 * @since 0.5.0
+	 * @var array
+	 */
+
+
+	/**
 	 * Instantiates plugin Setup singleton.
 	 *
 	 * @since 0.1.0
@@ -293,9 +301,18 @@ class Setup {
 	public function enqueue_scripts() {
 		$plugin = get_option( self::$slug . '_plugin-status' );
 
+		if ( )
+
 		wp_enqueue_style(
 			self::$slug . '-style',
 			plugins_url( 'build/style.css', self::$basename ),
+			array(),
+			$plugin['version']
+		);
+
+		wp_register_script(
+			'hrs-filter-script',
+			plugins_url( 'build/filter.js', self::$basename ),
 			array(),
 			$plugin['version']
 		);
