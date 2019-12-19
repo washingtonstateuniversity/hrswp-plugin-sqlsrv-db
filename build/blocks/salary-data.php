@@ -160,7 +160,7 @@ function render( $attributes ) {
  * The Nurses data from the database is missing a required "years of experience" header row, so
  * we need to add it manually. It is different for all four tables.
  *
- * @since 0.4.1
+ * @since 0.4.0
  *
  * @param string $query_table The name of the table being queried.
  * @return string The formatted HTML table row with the years of experience data.

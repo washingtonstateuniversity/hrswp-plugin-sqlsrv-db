@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-rc.2 (:construction: 2019-12-18)
+## 0.4.0 (2019-12-19)
 
 ### Fixed
 
@@ -35,9 +35,13 @@ Changelog formatting (http://semver.org/):
 - Increment "tested up to" to WordPress 5.3.1.
 - :wrench: Update php sniffing rules.
 - Replace block icons and use local SVG includes for missing dashicon hooks.
+- :arrow_up: @wordpress/babel-preset-default 4.7.0 -> 4.8.0
+- :arrow_up: @wordpress/eslint-plugin 3.2.0 -> 3.3.0
+- :arrow_up: @wordpress/jest-preset-default 5.2.0 -> 5.3.0
+- :arrow_up: jest-puppeteer 4.3.0 -> 4.4.0
 - :arrow_up: copy-webpack-plugin 5.0.5 -> 5.1.1
 - :arrow_up: npm-package-json-lint 4.4.0 -> 4.5.0
-- :arrow_up: webpack 4.41.2 -> 4.41.3
+- :arrow_up: webpack 4.41.2 -> 4.41.4
 
 ### Added
 
