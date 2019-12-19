@@ -117,6 +117,11 @@ function render( $attributes ) {
 	}
 	$table_head .= '</tr>';
 
+	// The "Nurses" salary data needs supplemental "Years of experience" data inserted.
+	if ( strstr( $attributes['queryTable'], 'nurses' ) ) {
+		$table_head .= nurses_years_experience_row( $attributes['queryTable'] );
+	}
+
 	foreach ( $data as $row ) {
 		$table_body .= '<tr>';
 
@@ -147,6 +152,167 @@ function render( $attributes ) {
 		$table_head,
 		$table_body
 	);
+}
+
+/**
+ * Generates a years of experience row for the four Nurses tables.
+ *
+ * The Nurses data from the database is missing a required "years of experience" header row, so
+ * we need to add it manually. It is different for all four tables.
+ *
+ * @since 0.4.0
+ *
+ * @param string $query_table The name of the table being queried.
+ * @return string The formatted HTML table row with the years of experience data.
+ */
+function nurses_years_experience_row( $query_table ) {
+	$experience_row = '<tr><th><abbr title="' . __( 'Years of experience', 'hrswp-sqlsrv-db' ) . '">YRSx</abbr></th>';
+
+	// Nurses Group A, Steps A-M.
+	if ( strstr( $query_table, 'nurses-a-am' ) ) {
+		foreach ( range( 'A', 'M' ) as $letter ) {
+			switch ( $letter ) {
+				case 'E':
+					$years = '0';
+					break;
+				case 'G':
+					$years = '1';
+					break;
+				case 'I':
+					$years = '2';
+					break;
+				case 'K':
+					$years = '3';
+					break;
+				case 'L':
+					$years = '4';
+					break;
+				case 'M':
+					$years = '5';
+					break;
+				default:
+					$years = '';
+					break;
+			}
+
+			$experience_row .= "<th>{$years}</th>";
+		}
+	}
+
+	// Nurses Group A, Steps N-U.
+	if ( strstr( $query_table, 'nurses-a-nu' ) ) {
+		foreach ( range( 'N', 'U' ) as $letter ) {
+			switch ( $letter ) {
+				case 'N':
+					$years = '6';
+					break;
+				case 'O':
+					$years = '7';
+					break;
+				case 'P':
+					$years = '8';
+					break;
+				case 'Q':
+					$years = '12';
+					break;
+				case 'R':
+					$years = '15';
+					break;
+				case 'S':
+					$years = '18';
+					break;
+				case 'T':
+					$years = '20';
+					break;
+				case 'U':
+					$years = '26';
+					break;
+				default:
+					$years = '';
+					break;
+			}
+
+			$experience_row .= "<th>{$years}</th>";
+		}
+	}
+
+	// Nurses Group B, Steps A-M.
+	if ( strstr( $query_table, 'nurses-b-am' ) ) {
+		foreach ( range( 'A', 'M' ) as $letter ) {
+			switch ( $letter ) {
+				case 'A':
+					$years = '0';
+					break;
+				case 'C':
+					$years = '1';
+					break;
+				case 'E':
+					$years = '2';
+					break;
+				case 'G':
+					$years = '3';
+					break;
+				case 'I':
+					$years = '4';
+					break;
+				case 'K':
+					$years = '5';
+					break;
+				case 'L':
+					$years = '6';
+					break;
+				case 'M':
+					$years = '7';
+					break;
+				default:
+					$years = '';
+					break;
+			}
+
+			$experience_row .= "<th>{$years}</th>";
+		}
+	}
+
+	// Nurses Group B, Steps N-U.
+	if ( strstr( $query_table, 'nurses-b-nu' ) ) {
+		foreach ( range( 'N', 'U' ) as $letter ) {
+			switch ( $letter ) {
+				case 'N':
+					$years = '8';
+					break;
+				case 'O':
+					$years = '9';
+					break;
+				case 'P':
+					$years = '10';
+					break;
+				case 'Q':
+					$years = '12';
+					break;
+				case 'R':
+					$years = '15';
+					break;
+				case 'S':
+					$years = '18';
+					break;
+				case 'T':
+					$years = '20';
+					break;
+				case 'U':
+					$years = '26';
+					break;
+				default:
+					$years = '';
+					break;
+			}
+
+			$experience_row .= "<th>{$years}</th>";
+		}
+	}
+
+	$experience_row .= '</tr>';
+
+	return $experience_row;
 }
 
 /**
