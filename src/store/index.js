@@ -23,42 +23,42 @@ const actions = {
 	},
 };
 
-const registerStores = registerStore( 'hrswpsqlsrv/salary-data', {
-	reducer( state = DEFAULT_STATE, action ) {
-		switch ( action.type ) {
-			case 'GET_TABLE_NAMES':
-				return {
-					...state,
-					tableNames: action.tableNames,
-				};
-		}
+export default function registerStores() {
+	registerStore( 'hrswpsqlsrv/salary-data', {
+		reducer( state = DEFAULT_STATE, action ) {
+			switch ( action.type ) {
+				case 'GET_TABLE_NAMES':
+					return {
+						...state,
+						tableNames: action.tableNames,
+					};
+			}
 
-		return state;
-	},
-
-	actions,
-
-	selectors: {
-		getTableNames( state ) {
-			const { tableNames } = state;
-
-			return tableNames;
+			return state;
 		},
-	},
 
-	controls: {
-		FETCH_FROM_API( action ) {
-			return apiFetch( { path: action.path } );
+		actions,
+
+		selectors: {
+			getTableNames( state ) {
+				const { tableNames } = state;
+
+				return tableNames;
+			},
 		},
-	},
 
-	resolvers: {
-		* getTableNames() {
-			const path = '/hrswp-sqlsrv-db/v1/tables/';
-			const tableNames = yield actions.fetchFromAPI( path );
-			return actions.getTableNames( tableNames );
+		controls: {
+			FETCH_FROM_API( action ) {
+				return apiFetch( { path: action.path } );
+			},
 		},
-	},
-} );
 
-export { registerStores };
+		resolvers: {
+			* getTableNames() {
+				const path = '/hrswp-sqlsrv-db/v1/tables/';
+				const tableNames = yield actions.fetchFromAPI( path );
+				return actions.getTableNames( tableNames );
+			},
+		},
+	} );
+}
