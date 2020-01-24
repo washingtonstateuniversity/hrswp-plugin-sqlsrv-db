@@ -19,36 +19,9 @@ const {
 class JobClassifications extends Component {
 	constructor() {
 		super( ...arguments );
-		this.state = { searchableKeys: [] };
-	}
-
-	componentDidUpdate() {
-		const { attributes, clientId } = this.props;
-		const { isSearchable } = attributes;
-
-		if ( isSearchable ) {
-			const blockNode = document.querySelector( '[data-block="' + clientId + '"]' );
-
-			if ( blockNode ) {
-				const headNodes = blockNode.getElementsByTagName( 'th' );
-				const headArray = [ { value: null, label: 'Select a column', disabled: true } ];
-
-				for ( const [ key, node ] of Object.entries( headNodes ) ) {
-					headArray.push( {
-						value: key,
-						label: node.innerText,
-					} );
-				}
-
-				if ( JSON.stringify( this.state.searchableKeys ) !== JSON.stringify( headArray ) ) {
-					this.setState( { searchableKeys: headArray } );
-				}
-			}
-		}
 	}
 
 	render() {
-		const { searchableKeys } = this.state;
 		const {
 			attributes,
 			setAttributes,
@@ -57,9 +30,7 @@ class JobClassifications extends Component {
 		const {
 			className,
 			columns,
-			isSearchable,
 			isStriped,
-			searchKey,
 			queryTable,
 		} = attributes;
 
@@ -72,20 +43,6 @@ class JobClassifications extends Component {
 							checked={ isStriped }
 							onChange={ ( value ) => setAttributes( { isStriped: value } ) }
 						/>
-						<ToggleControl
-							label={ __( 'Allow searching table by column' ) }
-							checked={ isSearchable }
-							onChange={ ( value ) => setAttributes( { isSearchable: value } ) }
-						/>
-						{ isSearchable &&
-							<SelectControl
-								className={ 'salary-data-search-column-picker__select' }
-								label={ __( 'Select column to allow searching in:' ) }
-								value={ searchKey }
-								options={ searchableKeys }
-								onChange={ ( value ) => setAttributes( { searchKey: value } ) }
-							/>
-						}
 					</PanelBody>
 				}
 				{ 'is-style-list' === className &&

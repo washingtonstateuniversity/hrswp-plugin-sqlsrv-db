@@ -78,7 +78,6 @@ function render( $attributes ) {
 	$data = $data->records;
 
 	$classes     = array();
-	$search_form = '';
 	$table_body  = '';
 
 	if ( isset( $attributes['align'] ) ) {
@@ -92,26 +91,6 @@ function render( $attributes ) {
 	}
 	if ( isset( $attributes['columns'] ) && 0 < $attributes['columns'] ) {
 		$classes[] = "has-{$attributes['columns']}-columns";
-	}
-	if ( isset( $attributes['isSearchable'] ) && $attributes['isSearchable'] ) {
-		$classes[] = 'searchable';
-
-		if ( isset( $attributes['searchKey'] ) ) {
-			$search_form = sprintf(
-				'
-<div class="hrswp-sqlsrv-block search-form js-search-form">
-	<label for="search_table_input">
-		%1$s: <input type="search" name="search_table_input" id="search_table_input" data-search-column="%2$d">
-	</label>
-	<div class="wp-block-button is-style-small">
-		<button id="js-search-form-reset" class="wp-block-button__link" type="button">Reset</button>
-	</div>
-</div>
-				',
-				__( 'Search', 'hrswp-sqlsrv-db' ),
-				esc_attr( absint( $attributes['searchKey'] ) )
-			);
-		}
 	}
 
 	$classes = implode( ' ', $classes );
@@ -220,8 +199,7 @@ function render( $attributes ) {
 	}
 
 	return sprintf(
-		'%1$s<table class="hrswp-sqlsrv-block wp-block-table %2$s"><thead>%3$s</thead><tbody>%4$s</tbody></table>',
-		$search_form,
+		'<div class="hrswp-sqlsrv-block %1$s"><table class="wp-block-table"><thead>%2$s</thead><tbody>%3$s</tbody></table></div>',
 		esc_attr( $classes ),
 		$table_head,
 		$table_body
@@ -248,16 +226,9 @@ function register_block_job_classifications() {
 				'className'    => array(
 					'type' => 'string',
 				),
-				'isSearchable' => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
 				'isStriped'    => array(
 					'type'    => 'boolean',
 					'default' => true,
-				),
-				'searchKey'    => array(
-					'type' => 'string',
 				),
 				'queryTable'   => array(
 					'type' => 'string',
