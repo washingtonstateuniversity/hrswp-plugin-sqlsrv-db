@@ -18,10 +18,11 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.5.0-beta.1 (:construction: 2020-01-24)
+## 0.5.0-beta.2 (:construction: 2020-01-24)
 
 ### Fixed
 
+- :bug: Fix #15, bad anonymous function assignment in API stores.
 - Mistyped selector in salary data frontend stylesheet.
 
 ### Changed
