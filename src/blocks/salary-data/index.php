@@ -35,8 +35,8 @@ function render( $attributes ) {
 
 	$data = $data->records;
 
-	$classes     = array();
-	$table_body  = '';
+	$classes    = array();
+	$table_body = '';
 
 	if ( isset( $attributes['align'] ) ) {
 		$classes[] = 'align' . $attributes['align'];
@@ -303,21 +303,21 @@ function register_block_salary_data() {
 		'hrswpsqlsrv/salary-data',
 		array(
 			'attributes'      => array(
-				'align'        => array(
+				'align'      => array(
 					'type' => 'string',
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
 				),
-				'columns'      => array(
+				'columns'    => array(
 					'type' => 'number',
 				),
-				'className'    => array(
+				'className'  => array(
 					'type' => 'string',
 				),
-				'isStriped'    => array(
+				'isStriped'  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'queryTable'   => array(
+				'queryTable' => array(
 					'type' => 'string',
 				),
 			),
