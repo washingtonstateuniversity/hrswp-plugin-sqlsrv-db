@@ -18,6 +18,21 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.5.0-beta.1 (:construction: 2020-01-24)
+
+### Fixed
+
+- Mistyped selector in salary data frontend stylesheet.
+
+### Changed
+
+- Simplify Salary Data and Job Classification blocks edit scripts now that they don't need to use Components.
+- :zap: Load frontend plugin styles and scripts conditionally based on whether the block is active on the page.
+
+### Removed
+
+- Remove the search filter functionality into a separate plugin. Delete all logic and block components related to search. Close #8
+
 ## 0.4.0 (2019-12-19)
 
 ### Fixed
