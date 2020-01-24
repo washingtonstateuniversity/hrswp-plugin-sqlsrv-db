@@ -38,9 +38,9 @@ class Setup {
 	 * The plugin blocks to register.
 	 *
 	 * @since 0.5.0
-	 * @var array
+	 * @var array Array of blocks to register in the format 'render-file.php' => 'registered-block-name'.
 	 */
-
+	public $blocks = array();
 
 	/**
 	 * Instantiates plugin Setup singleton.
@@ -59,6 +59,7 @@ class Setup {
 
 			$instance->setup_hooks();
 			$instance->includes();
+			$instance->define_blocks();
 		}
 
 		return $instance;
@@ -165,6 +166,19 @@ class Setup {
 	}
 
 	/**
+	 * Defines an array of blocks to register.
+	 *
+	 * @since 0.5.0
+	 */
+	private function define_blocks() {
+		$this->blocks = array(
+			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
+			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',
+			'list-awards.php'         => 'hrswpsqlsrv/list-awards',
+		);
+	}
+
+	/**
 	 * Manages the plugin status.
 	 *
 	 * Checks on the plugin status to watch for updates and activation and calls
@@ -223,14 +237,7 @@ class Setup {
 			return;
 		}
 
-		// An array of blocks to register in the format 'render-file.php' => 'registered-block-name'.
-		$block_names = array(
-			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
-			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',
-			'list-awards.php'         => 'hrswpsqlsrv/list-awards',
-		);
-
-		foreach ( $block_names as $file => $block_name ) {
+		foreach ( $this->blocks as $file => $block_name ) {
 			if ( ! file_exists( $blocks_dir . $file ) ) {
 				continue;
 			}
@@ -299,23 +306,24 @@ class Setup {
 	 * @since 0.3.0
 	 */
 	public function enqueue_scripts() {
-		$plugin = get_option( self::$slug . '_plugin-status' );
+		$has_block = false;
+		foreach ( $this->blocks as $file => $type ) {
+			if ( false !== has_block( $type ) ) {
+				$has_block = true;
+				continue;
+			}
+		}
 
-		if ( )
+		if ( $has_block ) {
+			$plugin = get_option( self::$slug . '_plugin-status' );
 
-		wp_enqueue_style(
-			self::$slug . '-style',
-			plugins_url( 'build/style.css', self::$basename ),
-			array(),
-			$plugin['version']
-		);
-
-		wp_register_script(
-			'hrs-filter-script',
-			plugins_url( 'build/filter.js', self::$basename ),
-			array(),
-			$plugin['version']
-		);
+			wp_enqueue_style(
+				self::$slug . '-style',
+				plugins_url( 'build/style.css', self::$basename ),
+				array(),
+				$plugin['version']
+			);
+		}
 	}
 
 	/**
