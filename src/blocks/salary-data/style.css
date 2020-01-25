@@ -1,4 +1,4 @@
-.hrswp-sqlsrv-block.wp-block-columns {
+.hrswp-sqlsrv-block .wp-block-columns {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -11,7 +11,7 @@
 	margin-left: 0;
 }
 
-.hrswp-sqlsrv-block.wp-block-columns ul {
+.hrswp-sqlsrv-block .wp-block-columns ul {
 	padding: 0.3em 2em 1em 2em;
 }
 
@@ -37,10 +37,4 @@
 		flex-basis: calc((100% / 6) - 2rem);
 	}
 
-}
-
-.hrswp-sqlsrv-block.search-form {
-	margin: 0;
-	display: flex;
-	align-items: last baseline;
 }
