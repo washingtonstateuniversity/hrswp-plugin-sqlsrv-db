@@ -93,7 +93,8 @@ function render( $attributes ) {
 		$classes[] = "has-{$attributes['columns']}-columns";
 	}
 
-	$classes = implode( ' ', $classes );
+	$classes         = implode( ' ', $classes );
+	$salary_data_url = ( isset( $attributes['salaryDataUrl'] ) ) ? $attributes['salaryDataUrl'] : '';
 
 	// List layout output.
 	if ( false !== strpos( $classes, 'is-style-list' ) ) {
@@ -112,7 +113,8 @@ function render( $attributes ) {
 						break;
 					case 'salrangewexceptions':
 						$display = sprintf(
-							'<a href="/testing-external-content-shortcodes/salary-grid-table/?filter=%1$s">%2$s</a>',
+							'<a href="%1$s?filter=%2$s">%3$s</a>',
+							esc_url( $salary_data_url ),
 							esc_attr( $row->SalRangeNum ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 							esc_html( $value )
 						);
@@ -172,7 +174,8 @@ function render( $attributes ) {
 					break;
 				case 'salrangewexceptions':
 					$display = sprintf(
-						'<a href="/testing-external-content-shortcodes/salary-grid-table/?filter=%1$s">%2$s</a>',
+						'<a href="%1$s?filter=%2$s">%3$s</a>',
+						esc_url( $salary_data_url ),
 						esc_attr( $row->SalRangeNum ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 						esc_html( $value )
 					);
@@ -216,21 +219,25 @@ function register_block_job_classifications() {
 		'hrswpsqlsrv/job-classifications',
 		array(
 			'attributes'      => array(
-				'align'      => array(
+				'align'         => array(
 					'type' => 'string',
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
 				),
-				'columns'    => array(
+				'columns'       => array(
 					'type' => 'number',
 				),
-				'className'  => array(
+				'className'     => array(
 					'type' => 'string',
 				),
-				'isStriped'  => array(
+				'isStriped'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'queryTable' => array(
+				'salaryDataUrl' => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'queryTable'    => array(
 					'type' => 'string',
 				),
 			),
