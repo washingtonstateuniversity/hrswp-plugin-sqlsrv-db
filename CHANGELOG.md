@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.5.0-rc.1 (:construction: 2020-01-24)
+## 0.5.0 (2020-01-27)
 
 ### Fixed
 
@@ -29,7 +29,7 @@ Changelog formatting (http://semver.org/):
 
 - Simplify Salary Data and Job Classification blocks edit scripts now that they don't need to use Components.
 - :zap: Load frontend plugin styles and scripts conditionally based on whether the block is active on the page.
-- :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.0
+- :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.1
 - :arrow_up: phpcompatibility/php-compatibility => 9.3.5
 - :arrow_up: roave/security-advisories => latest
 - :arrow_up: @wordpress/babel-preset-default => 4.9.0
@@ -37,7 +37,8 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: eslint => 6.8.0
 - :arrow_up: jest => 25.1.0
 - :arrow_up: postcss-cli => 7.1.0
-- :arrow_up: stylelint => 12.0.1
+- :arrow_up: puppeteer => 2.1.0
+- :arrow_up: stylelint => 13.0.0
 - :arrow_up: stylelint-config-wordpress => 15.0.0
 - :arrow_up: webpack => 4.41.5
 
