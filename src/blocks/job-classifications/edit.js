@@ -12,6 +12,7 @@ const {
 	SelectControl,
 	ServerSideRender,
 	Spinner,
+	TextControl,
 	ToggleControl,
 } = wp.components;
 
@@ -24,6 +25,7 @@ function JobClassifications( {
 		className,
 		columns,
 		isStriped,
+		salaryDataUrl,
 		queryTable,
 	} = attributes;
 
@@ -49,6 +51,14 @@ function JobClassifications( {
 					/>
 				</PanelBody>
 			}
+			<PanelBody title={ __( 'Salary Data Settings' ) }>
+				<TextControl
+					label={ __( 'Linked Salary Data URL' ) }
+					help={ __( 'The full URL to a page with a corresponding Salary Data block to link to. Leave blank to link to the current page.' ) }
+					value={ salaryDataUrl }
+					onChange={ ( value ) => setAttributes( { salaryDataUrl: value } ) }
+				/>
+			</PanelBody>
 			<PanelBody title={ __( 'Select Job Data Source' ) }>
 				<SelectControl
 					className={ 'salary-data-table-picker__select' }
