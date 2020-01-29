@@ -1,4 +1,4 @@
-.wp-block[data-type="hrswpsqlsrv/salary-data"] {
+.wp-block[data-type="hrswpsqlsrv/salary-data"] .hrswp-sqlsrv-block {
 	overflow: auto;
 }
 
