@@ -147,7 +147,7 @@ function render( $attributes ) {
 		}
 
 		return sprintf(
-			'<div class="hrswp-sqlsrv-block wp-block-columns %1$s">%2$s</div>',
+			'<div class="hrswp-sqlsrv-block %1$s"><div class="wp-block-columns">%2$s</div></div>',
 			esc_attr( $classes ),
 			$list
 		);
