@@ -224,7 +224,8 @@ function register_block_job_classifications() {
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
 				),
 				'columns'       => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 3,
 				),
 				'className'     => array(
 					'type' => 'string',
