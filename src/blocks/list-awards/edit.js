@@ -5,13 +5,13 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
 const { InspectorControls } = wp.blockEditor;
+const ServerSideRender = wp.serverSideRender;
 const {
 	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
 	SelectControl,
-	ServerSideRender,
 	Spinner,
 	ToggleControl,
 } = wp.components;

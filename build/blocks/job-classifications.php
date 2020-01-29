@@ -93,7 +93,8 @@ function render( $attributes ) {
 		$classes[] = "has-{$attributes['columns']}-columns";
 	}
 
-	$classes = implode( ' ', $classes );
+	$classes         = implode( ' ', $classes );
+	$salary_data_url = ( isset( $attributes['salaryDataUrl'] ) ) ? $attributes['salaryDataUrl'] : '';
 
 	// List layout output.
 	if ( false !== strpos( $classes, 'is-style-list' ) ) {
@@ -112,7 +113,8 @@ function render( $attributes ) {
 						break;
 					case 'salrangewexceptions':
 						$display = sprintf(
-							'<a href="/testing-external-content-shortcodes/salary-grid-table/?filter=%1$s">%2$s</a>',
+							'<a href="%1$s?filter=%2$s">%3$s</a>',
+							esc_url( $salary_data_url ),
 							esc_attr( $row->SalRangeNum ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 							esc_html( $value )
 						);
@@ -145,7 +147,7 @@ function render( $attributes ) {
 		}
 
 		return sprintf(
-			'<div class="hrswp-sqlsrv-block wp-block-columns %1$s">%2$s</div>',
+			'<div class="hrswp-sqlsrv-block %1$s"><div class="wp-block-columns">%2$s</div></div>',
 			esc_attr( $classes ),
 			$list
 		);
@@ -172,7 +174,8 @@ function render( $attributes ) {
 					break;
 				case 'salrangewexceptions':
 					$display = sprintf(
-						'<a href="/testing-external-content-shortcodes/salary-grid-table/?filter=%1$s">%2$s</a>',
+						'<a href="%1$s?filter=%2$s">%3$s</a>',
+						esc_url( $salary_data_url ),
 						esc_attr( $row->SalRangeNum ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 						esc_html( $value )
 					);
@@ -216,21 +219,26 @@ function register_block_job_classifications() {
 		'hrswpsqlsrv/job-classifications',
 		array(
 			'attributes'      => array(
-				'align'      => array(
+				'align'         => array(
 					'type' => 'string',
 					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
 				),
-				'columns'    => array(
-					'type' => 'number',
+				'columns'       => array(
+					'type'    => 'number',
+					'default' => 3,
 				),
-				'className'  => array(
+				'className'     => array(
 					'type' => 'string',
 				),
-				'isStriped'  => array(
+				'isStriped'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'queryTable' => array(
+				'salaryDataUrl' => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'queryTable'    => array(
 					'type' => 'string',
 				),
 			),
