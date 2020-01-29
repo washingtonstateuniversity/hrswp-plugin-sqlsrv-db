@@ -288,6 +288,7 @@ class Setup {
 				'wp-data',
 				'wp-api-fetch',
 				'wp-url',
+				'wp-server-side-render',
 			),
 			$plugin['version']
 		);
