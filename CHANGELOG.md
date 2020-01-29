@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-beta.1 (:construction: 2020-01-29)
+## 0.6.0-rc.1 (:construction: 2020-01-29)
 
 ### Fixed
 
@@ -31,6 +31,7 @@ Changelog formatting (http://semver.org/):
 
 - Close #14, make Job Classifications block salary range links editable to facilitate linking to pages with corresponding Salary Grid block.
 - :arrow_up: rimraf => 3.0.1
+- :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.2
 
 ## 0.5.0 (2020-01-27)
 
