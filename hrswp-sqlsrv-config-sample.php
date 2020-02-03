@@ -3,8 +3,9 @@
  * The base configuration for the HRSWP Sqlsrv DB plugin.
  *
  * This file should be installed alongside the 'wp-config.php' file (either at
- * root or one level above) and should share its restricted access (400 or
- * 440 permission).
+ * root or one level above) and should share its restricted access (440 permission).
+ * It must belong to the web server group (such as 'apache') in order for WordPress
+ * to be able to read it.
  *
  * This file contains the following configurations:
  *
