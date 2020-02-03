@@ -18,10 +18,11 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-rc.1 (:construction: 2020-01-29)
+## 0.6.0-rc.2 (:construction: 2020-02-03)
 
 ### Fixed
 
+- :memo: Close #21, `hrswp-sqlsrv-config.php` must be in the web server group in order to be readable by WordPress.
 - :alien: Fix #18, replace deprecated wp.components.ServerSideRender with wp.serverSideRender.
 - :bug: Fix #12, remove overflow property on block parent to un-hide editor UI handles.
 - Fix #13, add default columns number value to salary and job blocks.
@@ -30,6 +31,7 @@ Changelog formatting (http://semver.org/):
 ### Changed
 
 - Close #14, make Job Classifications block salary range links editable to facilitate linking to pages with corresponding Salary Grid block.
+- :arrow_up: npm-package-json-lint => 4.6.0
 - :arrow_up: rimraf => 3.0.1
 - :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.2
 
