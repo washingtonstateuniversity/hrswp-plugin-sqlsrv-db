@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-rc.2 (:construction: 2020-02-03)
+## 0.6.0 (2020-02-04)
 
 ### Fixed
 
@@ -30,10 +30,18 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- :memo: Provide more description of the plugin and its data handling.
 - Close #14, make Job Classifications block salary range links editable to facilitate linking to pages with corresponding Salary Grid block.
+- :arrow_up: @wordpress/babel-preset-default => 4.10.0
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.2.0
+- :arrow_up: @wordpress/eslint-plugin => 3.4.1
+- :arrow_up: @wordpress/jest-preset-default => 5.4.0
+- :arrow_up: @wordpress/npm-package-json-lint-config => 2.2.0
 - :arrow_up: npm-package-json-lint => 4.6.0
 - :arrow_up: rimraf => 3.0.1
 - :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.2
+- :arrow_up: squizlabs/php_codesniffer => 3.5.4
+- :arrow_up: wp-coding-standards/wpcs => 2.2.1
 
 ## 0.5.0 (2020-01-27)
 
