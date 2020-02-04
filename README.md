@@ -8,6 +8,11 @@ A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server
 
 ## Description
 
+This plugin facilitates reading from external (non-WordPress) Microsoft SQL Server databases and displaying the retrieved data on the website. It uses several custom blocks to handle data selection and currently is tailored only to several specific datasets. The blocks it provides are:
+
+- HRS Salary Data: this retrieves data from any salary dataset and can display it in either tabular or list format.
+- HRS Job Classifications: this retrieves data from any job classification dataset and can display the results in either tabular or list format.
+- HRS Awards: this retrieves award data from the employee recognition dataset and, after importing the images for each award into the WP Media Library, will display the results in either grid or list format.
 
 ## Installation
 
@@ -25,6 +30,9 @@ Please note that this plugin will not update automatically and will not notify o
 
 ### Deactivating and Deleting: Plugin Data
 
+On deactivation the plugin will not delete any of its data or settings so that everything remains in place for reactivation.
+
+The only data the plugin saves to the WP database is a plugin status setting. Delete the plugin through the WP Plugins admin interface to delete this setting from the database during the uninstall process. **The plugin configuration file must be manually deleted from the server in a separate step.**
 
 ## For Developers
 
@@ -56,6 +64,7 @@ The following commands will handle basic build functions. (Remove the `-s` flag 
 - `npm test -s`: Check all PHP and CSS files for coding standards compliance.
 - `npm run clean -s`: Remove old compiled files such as minified CSS.
 - `npm run build:styles -s`: Compile CSS.
+- `npm run build:scripts -s`: Compile JS and blocks.
 
 See the scripts section of `package.json` for additional available commands.
 
