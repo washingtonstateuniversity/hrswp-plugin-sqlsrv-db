@@ -15,7 +15,7 @@
 		"sqlsrv",
 		"database"
 	],
-	"homepage": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/master/README.md",
+	"homepage": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/stable/README.md",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db"
