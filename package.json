@@ -31,14 +31,15 @@
 	"devDependencies": {
 		"@wordpress/babel-preset-default": "^4.10.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^2.2.0",
-		"@wordpress/eslint-plugin": "^3.4.1",
+		"@wordpress/eslint-plugin": "^7.3.0",
 		"@wordpress/jest-preset-default": "^5.4.0",
 		"@wordpress/npm-package-json-lint-config": "^2.2.0",
+		"@wordpress/prettier-config": "^0.4.0",
 		"babel-loader": "^8.0.5",
 		"classnames": "^2.2.6",
 		"copy-webpack-plugin": "^5.1.1",
 		"cssnano": "^4.1.10",
-		"eslint": "^6.8.0",
+		"eslint": "^7.15.0",
 		"jest": "^25.1.0",
 		"jest-puppeteer": "^4.4.0",
 		"lodash": "^4.17.19",
@@ -47,6 +48,7 @@
 		"postcss-cli": "^7.1.0",
 		"postcss-import": "^12.0.1",
 		"postcss-preset-env": "^6.7.0",
+		"prettier": "npm:wp-prettier@^2.2.1-beta-1",
 		"puppeteer": "^2.1.0",
 		"resolve-bin": "^0.4.0",
 		"rimraf": "^3.0.1",
@@ -67,7 +69,9 @@
 		"lint:styles": "stylelint 'src/**/*.css'",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:php": "composer lint-detail",
+		"fix:scripts": "eslint --fix '*.js' 'src/**/*.js'",
 		"start": "run-p 'build:*'",
+		"fix": "run-p 'fix:*'",
 		"test": "run-p 'lint:*'"
 	}
 }
