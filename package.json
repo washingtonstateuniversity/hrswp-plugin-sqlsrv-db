@@ -30,7 +30,7 @@
 	],
 	"devDependencies": {
 		"@wordpress/babel-preset-default": "^4.10.0",
-		"@wordpress/dependency-extraction-webpack-plugin": "^2.2.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
 		"@wordpress/eslint-plugin": "^7.3.0",
 		"@wordpress/jest-preset-default": "^5.4.0",
 		"@wordpress/npm-package-json-lint-config": "^2.2.0",
