@@ -2,9 +2,8 @@
  * External dependencies
  */
 const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-const { escapeRegExp } = require( 'lodash' );
-const { resolve, sep } = require( 'path' );
+const CopyPlugin = require( 'copy-webpack-plugin' );
+const { resolve, basename, dirname } = require( 'path' );
 
 /**
  * WordPress dependencies
@@ -41,8 +40,13 @@ const config = {
 							// Babel uses a directory within local node_modules
 							// by default. Use the environment variable option
 							// to enable more persistent caching.
-							cacheDirectory: process.env.BABEL_CACHE_DIRECTORY || true,
-							presets: [ require.resolve( '@wordpress/babel-preset-default' ) ],
+							cacheDirectory:
+								process.env.BABEL_CACHE_DIRECTORY || true,
+							presets: [
+								require.resolve(
+									'@wordpress/babel-preset-default'
+								),
+							],
 						},
 					},
 				],
@@ -53,13 +57,18 @@ const config = {
 		// WP_BUNDLE_ANALYZER global variable enables utility that represents
 		// bundle content as a convenient interactive zoomable treemap.
 		process.env.WP_BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
-		new CopyWebpackPlugin( [
-			{
-				from: './src/blocks/**/index.php',
-				test: new RegExp( `([\\w-]+)${ escapeRegExp( sep ) }index\\.php$` ),
-				to: 'blocks/[1].php',
-			},
-		] ),
+		new CopyPlugin( {
+			patterns: [
+				{
+					from: './src/blocks/**/index.php',
+					to: 'blocks/',
+					transformPath( targetPath ) {
+						const dir = basename( dirname( targetPath ) );
+						return `blocks/${ dir }.php`;
+					},
+				},
+			],
+		} ),
 		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 	].filter( Boolean ),
 	stats: {
