@@ -327,9 +327,9 @@ class Sqlsrv_DB {
 
 		// Open a MS SQL connection using ODBC.
 		if ( $this->show_errors ) {
-			$this->dbh = sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params );
+			$this->dbh = \sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params );
 		} else {
-			$this->dbh = @sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			$this->dbh = @\sqlsrv_connect( $this->databases[ $database ]['mssql_db_host'], $params ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		}
 
 		// Check for a successful connection. Return false on error.

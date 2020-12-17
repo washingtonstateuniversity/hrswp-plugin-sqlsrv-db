@@ -253,11 +253,10 @@ class Setup {
 	 *
 	 * @since 0.3.0
 	 *
-	 * @param array   $default_categories Array of default block categories.
-	 * @param WP_Post $post               The post object of the post being loaded.
+	 * @param array $default_categories Array of default block categories.
 	 * @return array Array of block categories.
 	 */
-	public function add_block_categories( $default_categories, $post ) {
+	public function add_block_categories( $default_categories ) {
 		$plugin_categories = array(
 			array(
 				'slug'  => self::$slug,
@@ -308,7 +307,7 @@ class Setup {
 	 */
 	public function enqueue_scripts() {
 		$has_block = false;
-		foreach ( $this->blocks as $file => $type ) {
+		foreach ( $this->blocks as $type ) {
 			if ( false !== has_block( $type ) ) {
 				$has_block = true;
 				continue;
