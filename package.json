@@ -1,6 +1,6 @@
 {
 	"name": "@washingtonstateuniversity/hrswp-plugin-sqlsrv-db",
-	"version": "0.6.0",
+	"version": "0.6.2",
 	"description": "A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.",
 	"author": "Adam Turner",
 	"contributors": [
