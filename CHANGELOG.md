@@ -18,6 +18,17 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.6.2 (2020-12-17)
+
+### Fixed
+
+- Remove now-unused Group column from the job classifications block output. (7f07e77)
+- Upgrade `dealerdirect/phpcodesniffer-composer-installer` to support Composer 2. (fffd835)
+
+### Changed
+
+- Increment WP tested-to to 5.6.0.
+
 ## 0.6.1 (2020-06-10)
 
 ### Changed
