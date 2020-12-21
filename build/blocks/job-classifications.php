@@ -22,9 +22,6 @@ function filter_data_name( $data_name ) {
 	if ( 'ClassCode' === $data_name ) {
 		return __( 'Job Class', 'hrswp-sqlsrv-db' );
 	}
-	if ( 'JobGroupCode' === $data_name ) {
-		return __( 'Job Group', 'hrswp-sqlsrv-db' );
-	}
 	if ( 'JobTitle' === $data_name ) {
 		return __( 'Job Title', 'hrswp-sqlsrv-db' );
 	}
@@ -58,7 +55,6 @@ function render( $attributes ) {
 				'table'  => sanitize_key( $attributes['queryTable'] ),
 				'fields' => array(
 					'ClassCode',
-					'JobGroupCode',
 					'JobTitle',
 					'SalRangeNum',
 					'SalrangeWExceptions',
