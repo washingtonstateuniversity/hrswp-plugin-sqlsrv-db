@@ -1,1 +1,1165 @@
-!function(e){var t={};function r(n){if(t[n])return t[n].exports;var a=t[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,r),a.l=!0,a.exports}r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)r.d(n,a,function(t){return e[t]}.bind(null,a));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=15)}([function(e,t){!function(){e.exports=this.wp.element}()},function(e,t){!function(){e.exports=this.wp.components}()},function(e){e.exports=JSON.parse('{"name":"hrswpsqlsrv/salary-data","category":"hrswp_sqlsrv_db","supports":{"align":true,"html":false}}')},function(e){e.exports=JSON.parse('{"name":"hrswpsqlsrv/job-classifications","category":"hrswp_sqlsrv_db","supports":{"align":true,"html":false}}')},function(e){e.exports=JSON.parse('{"name":"hrswpsqlsrv/list-awards","category":"hrswp_sqlsrv_db","supports":{"align":true,"html":false}}')},function(e,t){!function(){e.exports=this.regeneratorRuntime}()},function(e,t){e.exports=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}},function(e,t){function r(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}e.exports=function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}},function(e,t,r){var n=r(12),a=r(13);e.exports=function(e,t){return!t||"object"!==n(t)&&"function"!=typeof t?a(e):t}},function(e,t){function r(t){return e.exports=r=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},r(t)}e.exports=r},function(e,t,r){var n=r(14);e.exports=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&n(e,t)}},function(e,t){e.exports=function(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}},function(e,t){function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function n(t){return"function"==typeof Symbol&&"symbol"===r(Symbol.iterator)?e.exports=n=function(e){return r(e)}:e.exports=n=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":r(e)},n(t)}e.exports=n},function(e,t){e.exports=function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}},function(e,t){function r(t,n){return e.exports=r=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},r(t,n)}e.exports=r},function(e,t,r){"use strict";r.r(t);var n={};r.r(n),r.d(n,"name",(function(){return E})),r.d(n,"settings",(function(){return C}));var a={};r.r(a),r.d(a,"name",(function(){return K})),r.d(a,"settings",(function(){return Y}));var l={};r.r(l),r.d(l,"name",(function(){return Te})),r.d(l,"settings",(function(){return De}));var o=r(0),s=wp.i18n.__,c=wp.data.withSelect,i=wp.blockEditor.InspectorControls,u=wp.serverSideRender,p=wp.components,b=p.Disabled,f=p.PanelBody,m=p.Placeholder,y=p.RangeControl,d=p.SelectControl,g=p.Spinner,w=p.ToggleControl;var O=c((function(e){return{tables:e("hrswpsqlsrv/salary-data").getTableNames()}}))((function(e){var t=e.attributes,r=e.setAttributes,n=e.tables,a=t.className,l=t.columns,c=t.isStriped,p=t.queryTable,O=Object(o.createElement)(i,null,Object(o.createElement)(f,{title:s("Select Data Source")},Object(o.createElement)(d,{className:"salary-data-table-picker__select",label:s("Select desired group:"),value:p,options:n,onChange:function(e){return r({queryTable:e})}})),"is-style-list"!==a&&Object(o.createElement)(f,{title:s("Table Settings")},Object(o.createElement)(w,{label:s("Striped table rows"),checked:c,onChange:function(e){return r({isStriped:e})}})),"is-style-list"===a&&Object(o.createElement)(f,{title:s("List Settings")},Object(o.createElement)(y,{label:s("List Columns"),value:l||3,onChange:function(e){return r({columns:e})},min:1,max:6})));return p?Object(o.createElement)(o.Fragment,null,O,Object(o.createElement)(b,null,Object(o.createElement)(u,{block:"hrswpsqlsrv/salary-data",attributes:t}))):Object(o.createElement)(o.Fragment,null,O,Object(o.createElement)(m,{icon:"admin-post",label:s("Salary Data")},Array.isArray(n)?s("Select a salary data group to display results."):Object(o.createElement)(g,null)))})),h=r(2);var j=wp.i18n,v=j.__,S=j._x,E=h.name,_=h.category,x=h.supports,C={title:v("HRS Salary Data"),category:_,description:v("Display WSU salary data."),icon:"portfolio",keywords:[v("table data compensation")],supports:x,styles:[{name:"default",label:S("Table","block style"),isDefault:!0},{name:"list",label:S("List","block style")}],edit:O,save:function(){return null}},T=wp.i18n.__,k=wp.data.withSelect,P=wp.blockEditor.InspectorControls,D=wp.serverSideRender,L=wp.components,N=L.Disabled,A=L.PanelBody,q=L.Placeholder,R=L.RangeControl,F=L.SelectControl,M=L.Spinner,z=L.TextControl,B=L.ToggleControl;var I=k((function(e){return{tables:e("hrswpsqlsrv/salary-data").getTableNames()}}))((function(e){var t=e.attributes,r=e.setAttributes,n=e.tables,a=t.className,l=t.columns,s=t.isStriped,c=t.salaryDataUrl,i=t.queryTable,u=Object(o.createElement)(P,null,"is-style-list"!==a&&Object(o.createElement)(A,{title:T("Table Settings")},Object(o.createElement)(B,{label:T("Striped table rows"),checked:s,onChange:function(e){return r({isStriped:e})}})),"is-style-list"===a&&Object(o.createElement)(A,{title:T("List Settings")},Object(o.createElement)(R,{label:T("List Columns"),value:l||3,onChange:function(e){return r({columns:e})},min:1,max:6})),Object(o.createElement)(A,{title:T("Salary Data Settings")},Object(o.createElement)(z,{label:T("Linked Salary Data URL"),help:T("The full URL to a page with a corresponding Salary Data block to link to. Leave blank to link to the current page."),value:c,onChange:function(e){return r({salaryDataUrl:e})}})),Object(o.createElement)(A,{title:T("Select Job Data Source")},Object(o.createElement)(F,{className:"salary-data-table-picker__select",label:T("Select desired group:"),value:i,options:n,onChange:function(e){return r({queryTable:e})}})));return i?Object(o.createElement)(o.Fragment,null,u,Object(o.createElement)(N,null,Object(o.createElement)(D,{block:"hrswpsqlsrv/job-classifications",attributes:t}))):Object(o.createElement)(o.Fragment,null,u,Object(o.createElement)(q,{icon:"admin-post",label:T("Job Classification Data")},Array.isArray(n)?T("Select a job classification data group to display results."):Object(o.createElement)(M,null)))})),G=r(3);var H=r(1),J=Object(o.createElement)(H.SVG,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},Object(o.createElement)(H.Rect,{x:"0",fill:"none",width:"24",height:"24"}),Object(o.createElement)(H.Path,{d:"M13.2 10L11 13l-1-1.4L9 13l-2.2-3C3 11 3 13 3 16.9c0 0 3 1.1 6.4 1.1h1.2c3.4-.1 6.4-1.1 6.4-1.1 0-3.9 0-5.9-3.8-6.9zm-3.2.7L8.4 10l1.6 1.6 1.6-1.6-1.6.7zM10 2.1c-1.9 0-3 1.8-2.7 3.8.3 2 1.3 3.4 2.7 3.4s2.4-1.4 2.7-3.4c.3-2.1-.8-3.8-2.7-3.8z"})),U=wp.i18n,V=U.__,W=U._x,K=G.name,Q=G.category,X=G.supports,Y={title:V("HRS Job Classifications"),category:Q,description:V("Display WSU job classification data."),icon:J,keywords:[V("table data compensation jobs")],supports:X,styles:[{name:"default",label:W("Table","block style"),isDefault:!0},{name:"list",label:W("List","block style")}],edit:I,save:function(){return null}},Z=r(6),$=r.n(Z),ee=r(7),te=r.n(ee),re=r(8),ne=r.n(re),ae=r(9),le=r.n(ae),oe=r(10),se=r.n(oe),ce=wp.i18n.__,ie=wp.data.withSelect,ue=wp.element.Component,pe=wp.blockEditor.InspectorControls,be=wp.serverSideRender,fe=wp.components,me=fe.Disabled,ye=fe.PanelBody,de=fe.Placeholder,ge=fe.RangeControl,we=fe.SelectControl,Oe=fe.Spinner,he=fe.ToggleControl,je=function(e){function t(){return $()(this,t),ne()(this,le()(t).apply(this,arguments))}return se()(t,e),te()(t,[{key:"render",value:function(){var e=this.props,t=e.attributes,r=e.setAttributes,n=e.tables,a=t.className,l=t.columns,s=t.imageCrop,c=t.queryTable,i=Object(o.createElement)(pe,null,"is-style-list"!==a&&Object(o.createElement)(ye,{title:ce("Grid Settings")},Object(o.createElement)(ge,{label:ce("List Columns"),value:l||3,onChange:function(e){return r({columns:e})},min:1,max:6})),Object(o.createElement)(ye,{title:ce("Awards List Settings")},Object(o.createElement)(he,{label:ce("Crop Images"),checked:s,onChange:function(e){return r({imageCrop:e})}})),Object(o.createElement)(ye,{title:ce("Select Awards Data Source")},Object(o.createElement)(we,{className:"salary-data-table-picker__select",label:ce("Select desired group:"),value:c,options:n,onChange:function(e){return r({queryTable:e})}})));return c?Object(o.createElement)(o.Fragment,null,i,Object(o.createElement)(me,null,Object(o.createElement)(be,{block:"hrswpsqlsrv/list-awards",attributes:t}))):Object(o.createElement)(o.Fragment,null,i,Object(o.createElement)(de,{icon:"admin-post",label:ce("Awards Data")},Array.isArray(n)?ce("Select an awards data group to display results."):Object(o.createElement)(Oe,null)))}}]),t}(ue),ve=ie((function(e){return{tables:e("hrswpsqlsrv/salary-data").getTableNames()}}))(je),Se=r(4);var Ee=Object(o.createElement)(H.SVG,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},Object(o.createElement)(H.Rect,{x:"0",fill:"none",width:"24",height:"24"}),Object(o.createElement)(H.Path,{d:"M4.46 5.16L5 7.46l-.54 2.29 2.01 1.24L7.7 13l2.3-.54 2.3.54 1.23-2.01 2.01-1.24L15 7.46l.54-2.3-2-1.24-1.24-2.01-2.3.55-2.29-.54-1.25 2zm5.55 6.34C7.79 11.5 6 9.71 6 7.49c0-2.2 1.79-3.99 4.01-3.99 2.2 0 3.99 1.79 3.99 3.99 0 2.22-1.79 4.01-3.99 4.01zm-.02-1C8.33 10.5 7 9.16 7 7.5c0-1.65 1.33-3 2.99-3S13 5.85 13 7.5c0 1.66-1.35 3-3.01 3zm3.84 1.1l-1.28 2.24-2.08-.47L13 19.2l1.4-2.2h2.5zm-7.7.07l1.25 2.25 2.13-.51L7 19.2 5.6 17H3.1z"})),_e=wp.i18n,xe=_e.__,Ce=_e._x,Te=Se.name,ke=Se.category,Pe=Se.supports,De={title:xe("HRS Awards"),category:ke,description:xe("Display employee recognition awards."),icon:Ee,keywords:[xe("awards employees recognition")],supports:Pe,styles:[{name:"default",label:Ce("Grid","block style"),isDefault:!0},{name:"list",label:Ce("List","block style")}],edit:ve,save:function(){return null}},Le=wp.blocks.registerBlockType,Ne=r(5),Ae=r.n(Ne),qe=r(11),Re=r.n(qe);function Fe(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function Me(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?Fe(Object(r),!0).forEach((function(t){Re()(e,t,r[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):Fe(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))}))}return e}var ze=wp.apiFetch,Be=wp.data.registerStore,Ie={tableNames:{}},Ge={getTableNames:function(e){return{type:"GET_TABLE_NAMES",tableNames:e}},fetchFromAPI:function(e){return{type:"FETCH_FROM_API",path:e}}};[n,a,l].forEach((function(e){if(e){var t=e.settings,r=e.name;Le(r,t)}})),Be("hrswpsqlsrv/salary-data",{reducer:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:Ie,t=arguments.length>1?arguments[1]:void 0;switch(t.type){case"GET_TABLE_NAMES":return Me({},e,{tableNames:t.tableNames})}return e},actions:Ge,selectors:{getTableNames:function(e){return e.tableNames}},controls:{FETCH_FROM_API:function(e){return ze({path:e.path})}},resolvers:{getTableNames:Ae.a.mark((function e(){var t;return Ae.a.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=3,Ge.fetchFromAPI("/hrswp-sqlsrv-db/v1/tables/");case 3:return t=e.sent,e.abrupt("return",Ge.getTableNames(t));case 5:case"end":return e.stop()}}),e)}))}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ "./src/blocks/index.js":
+/*!*****************************!*\
+  !*** ./src/blocks/index.js ***!
+  \*****************************/
+/*! exports provided: registerBlocks */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerBlocks", function() { return registerBlocks; });
+/* harmony import */ var _salary_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./salary-data */ "./src/blocks/salary-data/index.js");
+/* harmony import */ var _job_classifications__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./job-classifications */ "./src/blocks/job-classifications/index.js");
+/* harmony import */ var _list_awards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./list-awards */ "./src/blocks/list-awards/index.js");
+/**
+ * WordPress dependencies
+ */
+var registerBlockType = wp.blocks.registerBlockType;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+/**
+ * Function to register plugin blocks.
+ *
+ * @example
+ * ```js
+ * import { registerBlocks } from './blocks';
+ *
+ * registerBlocks();
+ * ```
+ */
+
+var registerBlocks = function registerBlocks() {
+  [_salary_data__WEBPACK_IMPORTED_MODULE_0__, _job_classifications__WEBPACK_IMPORTED_MODULE_1__, _list_awards__WEBPACK_IMPORTED_MODULE_2__].forEach(function (block) {
+    if (!block) {
+      return;
+    }
+
+    var settings = block.settings,
+        name = block.name;
+    registerBlockType(name, settings);
+  });
+};
+
+/***/ }),
+
+/***/ "./src/blocks/job-classifications/block.json":
+/*!***************************************************!*\
+  !*** ./src/blocks/job-classifications/block.json ***!
+  \***************************************************/
+/*! exports provided: name, category, supports, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrswpsqlsrv/job-classifications\",\"category\":\"hrswp_sqlsrv_db\",\"supports\":{\"align\":true,\"html\":false}}");
+
+/***/ }),
+
+/***/ "./src/blocks/job-classifications/edit.js":
+/*!************************************************!*\
+  !*** ./src/blocks/job-classifications/edit.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var InspectorControls = wp.blockEditor.InspectorControls;
+var ServerSideRender = wp.serverSideRender;
+var _wp$components = wp.components,
+    Disabled = _wp$components.Disabled,
+    PanelBody = _wp$components.PanelBody,
+    Placeholder = _wp$components.Placeholder,
+    RangeControl = _wp$components.RangeControl,
+    SelectControl = _wp$components.SelectControl,
+    Spinner = _wp$components.Spinner,
+    TextControl = _wp$components.TextControl,
+    ToggleControl = _wp$components.ToggleControl;
+
+function JobClassifications(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes,
+      tables = _ref.tables;
+  var className = attributes.className,
+      columns = attributes.columns,
+      isStriped = attributes.isStriped,
+      salaryDataUrl = attributes.salaryDataUrl,
+      queryTable = attributes.queryTable;
+  var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, 'is-style-list' !== className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Table Settings')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: __('Striped table rows'),
+    checked: isStriped,
+    onChange: function onChange(value) {
+      return setAttributes({
+        isStriped: value
+      });
+    }
+  })), 'is-style-list' === className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('List Settings')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+    label: __('List Columns'),
+    value: columns || 3,
+    onChange: function onChange(value) {
+      return setAttributes({
+        columns: value
+      });
+    },
+    min: 1,
+    max: 6
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Salary Data Settings')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: __('Linked Salary Data URL'),
+    help: __('The full URL to a page with a corresponding Salary Data block to link to. Leave blank to link to the current page.'),
+    value: salaryDataUrl,
+    onChange: function onChange(value) {
+      return setAttributes({
+        salaryDataUrl: value
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Select Job Data Source')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    className: 'salary-data-table-picker__select',
+    label: __('Select desired group:'),
+    value: queryTable,
+    options: tables,
+    onChange: function onChange(value) {
+      return setAttributes({
+        queryTable: value
+      });
+    }
+  })));
+
+  if (!queryTable) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Placeholder, {
+      icon: "admin-post",
+      label: __('Job Classification Data')
+    }, !Array.isArray(tables) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Spinner, null) : __('Select a job classification data group to display results.')));
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ServerSideRender, {
+    block: "hrswpsqlsrv/job-classifications",
+    attributes: attributes
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
+  return {
+    tables: select('hrswpsqlsrv/salary-data').getTableNames()
+  };
+})(JobClassifications));
+
+/***/ }),
+
+/***/ "./src/blocks/job-classifications/icon.js":
+/*!************************************************!*\
+  !*** ./src/blocks/job-classifications/icon.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["SVG"], {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Rect"], {
+  x: "0",
+  fill: "none",
+  width: "24",
+  height: "24"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Path"], {
+  d: "M13.2 10L11 13l-1-1.4L9 13l-2.2-3C3 11 3 13 3 16.9c0 0 3 1.1 6.4 1.1h1.2c3.4-.1 6.4-1.1 6.4-1.1 0-3.9 0-5.9-3.8-6.9zm-3.2.7L8.4 10l1.6 1.6 1.6-1.6-1.6.7zM10 2.1c-1.9 0-3 1.8-2.7 3.8.3 2 1.3 3.4 2.7 3.4s2.4-1.4 2.7-3.4c.3-2.1-.8-3.8-2.7-3.8z"
+})));
+
+/***/ }),
+
+/***/ "./src/blocks/job-classifications/index.js":
+/*!*************************************************!*\
+  !*** ./src/blocks/job-classifications/index.js ***!
+  \*************************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/job-classifications/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/job-classifications/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/job-classifications/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/job-classifications/save.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icon */ "./src/blocks/job-classifications/icon.js");
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _x = _wp$i18n._x;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    supports = _block_json__WEBPACK_IMPORTED_MODULE_1__.supports;
+
+var settings = {
+  title: __('HRS Job Classifications'),
+  category: category,
+  description: __('Display WSU job classification data.'),
+  icon: _icon__WEBPACK_IMPORTED_MODULE_3__["default"],
+  keywords: [__('table data compensation jobs')],
+  supports: supports,
+  styles: [{
+    name: 'default',
+    label: _x('Table', 'block style'),
+    isDefault: true
+  }, {
+    name: 'list',
+    label: _x('List', 'block style')
+  }],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/job-classifications/save.js":
+/*!************************************************!*\
+  !*** ./src/blocks/job-classifications/save.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/blocks/list-awards/block.json":
+/*!*******************************************!*\
+  !*** ./src/blocks/list-awards/block.json ***!
+  \*******************************************/
+/*! exports provided: name, category, supports, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrswpsqlsrv/list-awards\",\"category\":\"hrswp_sqlsrv_db\",\"supports\":{\"align\":true,\"html\":false}}");
+
+/***/ }),
+
+/***/ "./src/blocks/list-awards/edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/list-awards/edit.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var Component = wp.element.Component;
+var InspectorControls = wp.blockEditor.InspectorControls;
+var ServerSideRender = wp.serverSideRender;
+var _wp$components = wp.components,
+    Disabled = _wp$components.Disabled,
+    PanelBody = _wp$components.PanelBody,
+    Placeholder = _wp$components.Placeholder,
+    RangeControl = _wp$components.RangeControl,
+    SelectControl = _wp$components.SelectControl,
+    Spinner = _wp$components.Spinner,
+    ToggleControl = _wp$components.ToggleControl;
+
+var ListAwards = /*#__PURE__*/function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(ListAwards, _Component);
+
+  var _super = _createSuper(ListAwards);
+
+  function ListAwards() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ListAwards);
+
+    return _super.apply(this, arguments);
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ListAwards, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes,
+          tables = _this$props.tables;
+      var className = attributes.className,
+          columns = attributes.columns,
+          imageCrop = attributes.imageCrop,
+          queryTable = attributes.queryTable;
+      var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(InspectorControls, null, 'is-style-list' !== className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
+        title: __('Grid Settings')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(RangeControl, {
+        label: __('List Columns'),
+        value: columns || 3,
+        onChange: function onChange(value) {
+          return setAttributes({
+            columns: value
+          });
+        },
+        min: 1,
+        max: 6
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
+        title: __('Awards List Settings')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToggleControl, {
+        label: __('Crop Images'),
+        checked: imageCrop,
+        onChange: function onChange(value) {
+          return setAttributes({
+            imageCrop: value
+          });
+        }
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
+        title: __('Select Awards Data Source')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(SelectControl, {
+        className: 'salary-data-table-picker__select',
+        label: __('Select desired group:'),
+        value: queryTable,
+        options: tables,
+        onChange: function onChange(value) {
+          return setAttributes({
+            queryTable: value
+          });
+        }
+      })));
+
+      if (!queryTable) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Placeholder, {
+          icon: "admin-post",
+          label: __('Awards Data')
+        }, !Array.isArray(tables) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Spinner, null) : __('Select an awards data group to display results.')));
+      }
+
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ServerSideRender, {
+        block: "hrswpsqlsrv/list-awards",
+        attributes: attributes
+      })));
+    }
+  }]);
+
+  return ListAwards;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
+  return {
+    tables: select('hrswpsqlsrv/salary-data').getTableNames()
+  };
+})(ListAwards));
+
+/***/ }),
+
+/***/ "./src/blocks/list-awards/icon.js":
+/*!****************************************!*\
+  !*** ./src/blocks/list-awards/icon.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["SVG"], {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Rect"], {
+  x: "0",
+  fill: "none",
+  width: "24",
+  height: "24"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Path"], {
+  d: "M4.46 5.16L5 7.46l-.54 2.29 2.01 1.24L7.7 13l2.3-.54 2.3.54 1.23-2.01 2.01-1.24L15 7.46l.54-2.3-2-1.24-1.24-2.01-2.3.55-2.29-.54-1.25 2zm5.55 6.34C7.79 11.5 6 9.71 6 7.49c0-2.2 1.79-3.99 4.01-3.99 2.2 0 3.99 1.79 3.99 3.99 0 2.22-1.79 4.01-3.99 4.01zm-.02-1C8.33 10.5 7 9.16 7 7.5c0-1.65 1.33-3 2.99-3S13 5.85 13 7.5c0 1.66-1.35 3-3.01 3zm3.84 1.1l-1.28 2.24-2.08-.47L13 19.2l1.4-2.2h2.5zm-7.7.07l1.25 2.25 2.13-.51L7 19.2 5.6 17H3.1z"
+})));
+
+/***/ }),
+
+/***/ "./src/blocks/list-awards/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/list-awards/index.js ***!
+  \*****************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/list-awards/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/list-awards/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/list-awards/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/list-awards/save.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icon */ "./src/blocks/list-awards/icon.js");
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _x = _wp$i18n._x;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    supports = _block_json__WEBPACK_IMPORTED_MODULE_1__.supports;
+
+var settings = {
+  title: __('HRS Awards'),
+  category: category,
+  description: __('Display employee recognition awards.'),
+  icon: _icon__WEBPACK_IMPORTED_MODULE_3__["default"],
+  keywords: [__('awards employees recognition')],
+  supports: supports,
+  styles: [{
+    name: 'default',
+    label: _x('Grid', 'block style'),
+    isDefault: true
+  }, {
+    name: 'list',
+    label: _x('List', 'block style')
+  }],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/list-awards/save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/list-awards/save.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/blocks/salary-data/block.json":
+/*!*******************************************!*\
+  !*** ./src/blocks/salary-data/block.json ***!
+  \*******************************************/
+/*! exports provided: name, category, supports, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrswpsqlsrv/salary-data\",\"category\":\"hrswp_sqlsrv_db\",\"supports\":{\"align\":true,\"html\":false}}");
+
+/***/ }),
+
+/***/ "./src/blocks/salary-data/edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/salary-data/edit.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var InspectorControls = wp.blockEditor.InspectorControls;
+var ServerSideRender = wp.serverSideRender;
+var _wp$components = wp.components,
+    Disabled = _wp$components.Disabled,
+    PanelBody = _wp$components.PanelBody,
+    Placeholder = _wp$components.Placeholder,
+    RangeControl = _wp$components.RangeControl,
+    SelectControl = _wp$components.SelectControl,
+    Spinner = _wp$components.Spinner,
+    ToggleControl = _wp$components.ToggleControl;
+
+function SalaryData(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes,
+      tables = _ref.tables;
+  var className = attributes.className,
+      columns = attributes.columns,
+      isStriped = attributes.isStriped,
+      queryTable = attributes.queryTable;
+  var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Select Data Source')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    className: 'salary-data-table-picker__select',
+    label: __('Select desired group:'),
+    value: queryTable,
+    options: tables,
+    onChange: function onChange(value) {
+      return setAttributes({
+        queryTable: value
+      });
+    }
+  })), 'is-style-list' !== className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Table Settings')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: __('Striped table rows'),
+    checked: isStriped,
+    onChange: function onChange(value) {
+      return setAttributes({
+        isStriped: value
+      });
+    }
+  })), 'is-style-list' === className && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('List Settings')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+    label: __('List Columns'),
+    value: columns || 3,
+    onChange: function onChange(value) {
+      return setAttributes({
+        columns: value
+      });
+    },
+    min: 1,
+    max: 6
+  })));
+
+  if (!queryTable) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Placeholder, {
+      icon: "admin-post",
+      label: __('Salary Data')
+    }, !Array.isArray(tables) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Spinner, null) : __('Select a salary data group to display results.')));
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ServerSideRender, {
+    block: "hrswpsqlsrv/salary-data",
+    attributes: attributes
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
+  return {
+    tables: select('hrswpsqlsrv/salary-data').getTableNames()
+  };
+})(SalaryData));
+
+/***/ }),
+
+/***/ "./src/blocks/salary-data/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/salary-data/index.js ***!
+  \*****************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/salary-data/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/salary-data/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/salary-data/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/salary-data/save.js");
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _x = _wp$i18n._x;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    supports = _block_json__WEBPACK_IMPORTED_MODULE_1__.supports;
+
+var settings = {
+  title: __('HRS Salary Data'),
+  category: category,
+  description: __('Display WSU salary data.'),
+  icon: 'portfolio',
+  keywords: [__('table data compensation')],
+  supports: supports,
+  styles: [{
+    name: 'default',
+    label: _x('Table', 'block style'),
+    isDefault: true
+  }, {
+    name: 'list',
+    label: _x('List', 'block style')
+  }],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/salary-data/save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/salary-data/save.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks */ "./src/blocks/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
+/**
+ * Internal dependencies
+ */
+
+
+Object(_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlocks"])();
+Object(_store__WEBPACK_IMPORTED_MODULE_1__["default"])();
+
+/***/ }),
+
+/***/ "./src/store/index.js":
+/*!****************************!*\
+  !*** ./src/store/index.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return registerStores; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * WordPress dependencies
+ */
+var apiFetch = wp.apiFetch;
+var registerStore = wp.data.registerStore;
+var DEFAULT_STATE = {
+  tableNames: {}
+};
+var actions = {
+  getTableNames: function getTableNames(tableNames) {
+    return {
+      type: 'GET_TABLE_NAMES',
+      tableNames: tableNames
+    };
+  },
+  fetchFromAPI: function fetchFromAPI(path) {
+    return {
+      type: 'FETCH_FROM_API',
+      path: path
+    };
+  }
+};
+function registerStores() {
+  registerStore('hrswpsqlsrv/salary-data', {
+    reducer: function reducer() {
+      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
+      var action = arguments.length > 1 ? arguments[1] : undefined;
+
+      switch (action.type) {
+        case 'GET_TABLE_NAMES':
+          return _objectSpread(_objectSpread({}, state), {}, {
+            tableNames: action.tableNames
+          });
+      }
+
+      return state;
+    },
+    actions: actions,
+    selectors: {
+      getTableNames: function getTableNames(state) {
+        var tableNames = state.tableNames;
+        return tableNames;
+      }
+    },
+    controls: {
+      FETCH_FROM_API: function FETCH_FROM_API(action) {
+        return apiFetch({
+          path: action.path
+        });
+      }
+    },
+    resolvers: {
+      getTableNames: /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function getTableNames() {
+        var path, tableNames;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function getTableNames$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                path = '/hrswp-sqlsrv-db/v1/tables/';
+                _context.next = 3;
+                return actions.fetchFromAPI(path);
+
+              case 3:
+                tableNames = _context.sent;
+                return _context.abrupt("return", actions.getTableNames(tableNames));
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, getTableNames);
+      })
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "@babel/runtime/regenerator":
+/*!**********************************************!*\
+  !*** external {"this":"regeneratorRuntime"} ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["regeneratorRuntime"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!******************************************!*\
+  !*** external {"this":["wp","element"]} ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["element"]; }());
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map
