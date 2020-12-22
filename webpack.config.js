@@ -62,8 +62,10 @@ const config = {
 				{
 					from: 'src/blocks/**/index.php',
 					to( { absoluteFilename } ) {
-						const fileName = basename( dirname( absoluteFilename) );
-						return `blocks/${fileName}.[ext]`;
+						const fileName = basename(
+							dirname( absoluteFilename )
+						);
+						return `blocks/${ fileName }.[ext]`;
 					},
 				},
 			],
