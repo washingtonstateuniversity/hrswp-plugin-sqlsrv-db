@@ -54,7 +54,7 @@ export default function registerStores() {
 		},
 
 		resolvers: {
-			* getTableNames() {
+			*getTableNames() {
 				const path = '/hrswp-sqlsrv-db/v1/tables/';
 				const tableNames = yield actions.fetchFromAPI( path );
 				return actions.getTableNames( tableNames );

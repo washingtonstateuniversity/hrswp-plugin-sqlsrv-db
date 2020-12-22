@@ -10,11 +10,7 @@ import edit from './edit';
 import metadata from './block.json';
 import save from './save';
 
-const {
-	name,
-	category,
-	supports,
-} = metadata;
+const { name, category, supports } = metadata;
 
 export { name };
 
@@ -26,7 +22,11 @@ export const settings = {
 	keywords: [ __( 'table data compensation' ) ],
 	supports,
 	styles: [
-		{ name: 'default', label: _x( 'Table', 'block style' ), isDefault: true },
+		{
+			name: 'default',
+			label: _x( 'Table', 'block style' ),
+			isDefault: true,
+		},
 		{ name: 'list', label: _x( 'List', 'block style' ) },
 	],
 	edit,
