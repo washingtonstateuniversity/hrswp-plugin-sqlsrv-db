@@ -60,11 +60,10 @@ const config = {
 		new CopyPlugin( {
 			patterns: [
 				{
-					from: './src/blocks/**/index.php',
-					to: 'blocks/',
-					transformPath( targetPath ) {
-						const dir = basename( dirname( targetPath ) );
-						return `blocks/${ dir }.php`;
+					from: 'src/blocks/**/index.php',
+					to( { absoluteFilename } ) {
+						const fileName = basename( dirname( absoluteFilename) );
+						return `blocks/${fileName}.[ext]`;
 					},
 				},
 			],
