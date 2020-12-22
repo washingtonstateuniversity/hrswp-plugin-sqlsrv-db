@@ -1,6 +1,8 @@
 # Travis CI configuration
 # @link https://travis-ci.org/
 
+os: linux
+
 language: generic
 
 notifications:
