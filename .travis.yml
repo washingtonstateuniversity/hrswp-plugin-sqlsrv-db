@@ -2,6 +2,7 @@
 # @link https://travis-ci.org/
 
 os: linux
+dist: xenial
 
 language: generic
 
