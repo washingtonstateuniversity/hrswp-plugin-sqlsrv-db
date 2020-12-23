@@ -20,7 +20,11 @@ Changelog formatting (http://semver.org/):
 ### Project Management
 -->
 
-## 0.7.0-rc.1 (:construction: 2020-12-22)
+## 0.7.0-rc.2 (:construction: 2020-12-23)
+
+### Enhancements
+
+- Update README with some badges and links for project management and build status. (73202c0)
 
 ### Code Quality
 
@@ -34,6 +38,10 @@ Changelog formatting (http://semver.org/):
 - Upgrade Webpack to version 5 along with associated plugins, and update Copy Webpack Plugin script for new version. (b95fc5b)
 - Modify the Travis CI config file to use jobs and simplify installation, close #23. (f12f635)
 - Add Babel Core and Babel Runtime npm dependencies. (e420dc5)
+
+### Project Management
+
+- Replace GPL version 2 license with version 3. (fedd08c and 18bb600)
 
 ## 0.6.2 (2020-12-17)
 
