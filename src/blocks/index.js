@@ -21,11 +21,7 @@ import * as listAwards from './list-awards';
  * ```
  */
 export const registerBlocks = () => {
-	[
-		salaryData,
-		jobClassifications,
-		listAwards,
-	].forEach( ( block ) => {
+	[ salaryData, jobClassifications, listAwards ].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
 		}

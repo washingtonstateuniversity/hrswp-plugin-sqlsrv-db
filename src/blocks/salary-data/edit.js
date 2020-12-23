@@ -15,17 +15,8 @@ const {
 	ToggleControl,
 } = wp.components;
 
-function SalaryData( {
-	attributes,
-	setAttributes,
-	tables,
-} ) {
-	const {
-		className,
-		columns,
-		isStriped,
-		queryTable,
-	} = attributes;
+function SalaryData( { attributes, setAttributes, tables } ) {
+	const { className, columns, isStriped, queryTable } = attributes;
 
 	const inspectorControls = (
 		<InspectorControls>
@@ -35,29 +26,35 @@ function SalaryData( {
 					label={ __( 'Select desired group:' ) }
 					value={ queryTable }
 					options={ tables }
-					onChange={ ( value ) => setAttributes( { queryTable: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { queryTable: value } )
+					}
 				/>
 			</PanelBody>
-			{ 'is-style-list' !== className &&
+			{ 'is-style-list' !== className && (
 				<PanelBody title={ __( 'Table Settings' ) }>
 					<ToggleControl
 						label={ __( 'Striped table rows' ) }
 						checked={ isStriped }
-						onChange={ ( value ) => setAttributes( { isStriped: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { isStriped: value } )
+						}
 					/>
 				</PanelBody>
-			}
-			{ 'is-style-list' === className &&
+			) }
+			{ 'is-style-list' === className && (
 				<PanelBody title={ __( 'List Settings' ) }>
 					<RangeControl
 						label={ __( 'List Columns' ) }
 						value={ columns || 3 }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { columns: value } )
+						}
 						min={ 1 }
 						max={ 6 }
 					/>
 				</PanelBody>
-			}
+			) }
 		</InspectorControls>
 	);
 
@@ -66,10 +63,11 @@ function SalaryData( {
 			<>
 				{ inspectorControls }
 				<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
-					{ ! Array.isArray( tables ) ?
-						<Spinner /> :
+					{ ! Array.isArray( tables ) ? (
+						<Spinner />
+					) : (
 						__( 'Select a salary data group to display results.' )
-					}
+					) }
 				</Placeholder>
 			</>
 		);
@@ -79,7 +77,10 @@ function SalaryData( {
 		<>
 			{ inspectorControls }
 			<Disabled>
-				<ServerSideRender block="hrswpsqlsrv/salary-data" attributes={ attributes } />
+				<ServerSideRender
+					block="hrswpsqlsrv/salary-data"
+					attributes={ attributes }
+				/>
 			</Disabled>
 		</>
 	);
