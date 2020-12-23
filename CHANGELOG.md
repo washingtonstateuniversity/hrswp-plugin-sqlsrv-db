@@ -9,14 +9,31 @@ Changelog formatting (http://semver.org/):
 
 ## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
 
-### To Do (for upcoming changes)
-### Security (in case of fixed vulnerabilities)
-### Fixed (for any bug fixes)
-### Changed (for changes in existing functionality)
-### Added (for new features)
-### Deprecated (for once-stable features removed in upcoming releases)
-### Removed (for deprecated features removed in this release)
+### Features
+### Enhancements
+### Bug Fixes
+### Experiments
+### Deprecations
+### Code quality
+### Documentation
+### Build Tools
+### Project Management
 -->
+
+## 0.7.0-rc.1 (:construction: 2020-12-22)
+
+### Code Quality
+
+- Fix Prettier and ESLint issues. (618e407)
+
+### Build Tools
+
+- Update WP babel preset dependency. (3e73f71)
+- Update ESLint and WordPress ESLint Plugin to most current versions. (4eb5312)
+- Fix #24 Add os definition to Travis config. (b95fc5b)
+- Upgrade Webpack to version 5 along with associated plugins, and update Copy Webpack Plugin script for new version. (b95fc5b)
+- Modify the Travis CI config file to use jobs and simplify installation, close #23. (f12f635)
+- Add Babel Core and Babel Runtime npm dependencies. (e420dc5)
 
 ## 0.6.2 (2020-12-17)
 
