@@ -1,6 +1,6 @@
 # HRSWP Sqlsrv DB
 
-[![Build Status](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db.svg?branch=stable)](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)
+[![Build Status](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db.svg?branch=stable)](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest) ![WordPress tested up to version 5.6.0](https://img.shields.io/badge/WordPress-v5.6.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-documents/blob/stable/LICENSE.md)
 
 ## Overview
 
