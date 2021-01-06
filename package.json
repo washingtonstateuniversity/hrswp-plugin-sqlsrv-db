@@ -1,6 +1,6 @@
 {
 	"name": "@washingtonstateuniversity/hrswp-plugin-sqlsrv-db",
-	"version": "0.6.2",
+	"version": "0.7.0",
 	"description": "A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.",
 	"author": "Adam Turner",
 	"contributors": [
@@ -40,24 +40,24 @@
 		"classnames": "^2.2.6",
 		"copy-webpack-plugin": "^7.0.0",
 		"cssnano": "^4.1.10",
-		"eslint": "^7.16.0",
+		"eslint": "^7.17.0",
 		"lodash": "^4.17.20",
 		"npm-package-json-lint": "^5.1.0",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.2.1",
+		"postcss": "^8.2.2",
 		"postcss-cli": "^8.3.1",
 		"postcss-import": "^14.0.0",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "npm:wp-prettier@^2.2.1-beta-1",
 		"resolve-bin": "^0.4.0",
 		"rimraf": "^3.0.2",
-		"source-map-loader": "^1.1.3",
+		"source-map-loader": "^2.0.0",
 		"stylelint": "^13.8.0",
 		"stylelint-config-wordpress": "^17.0.0",
 		"thread-loader": "^3.0.1",
-		"webpack": "^5.11.0",
+		"webpack": "^5.11.1",
 		"webpack-bundle-analyzer": "^4.3.0",
-		"webpack-cli": "^4.2.0"
+		"webpack-cli": "^4.3.1"
 	},
 	"scripts": {
 		"build": "NODE_ENV=production run-s clean test 'build:*'",

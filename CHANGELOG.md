@@ -20,7 +20,7 @@ Changelog formatting (http://semver.org/):
 ### Project Management
 -->
 
-## 0.7.0-rc.2 (:construction: 2020-12-23)
+## 0.7.0 (2021-01-05)
 
 ### Enhancements
 
@@ -32,10 +32,12 @@ Changelog formatting (http://semver.org/):
 
 ### Build Tools
 
+- Minor ESLint update to newest version. (8a3f889)
+- Update PostCSS to newest version. (5993f1b)
 - Update WP babel preset dependency. (3e73f71)
 - Update ESLint and WordPress ESLint Plugin to most current versions. (4eb5312)
 - Fix #24 Add os definition to Travis config. (b95fc5b)
-- Upgrade Webpack to version 5 along with associated plugins, and update Copy Webpack Plugin script for new version. (b95fc5b)
+- Upgrade Webpack to version 5 along with associated plugins, and update Copy Webpack Plugin script for new version. (b95fc5b and d9a935b)
 - Modify the Travis CI config file to use jobs and simplify installation, close #23. (f12f635)
 - Add Babel Core and Babel Runtime npm dependencies. (e420dc5)
 
