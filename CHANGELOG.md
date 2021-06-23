@@ -17,6 +17,47 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## Unreleased (:construction: Future)
+
+### Added
+
+- Add contributing guide.
+
+### Changed
+
+- Simplify Composer coding standards scripts. (5dd708a)
+- Enable PostCSS nesting rules. (745d96b)
+- Update Copy Webpack Plugin syntax for version 8 changes. (1003ea2)
+- Update GitHub issue and pull request templates with more help text. (6a4c549)
+- Replace Travis CI with GitHub Actions for coding standards tests. (37cb066)
+- Update squizlabs/php_codesniffer from 3.5.8 to 3.6.0 and sirbrillig/phpcs-variable-analysis from 2.10.0 to 2.11.1. (5dd708a)
+- Update webpack from 5.11.1 to 5.40.0. (1003ea2)
+- Update webpack-bundle-analyzer from 4.3.0 to 4.4.2. (1003ea2)
+- Update webpack-cli from 4.3.1 to 4.7.2. (1003ea2)
+- Update classnames from 2.2.6 to 2.3.1. (ed5f4bf)
+- Update @babel/core from 7.12.10 to 7.14.6 and @babel/runtime from 7.12.5 to 7.14.6. (8c256e0)
+- Update postcss from 8.2.2 to 8.3.5. (745d96b)
+- Update eslint from 7.17.0 to 7.29.0 and stylelint from 13.8.0 to 13.13.1. (ebc7de0)
+- Upgrade @wordpress/babel-preset-default from 4.20.0 to 6.2.0. (8c256e0)
+- Upgrade copy-webpack-plugin from 7.0.0 to 9.0.0. (1003ea2)
+- Upgrade @wordpress/dependency-extraction-webpack-plugin from 2.9.0 to 3.1.4. (1003ea2)
+- Upgrade source-map-loader from 2.0.0 to 3.0.0. (1003ea2)
+- Upgrade cssnano from 4.1.10 to 5.0.6. (745d96b)
+- Upgrade @wordpress/eslint-plugin from 7.4.0 to 9.0.6. (ebc7de0)
+- Upgrade @wordpress/npm-package-json-lint-config from 3.1.0 to 4.0.5. (ebc7de0)
+- Upgrade @wordpress/prettier-config from 0.4.0 to 1.0.5. (ebc7de0)
+
+### Fixed
+
+- Correct unresolved import error to `wp.components`. (177943e)
+- Update lingering references to GPL license 2.0 to 3.0. (6a4c549, 5dd708a)
+
+### Security
+
+- Bump postcss-import from 14.0.0 to 14.0.2. (745d96b)
+- Bump lodash from 4.17.20 to 4.17.21. (ed5f4bf)
+- Bump thread-loader from 3.0.1 to 3.0.4. (1003ea2)
+
 ## 0.7.0 (2021-01-05)
 
 ### Enhancements
