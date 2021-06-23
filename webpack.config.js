@@ -65,7 +65,7 @@ const config = {
 						const fileName = basename(
 							dirname( absoluteFilename )
 						);
-						return `blocks/${ fileName }.[ext]`;
+						return `blocks/${ fileName }[ext]`;
 					},
 				},
 			],
