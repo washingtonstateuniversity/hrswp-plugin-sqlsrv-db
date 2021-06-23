@@ -29,9 +29,9 @@
 		"Firefox ESR"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.12.10",
-		"@babel/runtime": "^7.12.5",
-		"@wordpress/babel-preset-default": "^4.20.0",
+		"@babel/core": "^7.14.6",
+		"@babel/runtime": "^7.14.6",
+		"@wordpress/babel-preset-default": "^6.2.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^3.1.4",
 		"@wordpress/eslint-plugin": "^7.4.0",
 		"@wordpress/npm-package-json-lint-config": "^3.1.0",
