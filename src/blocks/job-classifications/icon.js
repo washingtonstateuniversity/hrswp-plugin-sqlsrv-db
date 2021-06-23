@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { Path, Rect, SVG } from '@wordpress/components';
+const { Path, Rect, SVG } = wp.components;
 
 export default (
 	<SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
