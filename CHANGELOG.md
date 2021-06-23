@@ -9,15 +9,12 @@ Changelog formatting (http://semver.org/):
 
 ## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
 
-### Features
-### Enhancements
-### Bug Fixes
-### Experiments
-### Deprecations
-### Code quality
-### Documentation
-### Build Tools
-### Project Management
+### Added (for new features.)
+### Changed (for changes in existing functionality.)
+### Deprecated (for soon-to-be removed features.)
+### Removed (for now removed features.)
+### Fixed (for any bug fixes.)
+### Security (in case of vulnerabilities.)
 -->
 
 ## 0.7.0 (2021-01-05)
