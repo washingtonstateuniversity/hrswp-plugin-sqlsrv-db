@@ -51,6 +51,17 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 					/>
 				</PanelBody>
 			) }
+			<PanelBody title={ __( 'Select Job Data Source' ) }>
+				<SelectControl
+					className={ 'salary-data-table-picker__select' }
+					label={ __( 'Select desired group:' ) }
+					value={ queryTable }
+					options={ tables }
+					onChange={ ( value ) =>
+						setAttributes( { queryTable: value } )
+					}
+				/>
+			</PanelBody>
 			<PanelBody title={ __( 'Salary Data Settings' ) }>
 				<TextControl
 					label={ __( 'Linked Salary Data URL' ) }
@@ -60,17 +71,6 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 					value={ salaryDataUrl }
 					onChange={ ( value ) =>
 						setAttributes( { salaryDataUrl: value } )
-					}
-				/>
-			</PanelBody>
-			<PanelBody title={ __( 'Select Job Data Source' ) }>
-				<SelectControl
-					className={ 'salary-data-table-picker__select' }
-					label={ __( 'Select desired group:' ) }
-					value={ queryTable }
-					options={ tables }
-					onChange={ ( value ) =>
-						setAttributes( { queryTable: value } )
 					}
 				/>
 			</PanelBody>
