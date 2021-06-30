@@ -42,7 +42,7 @@
 		font-weight: 600;
 	}
 
-	& .is-style-stripes tr:nth-child(odd) {
+	&.is-style-stripes tr:nth-child(odd) {
 		background: #f9f9f9;
 	}
 
