@@ -87,7 +87,23 @@ function SalaryData( { attributes, setAttributes, tables } ) {
 }
 
 export default withSelect( ( select ) => {
+	const allTables = select( 'hrswpsqlsrv/salary-data' ).getTableNames();
+	let tables;
+
+	if ( Array.isArray( allTables ) ) {
+		tables = allTables.reduce( ( accumulator, currentValue ) => {
+			if (
+				currentValue.value.includes( 'salary' ) ||
+				'' === currentValue.value
+			) {
+				accumulator.push( currentValue );
+			}
+
+			return accumulator;
+		}, [] );
+	}
+
 	return {
-		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
+		tables,
 	};
 } )( SalaryData );
