@@ -6,7 +6,6 @@ const { withSelect } = wp.data;
 const { InspectorControls } = wp.blockEditor;
 const ServerSideRender = wp.serverSideRender;
 const {
-	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -76,12 +75,10 @@ function SalaryData( { attributes, setAttributes, tables } ) {
 	return (
 		<>
 			{ inspectorControls }
-			<Disabled>
-				<ServerSideRender
-					block="hrswpsqlsrv/salary-data"
-					attributes={ attributes }
-				/>
-			</Disabled>
+			<ServerSideRender
+				block="hrswpsqlsrv/salary-data"
+				attributes={ attributes }
+			/>
 		</>
 	);
 }
