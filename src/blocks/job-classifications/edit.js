@@ -6,7 +6,6 @@ const { withSelect } = wp.data;
 const { InspectorControls } = wp.blockEditor;
 const ServerSideRender = wp.serverSideRender;
 const {
-	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -100,12 +99,10 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 	return (
 		<>
 			{ inspectorControls }
-			<Disabled>
-				<ServerSideRender
-					block="hrswpsqlsrv/job-classifications"
-					attributes={ attributes }
-				/>
-			</Disabled>
+			<ServerSideRender
+				block="hrswpsqlsrv/job-classifications"
+				attributes={ attributes }
+			/>
 		</>
 	);
 }
