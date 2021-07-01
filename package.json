@@ -55,7 +55,7 @@
 		"stylelint": "^13.13.1",
 		"stylelint-config-wordpress": "^17.0.0",
 		"thread-loader": "^3.0.4",
-		"webpack": "^5.40.0",
+		"webpack": "^5.41.1",
 		"webpack-bundle-analyzer": "^4.4.2",
 		"webpack-cli": "^4.7.2"
 	},
