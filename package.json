@@ -38,7 +38,7 @@
 		"@wordpress/prettier-config": "^1.0.5",
 		"babel-loader": "^8.2.2",
 		"classnames": "^2.3.1",
-		"copy-webpack-plugin": "^9.0.0",
+		"copy-webpack-plugin": "^9.0.1",
 		"cssnano": "^5.0.6",
 		"eslint": "^7.29.0",
 		"lodash": "^4.17.21",
@@ -55,7 +55,7 @@
 		"stylelint": "^13.13.1",
 		"stylelint-config-wordpress": "^17.0.0",
 		"thread-loader": "^3.0.4",
-		"webpack": "^5.40.0",
+		"webpack": "^5.41.1",
 		"webpack-bundle-analyzer": "^4.4.2",
 		"webpack-cli": "^4.7.2"
 	},
