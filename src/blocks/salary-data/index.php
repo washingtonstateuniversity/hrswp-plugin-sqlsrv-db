@@ -23,10 +23,15 @@ function render( $attributes ) {
 	$args = array(
 		'dataset' => array(
 			array(
-				'table' => sanitize_key( $attributes['queryTable'] ),
+				'table' => isset( $attributes['queryTable'] ) ? sanitize_key( $attributes['queryTable'] ) : '',
 			),
 		),
 	);
+
+	if ( '' === $args['dataset'][0]['table'] ) {
+		return '<p></p>';
+	}
+
 	$data = new Sqlsrv_Query\Sqlsrv_Query( $args );
 
 	if ( ! $data->records ) {

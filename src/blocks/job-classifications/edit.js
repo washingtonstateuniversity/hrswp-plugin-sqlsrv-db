@@ -6,7 +6,6 @@ const { withSelect } = wp.data;
 const { InspectorControls } = wp.blockEditor;
 const ServerSideRender = wp.serverSideRender;
 const {
-	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -51,6 +50,17 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 					/>
 				</PanelBody>
 			) }
+			<PanelBody title={ __( 'Select Job Data Source' ) }>
+				<SelectControl
+					className={ 'salary-data-table-picker__select' }
+					label={ __( 'Select desired group:' ) }
+					value={ queryTable }
+					options={ tables }
+					onChange={ ( value ) =>
+						setAttributes( { queryTable: value } )
+					}
+				/>
+			</PanelBody>
 			<PanelBody title={ __( 'Salary Data Settings' ) }>
 				<TextControl
 					label={ __( 'Linked Salary Data URL' ) }
@@ -60,17 +70,6 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 					value={ salaryDataUrl }
 					onChange={ ( value ) =>
 						setAttributes( { salaryDataUrl: value } )
-					}
-				/>
-			</PanelBody>
-			<PanelBody title={ __( 'Select Job Data Source' ) }>
-				<SelectControl
-					className={ 'salary-data-table-picker__select' }
-					label={ __( 'Select desired group:' ) }
-					value={ queryTable }
-					options={ tables }
-					onChange={ ( value ) =>
-						setAttributes( { queryTable: value } )
 					}
 				/>
 			</PanelBody>
@@ -100,18 +99,32 @@ function JobClassifications( { attributes, setAttributes, tables } ) {
 	return (
 		<>
 			{ inspectorControls }
-			<Disabled>
-				<ServerSideRender
-					block="hrswpsqlsrv/job-classifications"
-					attributes={ attributes }
-				/>
-			</Disabled>
+			<ServerSideRender
+				block="hrswpsqlsrv/job-classifications"
+				attributes={ attributes }
+			/>
 		</>
 	);
 }
 
 export default withSelect( ( select ) => {
+	const allTables = select( 'hrswpsqlsrv/salary-data' ).getTableNames();
+	let tables;
+
+	if ( Array.isArray( allTables ) ) {
+		tables = allTables.reduce( ( accumulator, currentValue ) => {
+			if (
+				currentValue.value.includes( 'job-class' ) ||
+				'' === currentValue.value
+			) {
+				accumulator.push( currentValue );
+			}
+
+			return accumulator;
+		}, [] );
+	}
+
 	return {
-		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
+		tables,
 	};
 } )( JobClassifications );

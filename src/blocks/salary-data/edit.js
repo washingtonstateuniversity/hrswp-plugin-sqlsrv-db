@@ -6,7 +6,6 @@ const { withSelect } = wp.data;
 const { InspectorControls } = wp.blockEditor;
 const ServerSideRender = wp.serverSideRender;
 const {
-	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -20,17 +19,6 @@ function SalaryData( { attributes, setAttributes, tables } ) {
 
 	const inspectorControls = (
 		<InspectorControls>
-			<PanelBody title={ __( 'Select Data Source' ) }>
-				<SelectControl
-					className={ 'salary-data-table-picker__select' }
-					label={ __( 'Select desired group:' ) }
-					value={ queryTable }
-					options={ tables }
-					onChange={ ( value ) =>
-						setAttributes( { queryTable: value } )
-					}
-				/>
-			</PanelBody>
 			{ 'is-style-list' !== className && (
 				<PanelBody title={ __( 'Table Settings' ) }>
 					<ToggleControl
@@ -55,6 +43,17 @@ function SalaryData( { attributes, setAttributes, tables } ) {
 					/>
 				</PanelBody>
 			) }
+			<PanelBody title={ __( 'Select Data Source' ) }>
+				<SelectControl
+					className={ 'salary-data-table-picker__select' }
+					label={ __( 'Select desired group:' ) }
+					value={ queryTable }
+					options={ tables }
+					onChange={ ( value ) =>
+						setAttributes( { queryTable: value } )
+					}
+				/>
+			</PanelBody>
 		</InspectorControls>
 	);
 
@@ -76,18 +75,32 @@ function SalaryData( { attributes, setAttributes, tables } ) {
 	return (
 		<>
 			{ inspectorControls }
-			<Disabled>
-				<ServerSideRender
-					block="hrswpsqlsrv/salary-data"
-					attributes={ attributes }
-				/>
-			</Disabled>
+			<ServerSideRender
+				block="hrswpsqlsrv/salary-data"
+				attributes={ attributes }
+			/>
 		</>
 	);
 }
 
 export default withSelect( ( select ) => {
+	const allTables = select( 'hrswpsqlsrv/salary-data' ).getTableNames();
+	let tables;
+
+	if ( Array.isArray( allTables ) ) {
+		tables = allTables.reduce( ( accumulator, currentValue ) => {
+			if (
+				currentValue.value.includes( 'salary' ) ||
+				'' === currentValue.value
+			) {
+				accumulator.push( currentValue );
+			}
+
+			return accumulator;
+		}, [] );
+	}
+
 	return {
-		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
+		tables,
 	};
 } )( SalaryData );

@@ -7,7 +7,6 @@ const { Component } = wp.element;
 const { InspectorControls } = wp.blockEditor;
 const ServerSideRender = wp.serverSideRender;
 const {
-	Disabled,
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -82,19 +81,33 @@ class ListAwards extends Component {
 		return (
 			<>
 				{ inspectorControls }
-				<Disabled>
-					<ServerSideRender
-						block="hrswpsqlsrv/list-awards"
-						attributes={ attributes }
-					/>
-				</Disabled>
+				<ServerSideRender
+					block="hrswpsqlsrv/list-awards"
+					attributes={ attributes }
+				/>
 			</>
 		);
 	}
 }
 
 export default withSelect( ( select ) => {
+	const allTables = select( 'hrswpsqlsrv/salary-data' ).getTableNames();
+	let tables;
+
+	if ( Array.isArray( allTables ) ) {
+		tables = allTables.reduce( ( accumulator, currentValue ) => {
+			if (
+				currentValue.value.includes( 'awards' ) ||
+				'' === currentValue.value
+			) {
+				accumulator.push( currentValue );
+			}
+
+			return accumulator;
+		}, [] );
+	}
+
 	return {
-		tables: select( 'hrswpsqlsrv/salary-data' ).getTableNames(),
+		tables,
 	};
 } )( ListAwards );

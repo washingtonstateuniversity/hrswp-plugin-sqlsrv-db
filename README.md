@@ -1,6 +1,6 @@
 # HRSWP Sqlsrv DB
 
-[![Build Status](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db.svg?branch=stable)](https://travis-ci.org/washingtonstateuniversity/hrswp-plugin-sqlsrv-db) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest) ![WordPress tested up to version 5.6.0](https://img.shields.io/badge/WordPress-v5.6.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-documents/blob/stable/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest) ![WordPress tested up to version 5.8.0](https://img.shields.io/badge/WordPress-v5.8.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/develop/LICENSE.md)
 
 ## Overview
 
@@ -68,8 +68,14 @@ The following commands will handle basic build functions. (Remove the `-s` flag 
 
 See the scripts section of `package.json` for additional available commands.
 
-## HRSWP Sqlsrv DB Issues
+## Support Level
 
-Please submit bugs, fixes, and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/issues). Please read (and adhere to) the guidelines for contributions detailed in the issue templates.
+**Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
 
-Read the [CHANGELOG.md](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/stable/CHANGELOG.md) to review release and update notes.
+## Changelog
+
+All notable changes are documented in the [CHANGELOG.md](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/develop/CHANGELOG.md), with dates and version numbers.
+
+## Contributing
+
+Please submit bugs and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/issues). Refer to [CONTRIBUTING.md](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/develop/CONTRIBUTING.md) for the development workflow and details for submitting pull requests.
