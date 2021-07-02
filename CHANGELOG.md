@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 0.7.1-rc.1 (:construction: Future)
+## 0.7.1 (2021-07-02)
 
 ### Added
 
