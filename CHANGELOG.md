@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## Unreleased (:construction: Future)
+## 0.7.1 (2021-07-02)
 
 ### Added
 
@@ -25,13 +25,16 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Match editor styles to frontend styles. (54cbeb6, 593ba02)
+- Remove `disabled` because the component is redundant with server side render component. (54cbeb6)
+- Match inspector options sections order across blocks. (ca36faf)
 - Simplify Composer coding standards scripts. (5dd708a)
 - Enable PostCSS nesting rules. (745d96b)
 - Update Copy Webpack Plugin syntax for version 8 changes. (1003ea2)
 - Update GitHub issue and pull request templates with more help text. (6a4c549)
 - Replace Travis CI with GitHub Actions for coding standards tests. (37cb066)
 - Update squizlabs/php_codesniffer from 3.5.8 to 3.6.0 and sirbrillig/phpcs-variable-analysis from 2.10.0 to 2.11.1. (5dd708a)
-- Update webpack from 5.11.1 to 5.40.0. (1003ea2)
+- Update webpack from 5.11.1 to 5.41.1. (1003ea2, a201cd5)
 - Update webpack-bundle-analyzer from 4.3.0 to 4.4.2. (1003ea2)
 - Update webpack-cli from 4.3.1 to 4.7.2. (1003ea2)
 - Update classnames from 2.2.6 to 2.3.1. (ed5f4bf)
@@ -39,7 +42,7 @@ Changelog formatting (http://semver.org/):
 - Update postcss from 8.2.2 to 8.3.5. (745d96b)
 - Update eslint from 7.17.0 to 7.29.0 and stylelint from 13.8.0 to 13.13.1. (ebc7de0)
 - Upgrade @wordpress/babel-preset-default from 4.20.0 to 6.2.0. (8c256e0)
-- Upgrade copy-webpack-plugin from 7.0.0 to 9.0.0. (1003ea2)
+- Upgrade copy-webpack-plugin from 7.0.0 to 9.0.1. (1003ea2, a201cd5)
 - Upgrade @wordpress/dependency-extraction-webpack-plugin from 2.9.0 to 3.1.4. (1003ea2)
 - Upgrade source-map-loader from 2.0.0 to 3.0.0. (1003ea2)
 - Upgrade cssnano from 4.1.10 to 5.0.6. (745d96b)
@@ -49,14 +52,21 @@ Changelog formatting (http://semver.org/):
 
 ### Fixed
 
+- Fix #4 filter data tables options per block. (2353e4d)
+- Fix #69 exit early on empty table value. (9175916)
 - Correct unresolved import error to `wp.components`. (177943e)
 - Update lingering references to GPL license 2.0 to 3.0. (6a4c549, 5dd708a)
 
 ### Security
 
+- Bump glob-parent from 5.1.0 to 5.1.2. (5318127)
+- Bump browserslist from 4.7.0 to 4.16.6. (fcba9af)
+- Bump hosted-git-info from 2.8.4 to 2.8.9. (e1f542f)
 - Bump postcss-import from 14.0.0 to 14.0.2. (745d96b)
 - Bump lodash from 4.17.20 to 4.17.21. (ed5f4bf)
 - Bump thread-loader from 3.0.1 to 3.0.4. (1003ea2)
+- Bump ws from 7.4.1 to 7.5.0. (2d438df)
+- Bump trim-newlines from 3.0.0 to 3.0.1. (c3e6b70)
 
 ## 0.7.0 (2021-01-05)
 
