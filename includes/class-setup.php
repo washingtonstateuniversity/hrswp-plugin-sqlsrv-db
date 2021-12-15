@@ -139,7 +139,7 @@ class Setup {
 	private function setup_hooks() {
 		add_action( 'admin_init', array( $this, 'manage_plugin_status' ) );
 		add_action( 'init', array( $this, 'register_dynamic_blocks' ) );
-		add_filter( 'block_categories', array( $this, 'add_block_categories' ), 10, 2 );
+		add_filter( 'block_categories_all', array( $this, 'add_block_categories' ), 10, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 	}
