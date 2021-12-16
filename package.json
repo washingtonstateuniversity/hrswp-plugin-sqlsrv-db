@@ -40,7 +40,7 @@
 		"classnames": "^2.3.1",
 		"copy-webpack-plugin": "^10.2.0",
 		"cssnano": "^5.0.6",
-		"eslint": "^7.29.0",
+		"eslint": "^8.4.1",
 		"lodash": "^4.17.21",
 		"npm-package-json-lint": "^5.1.0",
 		"npm-run-all": "^4.1.5",
