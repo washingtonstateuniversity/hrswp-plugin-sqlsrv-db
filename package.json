@@ -57,7 +57,7 @@
 		"thread-loader": "^3.0.4",
 		"webpack": "^5.65.0",
 		"webpack-bundle-analyzer": "^4.4.2",
-		"webpack-cli": "^4.7.2"
+		"webpack-cli": "^4.9.1"
 	},
 	"scripts": {
 		"build": "NODE_ENV=production run-s clean test 'build:*'",
