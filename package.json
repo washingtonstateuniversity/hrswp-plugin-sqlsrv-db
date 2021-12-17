@@ -36,6 +36,7 @@
 		"@wordpress/eslint-plugin": "^9.3.0",
 		"@wordpress/npm-package-json-lint-config": "^4.1.0",
 		"@wordpress/prettier-config": "^1.1.1",
+		"@wordpress/stylelint-config": "^19.1.0",
 		"babel-loader": "^8.2.3",
 		"classnames": "^2.3.1",
 		"copy-webpack-plugin": "^10.2.0",
