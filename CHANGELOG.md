@@ -19,6 +19,53 @@ Changelog formatting (http://semver.org/):
 
 ## 0.8.0-rc.1 (:construction: TBD)
 
+### Added
+
+- Add new WordPress Stylelint config package. (b66fdc5)
+- Add stylelint-a11y package. (b66fdc5)
+
+### Changed
+
+- Bump WP tested-to to 5.8.2.
+- Update Styleling config for WordPress config changes. (b66fdc5)
+- Add Babel parser options to eslint config. (3091898)
+- Upgrade eslint from 7.29.0 to 8.4.1. (3091898)
+- Upgrade postcss-cli from 8.3.1 to 9.1.0. (cb02dd1)
+- Upgrade postcss-preset-env from 6.7.0 to 7.0.2. (cb02dd1)
+- Upgrade resolve-bin from 0.4.0 to 1.0.0. (7f40af2)
+- Upgrade copy-webpack-plugin from 9.0.1 to 10.2.0. (2d12b2e)
+- Update @babel/core from 7.14.6 to 7.16.5. (53a8ea8)
+- Update @babel/runtime from 7.14.6 to 7.16.5. (53a8ea8)
+- Update @wordpress/babel-preset-default from 6.2.0 to 6.4.1. (53a8ea8)
+- Update webpack from 5.41.1 to 5.65.0. (2d12b2e)
+- Update webpack-cli from 4.7.2 to 4.9.1. (2d12b2e)
+- Update webpack-bundle-analyzer from 4.4.2 to 4.5.0. (2d12b2e)
+- Update @wordpress/dependency-extraction-webpack-plugin from 3.1.4 to 3.2.1. (2d12b2e)
+- Update @wordpress/eslint-plugin from 9.0.6 to 9.3.0. (3091898)
+- Update postcss from 8.3.5 to 8.4.5. (cb02dd1)
+- Update cssnano from 5.0.6 to 5.0.13. (6e17989)
+- Update npm-package-json-lint from 5.1.0 to 5.4.2. (cf6e450)
+- Update @wordpress/npm-package-json-lint-config from 4.0.5 to 4.1.0. (cf6e450)
+- Update @wordpress/prettier-config from 1.0.5 to 1.1.1. (17e1b58)
+- Update roave/security-advisories from dev-master ce3f116 to dev-master b9421ed. (ed07506)
+
+### Removed
+
+- Remove stylelint-config-wordpress. (b66fdc5)
+
+### Fixed
+
+- Fix #74 replace block_categories with block_categories_all. (902e643)
+
+### Security
+
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.1 to 2.11.2. (b4a08a6)
+- Bump squizlabs/php_codesniffer from 3.6.0 to 3.6.2. (d11d03c)
+- Bump babel-loader from 8.2.2 to 8.2.3. (53a8ea8)
+- Bump ansi-regex from 5.0.0 to 5.0.1. (8aa18d0)
+- Bump nth-check from 2.0.0 to 2.0.1. (30e7c30)
+- Bump path-parse from 1.0.6 to 1.0.7. (1a5afa2)
+
 ## 0.7.1 (2021-07-02)
 
 ### Added
