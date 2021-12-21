@@ -118,10 +118,14 @@ function render( $attributes ) {
 					esc_html( $val )
 				);
 			} else {
+				$value = ( is_string( $val ) && ! is_numeric( $val ) )
+					? $val
+					: number_format( $val );
+
 				$table_body .= sprintf(
 					'<td data-column="%1$s">%2$s</td>',
 					esc_attr( ucfirst( strtolower( $key ) ) ),
-					esc_html( number_format( $val ) )
+					esc_html( $value )
 				);
 			}
 		}
