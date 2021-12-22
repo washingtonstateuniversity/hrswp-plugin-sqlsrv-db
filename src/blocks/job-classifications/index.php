@@ -122,9 +122,9 @@ function render( $attributes ) {
 						break;
 					case 'salary_min':
 					case 'salary_max':
-						$value   = ( is_string( $value ) && ! is_numeric( $value ) )
+						$value   = ( is_string( $value ) && ! is_numeric( trim( $value ) ) )
 							? $value
-							: number_format( $value );
+							: number_format( (int) $value );
 						$display = '$' . esc_html( $value );
 						break;
 					default:
@@ -186,9 +186,9 @@ function render( $attributes ) {
 					break;
 				case 'salary_min':
 				case 'salary_max':
-					$value   = ( is_string( $value ) && ! is_numeric( $value ) )
+					$value   = ( is_string( $value ) && ! is_numeric( trim( $value ) ) )
 						? $value
-						: number_format( $value );
+						: number_format( (int) $value );
 					$display = '$' . esc_html( $value );
 					break;
 				default:
