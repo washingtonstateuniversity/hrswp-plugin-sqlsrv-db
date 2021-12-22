@@ -17,12 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 0.9.0-rc.1 (:construction:)
+## 0.9.0-rc.2 (:construction:)
 
 ### Changed
 
 - Ignore the Prettier config file when creating zip file. (311e445)
-- Allow non-integer values in job class data, close #78. (4d9f294)
+- Allow non-integer values in job class data, close #78. (4d9f294, 0d979b1)
 - Update browserlist datebase. (b0e46cd)
 - Update eslint from 8.4.1 to 8.5.0. (3801695)
 - Update postcss-preset-ent from 7.0.2 to 7.1.0. (7bd566a)
@@ -30,7 +30,7 @@ Changelog formatting (http://semver.org/):
 
 ### Fixed
 
--  Fix #77 allow string values in Salary Data block data. (5219566)
+- Fix #77 allow string values in Salary Data block data. (5219566, 0d979b1)
 
 ### Security
 
