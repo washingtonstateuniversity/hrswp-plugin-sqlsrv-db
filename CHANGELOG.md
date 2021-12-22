@@ -21,6 +21,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Ignore the Prettier config file when creating zip file. (311e445)
 - Allow non-integer values in job class data, close #78. (4d9f294)
 - Update browserlist datebase. (b0e46cd)
 - Update eslint from 8.4.1 to 8.5.0. (3801695)
