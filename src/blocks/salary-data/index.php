@@ -68,6 +68,9 @@ function render( $attributes ) {
 			$list = '';
 			foreach ( $item as $key => $value ) {
 				if ( 'RANGE' !== $key ) {
+					$value = ( is_string( $value ) && ! is_numeric( trim( $value ) ) )
+						? $value
+						: number_format( (int) $value );
 					$list .= sprintf(
 						'<li>Step %1$s: %2$s</li>',
 						esc_html( $key ),
@@ -118,10 +121,14 @@ function render( $attributes ) {
 					esc_html( $val )
 				);
 			} else {
+				$value = ( is_string( $val ) && ! is_numeric( trim( $val ) ) )
+					? $val
+					: number_format( (int) $val );
+
 				$table_body .= sprintf(
 					'<td data-column="%1$s">%2$s</td>',
 					esc_attr( ucfirst( strtolower( $key ) ) ),
-					esc_html( number_format( $val ) )
+					esc_html( $value )
 				);
 			}
 		}
