@@ -17,6 +17,25 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 0.9.0 (2021-12-23)
+
+### Changed
+
+- Ignore the Prettier config file when creating zip file. (311e445)
+- Allow non-integer values in job class data, close #78. (4d9f294, 0d979b1)
+- Update browserlist datebase. (b0e46cd)
+- Update eslint from 8.4.1 to 8.5.0. (3801695)
+- Update postcss-preset-ent from 7.0.2 to 7.1.0. (7bd566a)
+- Update roave/security-advisories from dev-master b9421ed to dev-master fff5363. (4575d13)
+
+### Fixed
+
+- Fix #77 allow string values in Salary Data block data. (5219566, 0d979b1)
+
+### Security
+
+- Bump cssnano from 5.0.13 to 5.0.14. (07f10ef)
+
 ## 0.8.0 (2021-12-17)
 
 ### Added
