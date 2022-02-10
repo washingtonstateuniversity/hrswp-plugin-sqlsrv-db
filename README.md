@@ -26,7 +26,7 @@ This plugin is not in the WordPress plugins directory. You have to install it ma
 
 ### Updates
 
-Please note that this plugin will not update automatically and will not notify of new available updates. It is your responsibility to make sure you stay up to date with the latest version.
+Please note that this plugin will not update automatically and will not notify of available updates. It is your responsibility to make sure you stay up to date with the latest version. It does include a GitHub repository URL in the Update URI field, so if you have a plugin that can update from GitHub then this plugin should be compatible with that.
 
 ### Deactivating and Deleting: Plugin Data
 
