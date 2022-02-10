@@ -6,6 +6,7 @@
  * Author: Adam Turner, washingtonstateuniversity
  * Author URI: https://hrs.wsu.edu/
  * Plugin URI: https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db
+ * Update URI: https://api.github.com/repos/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest
  * Text Domain: hrswp-sqlsrv-db
  * Requires at least: 5.0
  * Tested up to: 5.8.2
