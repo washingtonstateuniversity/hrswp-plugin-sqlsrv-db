@@ -6,7 +6,7 @@
 }
 
 .hrswp-sqlsrv-block .award-item {
-	background-color: var(--body-background-color);
+	background-color: var(--wp--preset--color--light);
 	border-radius: 1em;
 	display: flex;
 	flex-basis: 100%;
@@ -28,23 +28,23 @@
 }
 
 .hrswp-sqlsrv-block .award-title {
-	color: var(--brand-crimson);
-	font-size: var(--font-size-2);
+	color: var(--wp--preset--color--primary-crimson);
+	font-size: var(--wp--preset--font-size--medium);
 	font-weight: 600;
 	line-height: 1.2;
 	padding-bottom: 0.25em;
 }
 
 .hrswp-sqlsrv-block .award-description {
-	font-size: var(--font-size-1);
-	padding-bottom: 2.5em;
+	font-size: var(--wp--custom--typography--tiny);
+	padding-bottom: 3rem;
 }
 
 .hrswp-sqlsrv-block .award-meta {
 	bottom: 0;
-	background: var(--brand-crimson);
-	color: var(--body-background-color);
-	font-size: var(--font-size-0);
+	background: var(--wp--preset--color--primary-crimson);
+	color: var(--wp--preset--color--light);
+	font-size: var(--wp--preset--font-size--small);
 	padding: 0.25em;
 	position: absolute;
 	text-align: center;
