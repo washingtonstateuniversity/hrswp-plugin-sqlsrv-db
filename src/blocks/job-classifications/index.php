@@ -220,35 +220,12 @@ function render( $attributes ) {
  * Registers the `hrswpsqlsrv/job-classifications` block on the server.
  *
  * @since 0.4.0
+ * @since 0.10.0 Use `register_block_type_from_metadata`
  */
 function register_block_job_classifications() {
-	register_block_type(
-		'hrswpsqlsrv/job-classifications',
+	register_block_type_from_metadata(
+		__DIR__ . '/job-classifications',
 		array(
-			'attributes'      => array(
-				'align'         => array(
-					'type' => 'string',
-					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
-				),
-				'columns'       => array(
-					'type'    => 'number',
-					'default' => 3,
-				),
-				'className'     => array(
-					'type' => 'string',
-				),
-				'isStriped'     => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'salaryDataUrl' => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'queryTable'    => array(
-					'type' => 'string',
-				),
-			),
 			'render_callback' => __NAMESPACE__ . '\render',
 		)
 	);
