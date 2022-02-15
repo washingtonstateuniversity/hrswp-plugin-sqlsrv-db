@@ -6,6 +6,7 @@ const { registerStore } = wp.data;
 
 const DEFAULT_STATE = {
 	tableNames: {},
+	jobClassificationData: {},
 };
 
 const actions = {
@@ -13,6 +14,12 @@ const actions = {
 		return {
 			type: 'GET_TABLE_NAMES',
 			tableNames,
+		};
+	},
+	getJobClassificationData( jobClassificationData ) {
+		return {
+			type: 'GET_JOB_CLASSIFICATION_DATA',
+			jobClassificationData,
 		};
 	},
 	fetchFromAPI( path ) {
@@ -32,6 +39,11 @@ export default function registerStores() {
 						...state,
 						tableNames: action.tableNames,
 					};
+				case 'GET_JOB_CLASSIFICATION_DATA':
+					return {
+						...state,
+						jobClassificationData: action.jobClassificationData,
+					};
 			}
 
 			return state;
@@ -42,8 +54,11 @@ export default function registerStores() {
 		selectors: {
 			getTableNames( state ) {
 				const { tableNames } = state;
-
 				return tableNames;
+			},
+			getJobClassificationData( state ) {
+				const { jobClassificationData } = state;
+				return jobClassificationData;
 			},
 		},
 
@@ -59,6 +74,13 @@ export default function registerStores() {
 				const tableNames = yield actions.fetchFromAPI( path );
 				return actions.getTableNames( tableNames );
 			},
+			*getJobClassificationData( table ) {
+				const path = `/hrswp-sqlsrv-db/v1/jobclassification/table/${table}`;
+				const jobClassificationData = yield actions.fetchFromAPI( path );
+				return actions.getJobClassificationData(
+					jobClassificationData
+				);
+			}
 		},
 	} );
 }
