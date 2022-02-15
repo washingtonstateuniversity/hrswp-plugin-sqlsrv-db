@@ -172,9 +172,9 @@ class Setup {
 	 */
 	private function define_blocks() {
 		$this->blocks = array(
-			'salary-data.php'         => 'hrswpsqlsrv/salary-data',
-			'job-classifications.php' => 'hrswpsqlsrv/job-classifications',
-			'list-awards.php'         => 'hrswpsqlsrv/list-awards',
+			'salary-data'         => 'hrswpsqlsrv/salary-data',
+			'job-classifications' => 'hrswpsqlsrv/job-classifications',
+			'list-awards'         => 'hrswpsqlsrv/list-awards',
 		);
 	}
 
@@ -237,12 +237,12 @@ class Setup {
 			return;
 		}
 
-		foreach ( $this->blocks as $file => $block_name ) {
-			if ( ! file_exists( $blocks_dir . $file ) ) {
+		foreach ( $this->blocks as $dir => $block_name ) {
+			if ( ! file_exists( $blocks_dir . '/' . $dir . '/index.php' ) ) {
 				continue;
 			}
 
-			require $blocks_dir . $file;
+			require $blocks_dir . '/' . $dir . '/index.php';
 		}
 	}
 
