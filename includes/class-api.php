@@ -80,14 +80,14 @@ class API {
 			$this->namespace,
 			'/jobclassification/table/(?P<table>[a-z0-9_\-]+)',
 			array(
-				'methods'  => 'GET',
-				'callback' => array( $this, 'get_job_classification_data' ),
-				'args'     => array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_job_classification_data' ),
+				'args'                => array(
 					'table' => array(
-						'sanitize_callback' => function( $param, $request, $key ) {
+						'sanitize_callback' => function( $param ) {
 							return sanitize_key( $param );
-						}
-					)
+						},
+					),
 				),
 				'permission_callback' => function () {
 					return current_user_can( 'edit_posts' );
@@ -139,6 +139,7 @@ class API {
 	 *
 	 * @since 0.10.0
 	 *
+	 * @param \WP_REST_Request $request Data from the request passed to the callback.
 	 * @return array|null JSON feed of returned data, null if no data is found.
 	 */
 	public function get_job_classification_data( \WP_REST_Request $request ) {
