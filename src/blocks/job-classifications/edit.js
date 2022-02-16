@@ -73,17 +73,17 @@ export default function JobClassificationsEdit( {
 		currency: 'USD',
 	} );
 
-	const renderJobClasificationName = ( name ) =>
+	const renderJobClassificationName = ( name ) =>
 		! name ? __( '(Untitled)' ) : unescape( name ).trim();
 	const renderJobClassificationCurrency = ( number ) =>
 		! Number.isNaN( Number( number ) )
 			? formatNumber.format( number )
-			: renderJobClasificationName( number );
+			: renderJobClassificationName( number );
     const renderJobClassificationRangeURL = ( rangeURLParam, range ) => {
-        const url = escape( salaryDataUrl + "/" + rangeURLParam );
+        const url = escape( salaryDataUrl + "?filter=" + rangeURLParam );
         return (
 			<a href={ url } target="_blank" rel="noreferrer noopener">
-				{ renderJobClasificationName( range ) }
+				{ renderJobClassificationName( range ) }
 			</a>
 		);
     };
@@ -121,12 +121,57 @@ export default function JobClassificationsEdit( {
 
 		return (
 			<tr key={ key }>
-				<td>{ renderJobClasificationName( code ) }</td>
-				<td>{ renderJobClasificationName( title ) }</td>
+				<td>{ renderJobClassificationName( code ) }</td>
+				<td>{ renderJobClassificationName( title ) }</td>
 				<td>{ renderJobClassificationRangeURL( rangeURLParam, range ) }</td>
 				<td>{ renderJobClassificationCurrency( min ) }</td>
 				<td>{ renderJobClassificationCurrency( max ) }</td>
 			</tr>
+		);
+	};
+
+	const renderJobClassificationList = () => {
+		return (
+			<ul className={ `has-columns has-columns-${ columns }` }>
+				{ jobClassificationData.map( ( jobClassification, key ) =>
+					renderJobClassificationListItem( jobClassification, key )
+				) }
+			</ul>
+		);
+	};
+
+	const renderJobClassificationListItem = ( jobClassification, key ) => {
+		const {
+			ClassCode: code,
+			JobTitle: title,
+			SalRangeNum: rangeURLParam,
+			Salary_Max: max,
+			Salary_Min: min,
+			SalrangeWExceptions: range,
+		} = jobClassification;
+
+		return (
+			<li key={ key }>
+				<strong>{ renderJobClassificationName( title ) }</strong>
+				<span>{ ` (${ renderJobClassificationName( code ) })` }</span>
+				<ul>
+					<li>
+						{ ` ${ __( 'Range' ) }: ` }
+						{ renderJobClassificationRangeURL(
+							rangeURLParam,
+							range
+						) }
+					</li>
+					<li>
+						{ ` ${ __( 'Salary Min' ) }: ` }
+						{ renderJobClassificationCurrency( min ) }
+					</li>
+					<li>
+						{ ` ${ __( 'Salary Max' ) }: ` }
+						{ renderJobClassificationCurrency( max ) }
+					</li>
+				</ul>
+			</li>
 		);
 	};
 
@@ -189,7 +234,9 @@ export default function JobClassificationsEdit( {
 			) }
 			{ ! isRequesting &&
 				jobClassificationData?.length > 0 &&
-				renderJobClassificationTable() }
+				( displayAsList
+					? renderJobClassificationList()
+					: renderJobClassificationTable() ) }
 		</div>
 	);
 
