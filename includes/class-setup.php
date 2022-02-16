@@ -232,7 +232,7 @@ class Setup {
 	 * @since 0.2.0
 	 */
 	function register_dynamic_blocks() {
-		$blocks_dir = dirname( __DIR__ ) . '/build/blocks/';
+		$blocks_dir = dirname( __DIR__ ) . '/build/blocks';
 		if ( ! file_exists( $blocks_dir ) ) {
 			return;
 		}
