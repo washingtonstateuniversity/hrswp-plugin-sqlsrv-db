@@ -75,12 +75,14 @@ export default function registerStores() {
 				return actions.getTableNames( tableNames );
 			},
 			*getJobClassificationData( table ) {
-				const path = `/hrswp-sqlsrv-db/v1/jobclassification/table/${table}`;
-				const jobClassificationData = yield actions.fetchFromAPI( path );
+				const path = `/hrswp-sqlsrv-db/v1/jobclassification/table/${ table }`;
+				const jobClassificationData = yield actions.fetchFromAPI(
+					path
+				);
 				return actions.getJobClassificationData(
 					jobClassificationData
 				);
-			}
+			},
 		},
 	} );
 }
