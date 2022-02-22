@@ -15,7 +15,7 @@ const {
 	TextControl,
 	ToggleControl,
 } = wp.components;
-const { useSelect } = wp.data;
+const { dispatch, useSelect } = wp.data;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
@@ -49,8 +49,16 @@ export default function JobClassificationsEdit( {
 		[ queryTable ]
 	);
 
-	const toggleAttribute = ( attributeName ) => ( newValue ) =>
+	const toggleAttribute = ( attributeName ) => ( newValue ) => {
+		if ( 'queryTable' === attributeName ) {
+			dispatch(
+				'hrswpsqlsrv/salary-data'
+			).invalidateResolutionForStoreSelector(
+				'getJobClassificationData'
+			);
+		}
 		setAttributes( { [ attributeName ]: newValue } );
+	};
 	const formatNumber = new Intl.NumberFormat( 'en-US', {
 		style: 'currency',
 		currency: 'USD',
