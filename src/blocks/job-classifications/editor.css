@@ -1,3 +1,24 @@
-.wp-block[data-type="hrswpsqlsrv/job-classifications"] .hrswp-sqlsrv-block {
-	overflow: auto;
+.wp-block-hrswpsqlsrv-job-classifications {
+
+	& .wp-block-table table {
+		border-spacing: 0;
+		font-variant-numeric: lining-nums tabular-nums;
+		margin-bottom: 1.5rem;
+		width: 100%;
+
+		& td,
+		& th {
+			border: none;
+		}
+
+		& th {
+			background-color: var(--wp--custom--wsu-color-black--10);
+			font-weight: 600;
+		}
+	}
+
+	&.is-style-stripes .wp-block-table tbody tr:nth-child(2n+1) {
+		background: var(--wp--custom--wsu-color-black--3);
+	}
+
 }
