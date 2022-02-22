@@ -28,39 +28,22 @@ export default function JobClassificationsEdit( {
 	},
 	setAttributes,
 } ) {
-	const { tables } = useSelect(
+	const { jobClassificationData, isRequesting, tables } = useSelect(
 		( select ) => {
-			const { getTableNames } = select( 'hrswpsqlsrv/salary-data' );
-			const allTables = getTableNames();
-			let tables;
-
-			if ( Array.isArray( allTables ) ) {
-				tables = allTables.reduce( ( accumulator, currentValue ) => {
-					if (
-						currentValue.value.includes( 'job-class' ) ||
-						'' === currentValue.value
-					) {
-						accumulator.push( currentValue );
-					}
-
-					return accumulator;
-				}, [] );
-			}
+			const {
+				getJobClassificationData,
+				getTableNames,
+				isResolving,
+			} = select( 'hrswpsqlsrv/salary-data' );
 
 			return {
-				tables,
-			};
-		},
-		[]
-	);
-	const { jobClassificationData, isRequesting } = useSelect(
-		( select ) => {
-			const { getJobClassificationData, isResolving } = select(
-				'hrswpsqlsrv/salary-data'
-			);
-			return {
-				jobClassificationData: queryTable?.length ? getJobClassificationData( queryTable ) : {},
-				isRequesting: isResolving( 'getJobClassificationData', [ queryTable ] ),
+				jobClassificationData: queryTable?.length
+					? getJobClassificationData( queryTable )
+					: {},
+				isRequesting: isResolving( 'getJobClassificationData', [
+					queryTable,
+				] ),
+				tables: getTableNames(),
 			};
 		},
 		[ queryTable ]
@@ -73,20 +56,35 @@ export default function JobClassificationsEdit( {
 		currency: 'USD',
 	} );
 
+	const getQueryTables = () => {
+		if ( ! tables?.length ) {
+			return [];
+		}
+		return tables?.reduce( ( accumulator, currentValue ) => {
+			if (
+				currentValue.value.includes( 'job-class' ) ||
+				'' === currentValue.value
+			) {
+				accumulator.push( currentValue );
+			}
+			return accumulator;
+		}, [] );
+	};
+
 	const renderJobClassificationName = ( name ) =>
 		! name ? __( '(Untitled)' ) : unescape( name ).trim();
 	const renderJobClassificationCurrency = ( number ) =>
 		! Number.isNaN( Number( number ) )
 			? formatNumber.format( number )
 			: renderJobClassificationName( number );
-    const renderJobClassificationRangeURL = ( rangeURLParam, range ) => {
-        const url = escape( salaryDataUrl + "?filter=" + rangeURLParam );
-        return (
+	const renderJobClassificationRangeURL = ( rangeURLParam, range ) => {
+		const url = escape( salaryDataUrl + '?filter=' + rangeURLParam );
+		return (
 			<a href={ url } target="_blank" rel="noreferrer noopener">
 				{ renderJobClassificationName( range ) }
 			</a>
 		);
-    };
+	};
 
 	const renderJobClassificationTable = () => {
 		return (
@@ -102,7 +100,10 @@ export default function JobClassificationsEdit( {
 				</thead>
 				<tbody>
 					{ jobClassificationData.map( ( jobClassification, key ) =>
-						renderJobClassificationTableRow( jobClassification, key )
+						renderJobClassificationTableRow(
+							jobClassification,
+							key
+						)
 					) }
 				</tbody>
 			</table>
@@ -123,7 +124,9 @@ export default function JobClassificationsEdit( {
 			<tr key={ key }>
 				<td>{ renderJobClassificationName( code ) }</td>
 				<td>{ renderJobClassificationName( title ) }</td>
-				<td>{ renderJobClassificationRangeURL( rangeURLParam, range ) }</td>
+				<td>
+					{ renderJobClassificationRangeURL( rangeURLParam, range ) }
+				</td>
 				<td>{ renderJobClassificationCurrency( min ) }</td>
 				<td>{ renderJobClassificationCurrency( max ) }</td>
 			</tr>
@@ -197,7 +200,7 @@ export default function JobClassificationsEdit( {
 						className={ 'salary-data-table-picker__select' }
 						label={ __( 'Select Job Data source' ) }
 						value={ queryTable }
-						options={ tables }
+						options={ getQueryTables() }
 						onChange={ toggleAttribute( 'queryTable' ) }
 					/>
 					<TextControl
@@ -239,5 +242,4 @@ export default function JobClassificationsEdit( {
 					: renderJobClassificationTable() ) }
 		</div>
 	);
-
 }
