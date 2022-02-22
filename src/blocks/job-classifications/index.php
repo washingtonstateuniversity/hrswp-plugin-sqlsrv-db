@@ -65,7 +65,37 @@ function render_job_classification_currency( $number ) {
  * @return string The job classification data formatted into a list element.
  */
 function render_job_classification_list( $args, $job_classification_data ) {
-	return '<p>Fish</p>';
+	$list = '<ul class="has-columns has-columns-' . $args['columns'] . '">';
+	foreach ( $job_classification_data as $job_classification ) {
+		$list .= render_job_classification_list_item( $args['salary_data_url'], $job_classification );
+	}
+	$list .= '</ul>';
+	return $list;
+}
+
+/**
+ * Renders a single job classification data record as a list item.
+ *
+ * @since 0.10.0
+ *
+ * @param string $salary_data_url The URL of a page with a corresponding Salary Data block.
+ * @param object $job_classification A single job classification data record.
+ * @return string The job classification data formatted into a list item element.
+ */
+function render_job_classification_list_item( $salary_data_url, $job_classification ) {
+	// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+	$list_item = '<li>
+			<strong>' . render_job_classification_name( $job_classification->JobTitle ) . '</strong>
+			<span>(' . render_job_classification_name( $job_classification->ClassCode ) . ')</span>
+			<ul>
+				<li>' . __( 'Range: ', 'hrswp-sqlsrv-db' ) . render_job_classification_range_url( $salary_data_url, $job_classification->SalRangeNum, $job_classification->SalrangeWExceptions ) . '</li>
+				<li>' . __( 'Salary Min: ', 'hrswp-sqlsrv-db' ) . render_job_classification_currency( $job_classification->Salary_Min ) . '</li>
+				<li>' . __( 'Salary Max: ', 'hrswp-sqlsrv-db' ) . render_job_classification_currency( $job_classification->Salary_Max ) . '</li>
+			</ul>
+		</li>';
+	// phpcs:enable
+
+	return $list_item;
 }
 
 /**
