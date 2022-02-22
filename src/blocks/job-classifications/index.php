@@ -210,7 +210,7 @@ function render( $attributes ) {
 		? render_job_classification_list( $args, $job_classification_data )
 		: render_job_classification_table( $args, $job_classification_data );
 
-	$classname = "wp-block-hrswpsqlsrv-job-classifications";
+	$classname = 'wp-block-hrswpsqlsrv-job-classifications';
 
 	if ( '' !== $args['align'] ) {
 		$classname .= ' align' . $args['align'];

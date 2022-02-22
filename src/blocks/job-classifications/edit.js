@@ -103,11 +103,12 @@ export default function JobClassificationsEdit( {
 						</tr>
 					</thead>
 					<tbody>
-						{ jobClassificationData.map( ( jobClassification, key ) =>
-							renderJobClassificationTableRow(
-								jobClassification,
-								key
-							)
+						{ jobClassificationData.map(
+							( jobClassification, key ) =>
+								renderJobClassificationTableRow(
+									jobClassification,
+									key
+								)
 						) }
 					</tbody>
 				</table>
