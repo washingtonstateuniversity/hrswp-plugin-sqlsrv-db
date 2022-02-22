@@ -20,12 +20,7 @@ const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
 export default function JobClassificationsEdit( {
-	attributes: {
-		displayAsList,
-		columns,
-		salaryDataUrl,
-		queryTable,
-	},
+	attributes: { displayAsList, columns, salaryDataUrl, queryTable },
 	setAttributes,
 } ) {
 	const { jobClassificationData, isRequesting, tables } = useSelect(
