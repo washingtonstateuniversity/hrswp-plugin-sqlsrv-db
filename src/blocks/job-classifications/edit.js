@@ -91,25 +91,27 @@ export default function JobClassificationsEdit( {
 
 	const renderJobClassificationTable = () => {
 		return (
-			<table className="wp-block-table">
-				<thead>
-					<tr>
-						<th>{ __( 'Job Class' ) }</th>
-						<th>{ __( 'Job Title' ) }</th>
-						<th>{ __( 'Range' ) }</th>
-						<th>{ __( 'Salary Min' ) }</th>
-						<th>{ __( 'Salary Max' ) }</th>
-					</tr>
-				</thead>
-				<tbody>
-					{ jobClassificationData.map( ( jobClassification, key ) =>
-						renderJobClassificationTableRow(
-							jobClassification,
-							key
-						)
-					) }
-				</tbody>
-			</table>
+			<figure className="wp-block-table">
+				<table>
+					<thead>
+						<tr>
+							<th>{ __( 'Job Class' ) }</th>
+							<th>{ __( 'Job Title' ) }</th>
+							<th>{ __( 'Range' ) }</th>
+							<th>{ __( 'Salary Min' ) }</th>
+							<th>{ __( 'Salary Max' ) }</th>
+						</tr>
+					</thead>
+					<tbody>
+						{ jobClassificationData.map( ( jobClassification, key ) =>
+							renderJobClassificationTableRow(
+								jobClassification,
+								key
+							)
+						) }
+					</tbody>
+				</table>
+			</figure>
 		);
 	};
 
