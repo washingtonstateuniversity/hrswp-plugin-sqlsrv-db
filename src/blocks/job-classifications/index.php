@@ -124,7 +124,13 @@ function render_job_classification_table( $args, $job_classification_data ) {
 	}
 	$table_body .= '</tbody>';
 
-	return '<table class="wp-block-table"> ' . $table_head . $table_body . ' </table>';
+	$classname = 'wp-block-table';
+
+	if ( '' !== $args['classname'] ) {
+		$classname .= ' ' . $args['classname'];
+	}
+
+	return '<figure class="' . $classname . '"><table> ' . $table_head . $table_body . ' </table></figure>';
 }
 
 /**
@@ -204,7 +210,13 @@ function render( $attributes ) {
 		? render_job_classification_list( $args, $job_classification_data )
 		: render_job_classification_table( $args, $job_classification_data );
 
-	return $output;
+	$classname = "wp-block-hrswpsqlsrv-job-classifications";
+
+	if ( '' !== $args['align'] ) {
+		$classname .= ' align' . $args['align'];
+	}
+
+	return '<div class="' . $classname . '">' . $output . '</div>';
 }
 
 /**
