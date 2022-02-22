@@ -143,30 +143,36 @@ class API {
 	 * @return array|null JSON feed of returned data, null if no data is found.
 	 */
 	public function get_job_classification_data( \WP_REST_Request $request ) {
-		$args = array(
-			'dataset' => array(
-				array(
-					'table'  => isset( $request['table'] ) ? sanitize_key( $request['table'] ) : '',
-					'fields' => array(
-						'ClassCode',
-						'JobTitle',
-						'SalRangeNum',
-						'SalrangeWExceptions',
-						'Salary_Min',
-						'Salary_Max',
-					),
-				),
-			),
-			'orderby' => 'JobTitle',
-		);
-
-		if ( '' === $args['dataset'][0]['table'] ) {
-			return null;
+		if ( ! $request || '' === $request['table'] ) {
+			return new \WP_Error( 'missing-table', __( 'No table specified for query.', 'hrswp-sqlsrv-db' ) );
 		}
 
-		$result = new Sqlsrv_Query\Sqlsrv_Query( $args );
-		$result = ( ! $result->records ) ? null : $result->records;
+		if ( 'undefined' !== $request['table'] ) {
+			$args = array(
+				'dataset' => array(
+					array(
+						'table'  => isset( $request['table'] ) ? sanitize_key( $request['table'] ) : '',
+						'fields' => array(
+							'ClassCode',
+							'JobTitle',
+							'SalRangeNum',
+							'SalrangeWExceptions',
+							'Salary_Min',
+							'Salary_Max',
+						),
+					),
+				),
+				'orderby' => 'JobTitle',
+			);
 
-		return new \WP_REST_Response( $result, 200 );
+			$result = new Sqlsrv_Query\Sqlsrv_Query( $args );
+			$result = ( ! empty( $result->records ) )
+				? $result->records
+				: array( 'request' => $request['table'] );
+
+			return new \WP_REST_Response( $result, 200 );
+		}
+
+		return new \WP_REST_Response( array( 'request' => $request['table'] ), 304 );
 	}
 }
