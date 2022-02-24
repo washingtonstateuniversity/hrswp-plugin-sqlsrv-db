@@ -309,31 +309,12 @@ function nurses_years_experience_row( $query_table ) {
  * Registers the `hrswpsqlsrv/salary-data` on the server.
  *
  * @since 0.2.0
+ * @since 0.10.0 Use `register_block_type_from_metadata`
  */
 function register_block_salary_data() {
-	register_block_type(
-		'hrswpsqlsrv/salary-data',
+	register_block_type_from_metadata(
+		__DIR__ . '/block.json',
 		array(
-			'attributes'      => array(
-				'align'      => array(
-					'type' => 'string',
-					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
-				),
-				'columns'    => array(
-					'type'    => 'number',
-					'default' => 3,
-				),
-				'className'  => array(
-					'type' => 'string',
-				),
-				'isStriped'  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'queryTable' => array(
-					'type' => 'string',
-				),
-			),
 			'render_callback' => __NAMESPACE__ . '\render',
 		)
 	);

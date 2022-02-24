@@ -1,8 +1,33 @@
 {
+	"apiVersion": 2,
 	"name": "hrswpsqlsrv/salary-data",
+	"title": "HRS Salary Data",
 	"category": "hrswp_sqlsrv_db",
+	"description": "Display WSU salary data.",
+	"textdomain": "default",
+	"attributes": {
+		"displayAsList": {
+			"type": "boolean",
+			"default": false
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"queryTable": {
+			"type": "string"
+		}
+	},
 	"supports": {
 		"align": true,
 		"html": false
-	}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Table",
+			"isDefault": true
+		},
+		{ "name": "stripes", "label": "Stripes" }
+	]
 }

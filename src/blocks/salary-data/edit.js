@@ -1,106 +1,200 @@
 /**
+ * External dependencies
+ */
+import { escape, unescape } from 'lodash';
+
+/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withSelect } = wp.data;
-const { InspectorControls } = wp.blockEditor;
-const ServerSideRender = wp.serverSideRender;
 const {
 	PanelBody,
 	Placeholder,
 	RangeControl,
 	SelectControl,
 	Spinner,
+	TextControl,
 	ToggleControl,
 } = wp.components;
+const { dispatch, useSelect } = wp.data;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
+const { __ } = wp.i18n;
 
-function SalaryData( { attributes, setAttributes, tables } ) {
-	const { className, columns, isStriped, queryTable } = attributes;
+/**
+ * Internal dependencies
+ */
+import { RenderNursesYearsExperienceRow } from './nurses-experience-row';
 
-	const inspectorControls = (
-		<InspectorControls>
-			{ 'is-style-list' !== className && (
-				<PanelBody title={ __( 'Table Settings' ) }>
-					<ToggleControl
-						label={ __( 'Striped table rows' ) }
-						checked={ isStriped }
-						onChange={ ( value ) =>
-							setAttributes( { isStriped: value } )
-						}
-					/>
-				</PanelBody>
-			) }
-			{ 'is-style-list' === className && (
-				<PanelBody title={ __( 'List Settings' ) }>
-					<RangeControl
-						label={ __( 'List Columns' ) }
-						value={ columns || 3 }
-						onChange={ ( value ) =>
-							setAttributes( { columns: value } )
-						}
-						min={ 1 }
-						max={ 6 }
-					/>
-				</PanelBody>
-			) }
-			<PanelBody title={ __( 'Select Data Source' ) }>
-				<SelectControl
-					className={ 'salary-data-table-picker__select' }
-					label={ __( 'Select desired group:' ) }
-					value={ queryTable }
-					options={ tables }
-					onChange={ ( value ) =>
-						setAttributes( { queryTable: value } )
-					}
-				/>
-			</PanelBody>
-		</InspectorControls>
+export default function SalaryDataEdit( {
+	attributes: { displayAsList, columns, queryTable },
+	setAttributes,
+} ) {
+	const { salaryData, isRequesting, tables } = useSelect(
+		( select ) => {
+			const { getSalaryData, getTableNames, isResolving } = select(
+				'hrswpsqlsrv/salary-data'
+			);
+
+			return {
+				salaryData: queryTable?.length
+					? getSalaryData( queryTable )
+					: {},
+				isRequesting: isResolving( 'getSalaryData', [ queryTable ] ),
+				tables: getTableNames(),
+			};
+		},
+		[ queryTable ]
 	);
 
-	if ( ! queryTable ) {
-		return (
-			<>
-				{ inspectorControls }
-				<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
-					{ ! Array.isArray( tables ) ? (
-						<Spinner />
-					) : (
-						__( 'Select a salary data group to display results.' )
-					) }
-				</Placeholder>
-			</>
-		);
-	}
-
-	return (
-		<>
-			{ inspectorControls }
-			<ServerSideRender
-				block="hrswpsqlsrv/salary-data"
-				attributes={ attributes }
-			/>
-		</>
-	);
-}
-
-export default withSelect( ( select ) => {
-	const allTables = select( 'hrswpsqlsrv/salary-data' ).getTableNames();
-	let tables;
-
-	if ( Array.isArray( allTables ) ) {
-		tables = allTables.reduce( ( accumulator, currentValue ) => {
+	const toggleAttribute = ( attributeName ) => ( newValue ) => {
+		if ( 'queryTable' === attributeName ) {
+			dispatch(
+				'hrswpsqlsrv/salary-data'
+			).invalidateResolutionForStoreSelector( 'getSalaryData' );
+		}
+		setAttributes( { [ attributeName ]: newValue } );
+	};
+	const getQueryTables = () => {
+		if ( ! tables?.length ) {
+			return [];
+		}
+		return tables?.reduce( ( accumulator, currentValue ) => {
 			if (
 				currentValue.value.includes( 'salary' ) ||
 				'' === currentValue.value
 			) {
 				accumulator.push( currentValue );
 			}
-
 			return accumulator;
 		}, [] );
-	}
-
-	return {
-		tables,
 	};
-} )( SalaryData );
+	const formatNumber = new Intl.NumberFormat( 'en-US', {
+		style: 'currency',
+		currency: 'USD',
+		maximumFractionDigits: 0,
+	} );
+
+	const renderJobClassificationName = ( name ) =>
+		! name ? __( '(Untitled)' ) : unescape( name ).trim();
+	const renderJobClassificationCurrency = ( number ) =>
+		! Number.isNaN( Number( number ) )
+			? formatNumber.format( number )
+			: renderJobClassificationName( number );
+
+	const renderSalaryDataTable = () => {
+		return (
+			<figure className="wp-block-table">
+				<table>
+					<thead>
+						<tr>
+							{ Object.keys(
+								salaryData[ 0 ]
+							).map( ( salaryKey, index ) =>
+								renderSalaryDataTableHeaderRow(
+									salaryKey,
+									index
+								)
+							) }
+						</tr>
+						{ queryTable.includes( 'nurses' ) &&
+							RenderNursesYearsExperienceRow( queryTable ) }
+					</thead>
+					<tbody>
+						{ salaryData.map( ( salary, index ) =>
+							renderSalaryDataTableRow( salary, index )
+						) }
+					</tbody>
+				</table>
+			</figure>
+		);
+	};
+
+	const renderSalaryDataTableHeaderRow = ( salaryKey, index ) => {
+		const headValue =
+			'RANGE' !== salaryKey
+				? `Step ${ renderJobClassificationName( salaryKey ) }`
+				: 'Range';
+		return <td key={ index }>{ headValue }</td>;
+	};
+
+	const renderSalaryDataTableRow = ( salary, index ) => {
+        return (
+			<tr key={ index }>
+				{ Object.entries( salary ).map(
+					( entry, index ) => {
+                        const [ key, value ] = entry;
+						const cell =
+							'RANGE' !== key
+								? renderJobClassificationCurrency( value )
+								: renderJobClassificationName( value );
+                        return <td key={ index }>{ cell }</td>;
+                    }
+				) }
+			</tr>
+		);
+	};
+
+	const renderSalaryDataList = () => {
+		return (
+			<ul>
+				<li>Hi</li>
+			</ul>
+		);
+	};
+
+	return (
+		<div { ...useBlockProps() }>
+			<InspectorControls>
+				<PanelBody title={ __( 'Salary Data settings' ) }>
+					<ToggleControl
+						label={ __( 'Display as list' ) }
+						checked={ displayAsList }
+						onChange={ toggleAttribute( 'displayAsList' ) }
+					/>
+					{ displayAsList && (
+						<RangeControl
+							label={ __( 'List Columns' ) }
+							value={ columns || 3 }
+							onChange={ toggleAttribute( 'columns' ) }
+							min={ 1 }
+							max={ 6 }
+						/>
+					) }
+					<SelectControl
+						className={ 'salary-data-table-picker__select' }
+						label={ __( 'Select Job Data source' ) }
+						value={ queryTable }
+						options={ getQueryTables() }
+						onChange={ toggleAttribute( 'queryTable' ) }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			{ ! queryTable && (
+				<Placeholder
+					icon="admin-post"
+					label={ __( 'Salary Data' ) }
+				>
+					{ ! Array.isArray( tables ) ? (
+						<Spinner />
+					) : (
+						__(
+							'Select a salary data group to display results.'
+						)
+					) }
+				</Placeholder>
+			) }
+			{ queryTable && isRequesting && (
+				<Placeholder
+					icon="admin-post"
+					label={ __( 'Salary Data' ) }
+				>
+					<Spinner />
+				</Placeholder>
+			) }
+			{ ! isRequesting &&
+				salaryData?.length > 0 &&
+				( displayAsList
+					? renderSalaryDataList()
+					: renderSalaryDataTable() ) }
+		</div>
+	);
+}
