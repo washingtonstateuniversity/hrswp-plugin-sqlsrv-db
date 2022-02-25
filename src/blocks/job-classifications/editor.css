@@ -6,6 +6,10 @@
 		margin-bottom: 1.5rem;
 		width: 100%;
 
+		& thead {
+			border-bottom: none;
+		}
+
 		& td,
 		& th {
 			border: none;
@@ -15,6 +19,11 @@
 			background-color: var(--wp--custom--wsu-color-black--10);
 			font-weight: 600;
 		}
+
+		& tbody tr {
+  			border-bottom: 1px solid var(--wp--custom--wsu-color-black--20);
+		}
+
 	}
 
 	&.is-style-stripes .wp-block-table tbody tr:nth-child(2n+1) {
