@@ -23,7 +23,7 @@
 		}
 
 		& tbody tr {
-  			border-bottom: 1px solid var(--wp--custom--wsu-color-black--20);
+			border-bottom: 1px solid var(--wp--custom--wsu-color-black--20);
 		}
 
 	}
