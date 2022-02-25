@@ -13,6 +13,8 @@
 		& td,
 		& th {
 			border: none;
+			padding: 0.45em;
+			text-align: left;
 		}
 
 		& th {
