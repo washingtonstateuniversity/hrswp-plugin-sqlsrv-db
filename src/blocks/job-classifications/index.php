@@ -177,6 +177,10 @@ function render( $attributes ) {
 		'columns'         => $attributes['columns'],
 	);
 
+	if ( '' === $args['table'] ) {
+		return '<p>' . __( 'Select a job classification data group to display results.', 'hrswp-sqlsrv-db' ) . '</p>';
+	}
+
 	$query = array(
 		'dataset' => array(
 			array(
@@ -193,10 +197,6 @@ function render( $attributes ) {
 		),
 		'orderby' => 'JobTitle',
 	);
-
-	if ( '' === $args['table'] ) {
-		return '<p>' . __( 'Select a job classification data group to display results.', 'hrswp-sqlsrv-db' ) . '</p>';
-	}
 
 	$response = new Sqlsrv_Query\Sqlsrv_Query( $query );
 
