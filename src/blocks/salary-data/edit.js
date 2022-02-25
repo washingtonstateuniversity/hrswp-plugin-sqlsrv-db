@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { escape, unescape } from 'lodash';
+import { unescape } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -9,11 +9,8 @@ import { escape, unescape } from 'lodash';
 const {
 	PanelBody,
 	Placeholder,
-	RangeControl,
 	SelectControl,
 	Spinner,
-	TextControl,
-	ToggleControl,
 } = wp.components;
 const { dispatch, useSelect } = wp.data;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
@@ -25,7 +22,7 @@ const { __ } = wp.i18n;
 import { RenderNursesYearsExperienceRow } from './nurses-experience-row';
 
 export default function SalaryDataEdit( {
-	attributes: { displayAsList, columns, queryTable },
+	attributes: { queryTable },
 	setAttributes,
 } ) {
 	const { salaryData, isRequesting, tables } = useSelect(
@@ -133,32 +130,10 @@ export default function SalaryDataEdit( {
 		);
 	};
 
-	const renderSalaryDataList = () => {
-		return (
-			<ul>
-				<li>Hi</li>
-			</ul>
-		);
-	};
-
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
 				<PanelBody title={ __( 'Salary Data settings' ) }>
-					<ToggleControl
-						label={ __( 'Display as list' ) }
-						checked={ displayAsList }
-						onChange={ toggleAttribute( 'displayAsList' ) }
-					/>
-					{ displayAsList && (
-						<RangeControl
-							label={ __( 'List Columns' ) }
-							value={ columns || 3 }
-							onChange={ toggleAttribute( 'columns' ) }
-							min={ 1 }
-							max={ 6 }
-						/>
-					) }
 					<SelectControl
 						className={ 'salary-data-table-picker__select' }
 						label={ __( 'Select Job Data source' ) }
@@ -169,32 +144,22 @@ export default function SalaryDataEdit( {
 				</PanelBody>
 			</InspectorControls>
 			{ ! queryTable && (
-				<Placeholder
-					icon="admin-post"
-					label={ __( 'Salary Data' ) }
-				>
+				<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
 					{ ! Array.isArray( tables ) ? (
 						<Spinner />
 					) : (
-						__(
-							'Select a salary data group to display results.'
-						)
+						__( 'Select a salary data group to display results.' )
 					) }
 				</Placeholder>
 			) }
 			{ queryTable && isRequesting && (
-				<Placeholder
-					icon="admin-post"
-					label={ __( 'Salary Data' ) }
-				>
+				<Placeholder icon="admin-post" label={ __( 'Salary Data' ) }>
 					<Spinner />
 				</Placeholder>
 			) }
 			{ ! isRequesting &&
 				salaryData?.length > 0 &&
-				( displayAsList
-					? renderSalaryDataList()
-					: renderSalaryDataTable() ) }
+				renderSalaryDataTable() }
 		</div>
 	);
 }

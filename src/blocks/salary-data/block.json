@@ -6,14 +6,6 @@
 	"description": "Display WSU salary data.",
 	"textdomain": "default",
 	"attributes": {
-		"displayAsList": {
-			"type": "boolean",
-			"default": false
-		},
-		"columns": {
-			"type": "number",
-			"default": 3
-		},
 		"queryTable": {
 			"type": "string"
 		}
