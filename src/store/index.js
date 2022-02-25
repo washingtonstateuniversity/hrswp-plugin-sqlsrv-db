@@ -101,9 +101,7 @@ export default function registerStores() {
 			},
 			*getSalaryData( table ) {
 				const path = `/hrswp-sqlsrv-db/v1/salarydata/table/${ table }`;
-				const salaryData = yield actions.fetchFromAPI(
-					path
-				);
+				const salaryData = yield actions.fetchFromAPI( path );
 				return actions.getSalaryData( salaryData );
 			},
 		},
