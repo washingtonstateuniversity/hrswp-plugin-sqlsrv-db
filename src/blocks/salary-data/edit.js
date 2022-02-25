@@ -6,12 +6,7 @@ import { unescape } from 'lodash';
 /**
  * WordPress dependencies
  */
-const {
-	PanelBody,
-	Placeholder,
-	SelectControl,
-	Spinner,
-} = wp.components;
+const { PanelBody, Placeholder, SelectControl, Spinner } = wp.components;
 const { dispatch, useSelect } = wp.data;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
@@ -110,22 +105,20 @@ export default function SalaryDataEdit( {
 			'RANGE' !== salaryKey
 				? `Step ${ renderJobClassificationName( salaryKey ) }`
 				: 'Range';
-		return <td key={ index }>{ headValue }</td>;
+		return <th key={ index }>{ headValue }</th>;
 	};
 
 	const renderSalaryDataTableRow = ( salary, index ) => {
-        return (
+		return (
 			<tr key={ index }>
-				{ Object.entries( salary ).map(
-					( entry, index ) => {
-                        const [ key, value ] = entry;
-						const cell =
-							'RANGE' !== key
-								? renderJobClassificationCurrency( value )
-								: renderJobClassificationName( value );
-                        return <td key={ index }>{ cell }</td>;
-                    }
-				) }
+				{ Object.entries( salary ).map( ( entry, i ) => {
+					const [ key, value ] = entry;
+					const cell =
+						'RANGE' !== key
+							? renderJobClassificationCurrency( value )
+							: renderJobClassificationName( value );
+					return <td key={ i }>{ cell }</td>;
+				} ) }
 			</tr>
 		);
 	};
