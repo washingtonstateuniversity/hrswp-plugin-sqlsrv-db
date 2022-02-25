@@ -94,6 +94,26 @@ class API {
 				},
 			)
 		);
+
+		// Register a public route to get job classification data.
+		register_rest_route(
+			$this->namespace,
+			'/salarydata/table/(?P<table>[a-z0-9_\-]+)',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_salary_data' ),
+				'args'                => array(
+					'table' => array(
+						'sanitize_callback' => function( $param ) {
+							return sanitize_key( $param );
+						},
+					),
+				),
+				'permission_callback' => function () {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	/**
@@ -163,6 +183,39 @@ class API {
 					),
 				),
 				'orderby' => 'JobTitle',
+			);
+
+			$result = new Sqlsrv_Query\Sqlsrv_Query( $args );
+			$result = ( ! empty( $result->records ) )
+				? $result->records
+				: array( 'request' => $request['table'] );
+
+			return new \WP_REST_Response( $result, 200 );
+		}
+
+		return new \WP_REST_Response( array( 'request' => $request['table'] ), 304 );
+	}
+
+	/**
+	 * Returns data from a given Salary data table.
+	 *
+	 * @since 0.10.0
+	 *
+	 * @param \WP_REST_Request $request Data from the request passed to the callback.
+	 * @return array|null JSON feed of returned data, null if no data is found.
+	 */
+	public function get_salary_data( \WP_REST_Request $request ) {
+		if ( ! $request || '' === $request['table'] ) {
+			return new \WP_Error( 'missing-table', __( 'No table specified for query.', 'hrswp-sqlsrv-db' ) );
+		}
+
+		if ( 'undefined' !== $request['table'] ) {
+			$args = array(
+				'dataset' => array(
+					array(
+						'table' => isset( $request['table'] ) ? sanitize_key( $request['table'] ) : '',
+					),
+				),
 			);
 
 			$result = new Sqlsrv_Query\Sqlsrv_Query( $args );

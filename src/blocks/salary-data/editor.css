@@ -1,90 +1,35 @@
-.wp-block[data-type="hrswpsqlsrv/salary-data"] .hrswp-sqlsrv-block {
-	overflow: auto;
-}
+.wp-block-hrswpsqlsrv-salary-data {
 
-.hrswp-sqlsrv-block {
-
-	& table {
-		border-collapse: collapse;
+	& .wp-block-table table {
 		border-spacing: 0;
-		border: none;
 		font-variant-numeric: lining-nums tabular-nums;
 		margin-bottom: 1.5rem;
 		width: 100%;
+
+		& thead {
+			border-bottom: none;
+		}
+
+		& td,
+		& th {
+			border: none;
+			padding: 0.45em;
+			text-align: left;
+		}
+
+		& th {
+			background-color: var(--wp--custom--wsu-color-black--10);
+			font-weight: 600;
+		}
+
+		& tbody tr {
+			border-bottom: 1px solid var(--wp--custom--wsu-color-black--20);
+		}
+
 	}
 
-	& thead {
-		border-bottom: none;
-	}
-
-	& thead tr {
-		font-weight: 600;
-	}
-
-	& tbody tr {
-		border-bottom: 1px solid var(--neutral-light);
-	}
-
-	& td,
-	& th {
-		border: none;
-		padding: 0.45em;
-		text-align: left;
-	}
-
-	& th.nums,
-	& td.nums {
-		text-align: right;
-	}
-
-	& th {
-		background-color: var(--neutral-blue);
-		font-weight: 600;
-	}
-
-	&.is-style-stripes tr:nth-child(odd) {
-		background: #f9f9f9;
-	}
-
-	&.wp-block-columns {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	&.has-1-columns {
-		display: block;
-	}
-
-	&.has-1-columns .wp-block-column {
-		margin-left: 0;
-	}
-
-	&.wp-block-columns ul {
-		padding: 0.3em 2em 1em 2em;
-	}
-
-}
-
-@media (min-width: 34em) {
-
-	.hrswp-sqlsrv-block.has-2-columns .wp-block-column {
-		flex-basis: calc((100% / 2) - 2rem);
-	}
-
-	.hrswp-sqlsrv-block.has-3-columns .wp-block-column {
-		flex-basis: calc((100% / 3) - 2rem);
-	}
-
-	.hrswp-sqlsrv-block.has-4-columns .wp-block-column {
-		flex-basis: calc((100% / 4) - 2rem);
-	}
-
-	.hrswp-sqlsrv-block.has-5-columns .wp-block-column {
-		flex-basis: calc((100% / 5) - 2rem);
-	}
-
-	.hrswp-sqlsrv-block.has-6-columns .wp-block-column {
-		flex-basis: calc((100% / 6) - 2rem);
+	&.is-style-stripes .wp-block-table tbody tr:nth-child(2n+1) {
+		background: var(--wp--custom--wsu-color-black--3);
 	}
 
 }
