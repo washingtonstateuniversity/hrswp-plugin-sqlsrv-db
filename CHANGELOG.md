@@ -19,6 +19,20 @@ Changelog formatting (http://semver.org/):
 
 ## 0.10.0-rc.1 (:construction: TBD)
 
+### Added
+
+- Add WP Rest API endpoint and store for salary data. (b1eb163)
+- Add rest route for Job Classification data. (f3bb06b)
+
+### Changed
+
+- Convert salary data block to API v2 and stop using `serverSideRender`. (b1eb163)
+- Refactor Job Classifications block to use API v2 and replace `ServerSideRender`. (f3bb06b)
+- Switch to using the HRS theme global style variables. (1f7db38)
+- Add GitHub API to plugin header for updates. (510192d)
+- Modify WebPack config to copy `block.json` files to the `build` directory for block registration. (f3bb06b)
+- Bump nanoid from 3.1.30 to 3.2.0. (34fe424)
+
 ## 0.9.0 (2021-12-23)
 
 ### Changed
