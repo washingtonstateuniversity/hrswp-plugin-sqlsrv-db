@@ -26,6 +26,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 6.0.0.
 - Convert salary data block to API v2 and stop using `serverSideRender`. (b1eb163)
 - Refactor Job Classifications block to use API v2 and replace `ServerSideRender`. (f3bb06b)
 - Switch to using the HRS theme global style variables. (1f7db38)
