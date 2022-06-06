@@ -1,0 +1,30 @@
+.wp-block-hrswpsqlsrv-job-classifications {
+	overflow: auto;
+
+	& .has-columns {
+		column-count: 3;
+		column-gap: 4rem;
+		list-style-type: none;
+		margin-bottom: 1em;
+
+		&.has-columns-1 {
+			column-count: 1;
+		}
+
+		&.has-columns-2 {
+			column-count: 2;
+		}
+
+		&.has-columns-4 {
+			column-count: 4;
+		}
+
+		&.has-columns-5 {
+			column-count: 5;
+		}
+
+		&.has-columns-6 {
+			column-count: 6;
+		}
+	}
+}

@@ -65,7 +65,16 @@ const config = {
 						const fileName = basename(
 							dirname( absoluteFilename )
 						);
-						return `blocks/${ fileName }[ext]`;
+						return `blocks/${ fileName }/[name][ext]`;
+					},
+				},
+				{
+					from: 'src/blocks/**/block.json',
+					to( { absoluteFilename } ) {
+						const fileName = basename(
+							dirname( absoluteFilename )
+						);
+						return `blocks/${ fileName }/[name][ext]`;
 					},
 				},
 			],

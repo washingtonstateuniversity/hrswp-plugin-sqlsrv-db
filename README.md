@@ -1,6 +1,6 @@
 # HRSWP Sqlsrv DB
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest) ![WordPress tested up to version 5.8.2](https://img.shields.io/badge/WordPress-v5.8.2%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/develop/LICENSE.md)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/releases/latest) ![WordPress tested up to version 6.0.0](https://img.shields.io/badge/WordPress-v6.0.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/hrswp-plugin-sqlsrv-db)](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/blob/develop/LICENSE.md)
 
 ## Overview
 
@@ -26,7 +26,7 @@ This plugin is not in the WordPress plugins directory. You have to install it ma
 
 ### Updates
 
-Please note that this plugin will not update automatically and will not notify of new available updates. It is your responsibility to make sure you stay up to date with the latest version.
+Please note that this plugin will not update automatically and will not notify of available updates. It is your responsibility to make sure you stay up to date with the latest version. It does include a GitHub repository URL in the Update URI field, so if you have a plugin that can update from GitHub then this plugin should be compatible with that.
 
 ### Deactivating and Deleting: Plugin Data
 

@@ -1,3 +1,35 @@
-.wp-block[data-type="hrswpsqlsrv/job-classifications"] .hrswp-sqlsrv-block {
-	overflow: auto;
+.wp-block-hrswpsqlsrv-job-classifications {
+
+	& .wp-block-table table {
+		border-spacing: 0;
+		font-variant-numeric: lining-nums tabular-nums;
+		margin-bottom: 1.5rem;
+		width: 100%;
+
+		& thead {
+			border-bottom: none;
+		}
+
+		& td,
+		& th {
+			border: none;
+			padding: 0.45em;
+			text-align: left;
+		}
+
+		& th {
+			background-color: var(--wp--custom--wsu-color-black--10);
+			font-weight: 600;
+		}
+
+		& tbody tr {
+			border-bottom: 1px solid var(--wp--custom--wsu-color-black--20);
+		}
+
+	}
+
+	&.is-style-stripes .wp-block-table tbody tr:nth-child(2n+1) {
+		background: var(--wp--custom--wsu-color-black--3);
+	}
+
 }

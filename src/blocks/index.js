@@ -25,7 +25,7 @@ export const registerBlocks = () => {
 		if ( ! block ) {
 			return;
 		}
-		const { settings, name } = block;
-		registerBlockType( name, settings );
+		const { metadata, settings, name } = block;
+		registerBlockType( { name, ...metadata }, settings );
 	} );
 };
