@@ -17,6 +17,12 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 0.11.0-beta.1 (:construction: TBD)
+
+### Fixed
+
+- Fix missing `WHERE` statement handling in query. (28295c2)
+
 ## 0.10.0 (2022-06-06)
 
 ### Added
