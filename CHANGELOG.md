@@ -21,6 +21,7 @@ Changelog formatting (http://semver.org/):
 
 ### Fixed
 
+- Fix missing `ORDER BY` statement when selecting all columns (`*`). (e104a13)
 - Fix missing `WHERE` statement handling in query. (28295c2)
 
 ## 0.10.0 (2022-06-06)
