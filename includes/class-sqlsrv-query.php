@@ -245,7 +245,7 @@ class Sqlsrv_Query {
 		$fields = implode( ', ', $fields_array );
 		$tables = implode( ', ', array_unique( $tables_array ) );
 
-		// Build the order and orderby statement clauses.
+		// Build the ORDER statement clause.
 		$rand = ( isset( $q['orderby'] ) && 'rand' === $q['orderby'] );
 		if ( ! isset( $q['order'] ) ) {
 			$q['order'] = $rand ? '' : 'DESC';
@@ -253,6 +253,7 @@ class Sqlsrv_Query {
 			$q['order'] = $rand ? '' : $this->parse_order( $q['order'] );
 		}
 
+		// Build the ORDERBY statement clause.
 		if ( empty( $q['orderby'] ) || false === $q['orderby'] || 'none' === $q['orderby'] ) {
 			$orderby = '';
 		} else {
@@ -272,7 +273,14 @@ class Sqlsrv_Query {
 			$orderby = implode( ', ', $orderby_array );
 		}
 
-		// Build the groupby statement clause.
+		// Build the WHERE statement clause.
+		if ( ! isset( $q['where'] ) || empty( $q['where'] ) ) {
+			$where = '';
+		} else {
+			$where = addslashes_gpc( urldecode( $q['where'] ) );
+		}
+
+		// Build the GROUPBY statement clause.
 		if ( empty( $q['groupby'] ) || false === $q['groupby'] || 'none' === $q['groupby'] ) {
 			$groupby = '';
 		} else {
@@ -285,6 +293,9 @@ class Sqlsrv_Query {
 		}
 		if ( ! empty( $orderby ) ) {
 			$orderby = 'ORDER BY ' . $orderby;
+		}
+		if ( ! empty( $where ) ) {
+			$where = 'AND ' . $where;
 		}
 
 		$this->request = $msdb->prepare(
