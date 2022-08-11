@@ -262,7 +262,9 @@ class Sqlsrv_Query {
 			foreach ( $q['orderby'] as $_orderby ) {
 				$orderby = addslashes_gpc( urldecode( $_orderby ) );
 
-				if ( ! array_key_exists( $orderby, $field_table_array ) ) {
+				if ( array_key_exists( '*', $field_table_array ) ) {
+					$orderby_clause = $orderby;
+				} elseif ( ! array_key_exists( $orderby, $field_table_array ) ) {
 					continue;
 				} else {
 					$orderby_clause = "{$field_table_array[ $orderby ]}.{$orderby}";
