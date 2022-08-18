@@ -19,6 +19,10 @@ Changelog formatting (http://semver.org/):
 
 ## 0.11.0-beta.1 (:construction: TBD)
 
+### Changed
+
+- Add limit handling in to query. (81815a0)
+
 ### Fixed
 
 - Fix missing `ORDER BY` statement when selecting all columns (`*`). (e104a13)
