@@ -157,12 +157,6 @@ class Setup {
 
 		// The Microsoft SQL Server query class.
 		require __DIR__ . '/class-sqlsrv-query.php';
-
-		// The plugin API class.
-		require __DIR__ . '/class-api.php';
-
-		// The plugin Sideload Image class.
-		require __DIR__ . '/class-sideload-image.php';
 	}
 
 	/**
