@@ -25,7 +25,7 @@ Changelog formatting (http://semver.org/):
 
 ### Removed
 
-- Remove the REST API store. (cf52646)
+- Remove the REST API store. (cf52646, 9aa4d19)
 
 ### Fixed
 
