@@ -23,6 +23,10 @@ Changelog formatting (http://semver.org/):
 
 - Add limit handling in to query. (81815a0)
 
+### Removed
+
+- Remove the REST API store. (cf52646)
+
 ### Fixed
 
 - Fix missing `ORDER BY` statement when selecting all columns (`*`). (e104a13)
