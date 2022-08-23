@@ -25,6 +25,9 @@ Changelog formatting (http://semver.org/):
 
 ### Removed
 
+- Remove awards list block. (aa57885)
+- Remove custom block category. (aa57885)
+- Remove sideload image class. (aa57885)
 - Remove the REST API store. (cf52646, 9aa4d19)
 
 ### Fixed
