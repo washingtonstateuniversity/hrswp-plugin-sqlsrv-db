@@ -6,7 +6,6 @@ const { registerBlockType } = wp.blocks;
 /**
  * Internal dependencies
  */
-import * as salaryData from './salary-data';
 import * as jobClassifications from './job-classifications';
 
 /**
@@ -20,7 +19,7 @@ import * as jobClassifications from './job-classifications';
  * ```
  */
 export const registerBlocks = () => {
-	[ salaryData, jobClassifications ].forEach( ( block ) => {
+	[ jobClassifications ].forEach( ( block ) => {
 		if ( ! block ) {
 			return;
 		}
