@@ -25,6 +25,7 @@ Changelog formatting (http://semver.org/):
 
 ### Removed
 
+- Remove salary data block. (e6e849c)
 - Remove awards list block. (aa57885)
 - Remove custom block category. (aa57885)
 - Remove sideload image class. (aa57885)
