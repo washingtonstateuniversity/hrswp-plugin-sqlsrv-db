@@ -165,7 +165,6 @@ class Setup {
 	 */
 	private function define_blocks() {
 		$this->blocks = array(
-			'salary-data'         => 'hrswpsqlsrv/salary-data',
 			'job-classifications' => 'hrswpsqlsrv/job-classifications',
 		);
 	}
