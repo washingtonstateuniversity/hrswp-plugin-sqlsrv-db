@@ -34,7 +34,6 @@ require __DIR__ . '/includes/class-setup.php';
 add_action( 'plugins_loaded', __NAMESPACE__ . '\load' );
 
 register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'activate' ) );
-register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'deactivate' ) );
 register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\Setup', 'uninstall' ) );
 
 /**
