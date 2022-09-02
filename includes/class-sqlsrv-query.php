@@ -7,6 +7,7 @@
  */
 
 namespace HRSWP\SQLSRV\Sqlsrv_Query;
+
 use HRSWP\SQLSRV\Sqlsrv_DB;
 
 if ( ! defined( 'ABSPATH' ) ) {

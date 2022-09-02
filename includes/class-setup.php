@@ -205,12 +205,9 @@ class Setup {
 	 * @since 0.2.0
 	 */
 	public function notice__missing_config_file() {
-		$message = sprintf(
-			/* translators: %s: hrswp-sqlsrv-config.php */
-			__( 'ERROR: There doesn\'t seem to be a %s file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' ),
-			'<code>hrswp-sqlsrv-config.php</code>'
+		printf(
+			'<div class="notice notice-error"><p>%s</p></div>',
+			esc_html__( 'ERROR: There doesn\'t seem to be a', 'hrswp-sqlsrv-db' ) . '<code>hrswp-sqlsrv-config.php</code>' . esc_html__( 'file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' ),
 		);
-
-		printf( '<div class="notice notice-error"><p>%s</p></div>', $message );
 	}
 }
