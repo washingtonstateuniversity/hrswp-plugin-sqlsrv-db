@@ -1,0 +1,29 @@
+name: "✨ Enhancement"
+description: "Suggest an idea for this project."
+labels: "enhancement"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to suggest an improvement. Please complete as much of the form as you can.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your suggestion related to a problem? Please describe.
+      description: Please describe the problem you are trying to solve and how it should work.
+      placeholder: |
+        I use this project to `...` but it `...describe problem...`. I would like `...` so that `...describe benefit...`.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you have considered.
+      description: |
+        Please provide a concise description of any alternative solutions you've considered.
+      placeholder: |
+        I considered `...describe alternative...`, but I feel my proposed solution is better because `...reasons...`.
+    validations:
+      required: false
