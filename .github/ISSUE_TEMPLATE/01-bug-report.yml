@@ -1,0 +1,72 @@
+name: "🐛 Bug report"
+description: "Report a bug with this project."
+labels: "bug"
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for submitting a bug report! Please complete as much of the form as you can.
+
+    - type: textarea
+      id: issue-description
+      attributes:
+          label: Describe the Issue
+          description: Please write a brief and clear description of the bug, including what you expect to happen and what actually happened.
+          placeholder: |
+              The `...` feature is not working properly. I expect `...` to happen, but `...` happens instead.
+      validations:
+          required: true
+
+    - type: textarea
+      id: steps-to-reproduce
+      attributes:
+          label: Steps to Reproduce
+          description: Please write the steps needed to reproduce the bug.
+          placeholder: |
+              1. Go to `...`
+              2. Click on `...`
+              3. Scroll down to `...`
+              4. See error
+      validations:
+          required: true
+
+    - type: textarea
+      id: screenshots
+      attributes:
+          label: Screenshots, Screen recording, Code snippet
+          description: |
+              If possible, please upload a screenshot or screen recording that shows the bug. You can use a program like LICEcap to create a GIF screen recording: https://www.cockos.com/licecap/.
+              You can attach images or log files by clicking this area to highlight it and then dragging files in. For small snippets paste it directly here, or you can use GitHub Gist to share multiple code files: https://gist.github.com.
+      validations:
+          required: false
+
+    - type: textarea
+      id: environment-general
+      attributes:
+          label: Environment Information
+          placeholder: |
+             - Device: <!-- [e.g. PC, MacBook] -->
+             - OS: <!-- [e.g. Windows 10, MacOS 10.14.3] -->
+             - WordPress version: <!-- [e.g. 5.9.3 ] -->
+             - Browser and version: <!-- [e.g. Firefox 65.0.1, Chrome 73.0.3683.75, Safari 12.0.3] -->
+      validations:
+          required: false
+
+    - type: dropdown
+      id: environment-version
+      attributes:
+        label: Version
+        description: What version of this project are you running?
+        options:
+          - Latest released version (stable)
+          - Development version (develop)
+          - Other
+
+    - type: checkboxes
+      id: environment-theme
+      attributes:
+        label: Using the HRS Theme
+        description: HRS plugins are optimized to run with the HRS Theme. Please indicate whether it is active.
+        options:
+          - label: The HRS Theme is active.
+            required: false
