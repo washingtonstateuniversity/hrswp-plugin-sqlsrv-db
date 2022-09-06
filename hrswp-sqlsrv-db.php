@@ -10,7 +10,7 @@
  * Text Domain: hrswp-sqlsrv-db
  * Requires at least: 5.0
  * Tested up to: 6.0.0
- * Requires PHP: 7.0
+ * Requires PHP: 7.4
  *
  * @package HRSWP_Sqlsrv_DB
  */
