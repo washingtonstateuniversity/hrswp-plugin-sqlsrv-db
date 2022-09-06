@@ -59,4 +59,4 @@ jobs:
       - name: Log PHPCS debug information
         run: phpcs -i
       - name: Run PHPCS
-        run: phpcs -q -n --report=checkstyle | cs2pr
+        run: phpcs -q -n --report=checkstyle . | cs2pr
