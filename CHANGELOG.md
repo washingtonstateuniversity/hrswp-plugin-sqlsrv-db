@@ -21,18 +21,32 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Bump WP tested-to to 6.0.2. (2ed5a84)
+- Bump PHP required version from 7.0 to 7.4. (2ed5a84)
+- Update README to reflect removal of blocks, close #91. (2ed5a84)
+- Switch from setup class to functions, close #92. (99a93a8)
+- Move classes into dedicated directory. (99a93a8)
+- Switch to phpcompatibility-wp and `"prefer-stable"` and update phpcs config.
+- Switch to GitHub forms for handling issues. (16383d7)
+- Remove unneeded checks from CS actions. (03e76d1)
 - Add limit handling in to query. (81815a0)
+- Update Composer dependencies.
 
 ### Removed
 
+- Remove plugin status option, close #93. (4be0004)
+- Separate employee data blocks from SQL Server tools, close #90 (06ad169)
+- Remove job classifications block. (1db10b0)
 - Remove salary data block. (e6e849c)
 - Remove awards list block. (aa57885)
 - Remove custom block category. (aa57885)
 - Remove sideload image class. (aa57885)
 - Remove the REST API store. (cf52646, 9aa4d19)
+- Remove unneeded npm dev dependencies and build tools. (06ad169)
 
 ### Fixed
 
+- Restore @wordpress/npm-package-json-lint-config.
 - Fix missing `ORDER BY` statement when selecting all columns (`*`). (e104a13)
 - Fix missing `WHERE` statement handling in query. (28295c2)
 
