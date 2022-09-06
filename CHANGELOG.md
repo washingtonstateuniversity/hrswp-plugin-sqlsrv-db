@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 0.11.0-beta.1 (:construction: TBD)
+## 0.11.0-rc.1 (:construction: TBD)
 
 ### Changed
 
