@@ -8,11 +8,7 @@ A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server
 
 ## Description
 
-This plugin facilitates reading from external (non-WordPress) Microsoft SQL Server databases and displaying the retrieved data on the website. It uses several custom blocks to handle data selection and currently is tailored only to several specific datasets. The blocks it provides are:
-
-- HRS Salary Data: this retrieves data from any salary dataset and can display it in either tabular or list format.
-- HRS Job Classifications: this retrieves data from any job classification dataset and can display the results in either tabular or list format.
-- HRS Awards: this retrieves award data from the employee recognition dataset and, after importing the images for each award into the WP Media Library, will display the results in either grid or list format.
+This plugin enables reading from Microsoft SQL Server databases. It stores database credentials and table information in a restricted config file similar to `wp-config`.
 
 ## Installation
 
@@ -21,22 +17,16 @@ This plugin is not in the WordPress plugins directory. You have to install it ma
 1. [Download the latest version from GitHub](https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db/archive/stable.zip) and rename the .zip file to: `hrswp-plugin-sqlsrv-db.zip`.
 2. From here you can either extract the files into your plugins directory via SFTP or navigate to the Plugins screen in the admin area of your site to upload it through the plugin uploader (steps 3-5).
 3. Select Plugins > Add New and then select the "Upload Plugin" button.
-4. Select "Browse" and locate the downloaded .zip file for the plugin (it **must** be a file in .zip format) on your computer. Select "Install Now."
+4. Select "Browse" and locate the downloaded .zip file for the plugin (it **must** be a file in `.zip` format) on your computer. Select "Install Now."
 5. You should receive a message that the plugin installed correctly. Select "Activate Plugin" or return to the plugins page to activate later.
 
 ### Updates
 
 Please note that this plugin will not update automatically and will not notify of available updates. It is your responsibility to make sure you stay up to date with the latest version. It does include a GitHub repository URL in the Update URI field, so if you have a plugin that can update from GitHub then this plugin should be compatible with that.
 
-### Deactivating and Deleting: Plugin Data
-
-On deactivation the plugin will not delete any of its data or settings so that everything remains in place for reactivation.
-
-The only data the plugin saves to the WP database is a plugin status setting. Delete the plugin through the WP Plugins admin interface to delete this setting from the database during the uninstall process. **The plugin configuration file must be manually deleted from the server in a separate step.**
-
 ## For Developers
 
-The HRSWP Sqlsrv DB plugin development environment relies primarily on NPM and Composer. The `package.json` and `composer.json` configuration files manage necessary dependencies for testing and building the production version of the theme. The NPM scripts in `package.json` do most of the heavy lifting.
+The HRSWP Sqlsrv DB plugin development environment relies primarily on NPM and Composer. The `package.json` and `composer.json` configuration files manage necessary dependencies for testing. The NPM scripts in `package.json` do most of the heavy lifting.
 
 ### Initial Setup
 
@@ -49,24 +39,13 @@ The HRSWP Sqlsrv DB plugin development environment relies primarily on NPM and C
 In a terminal:
 
 ~~~bash
-git clone https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db.git hrswp-plugin-sqlsrv-db
+git clone https://github.com/washingtonstateuniversity/hrswp-plugin-sqlsrv-db.git
 cd hrswp-plugin-sqlsrv-db
-npm install; composer install
-npm test -s
+npm install
+composer install
+npm lint
 git checkout -b new-branch-name
 ~~~
-
-### Build Commands
-
-The following commands will handle basic build functions. (Remove the `-s` flag to show additional debug info.)
-
-- `npm run build -s`: Remove old compiled files such as minified CSS, lint PHP and CSS, and then compile new versions.
-- `npm test -s`: Check all PHP and CSS files for coding standards compliance.
-- `npm run clean -s`: Remove old compiled files such as minified CSS.
-- `npm run build:styles -s`: Compile CSS.
-- `npm run build:scripts -s`: Compile JS and blocks.
-
-See the scripts section of `package.json` for additional available commands.
 
 ## Support Level
 
