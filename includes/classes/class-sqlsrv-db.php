@@ -141,12 +141,12 @@ class Sqlsrv_DB {
 		if ( file_exists( ABSPATH . 'hrswp-sqlsrv-config.php' ) ) {
 
 			// The config file exists in ABSPATH.
-			require( ABSPATH . 'hrswp-sqlsrv-config.php' );
+			require ABSPATH . 'hrswp-sqlsrv-config.php';
 
 		} elseif ( file_exists( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' ) ) {
 
 			// The config file exists one level above ABSPATH.
-			require( dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php' );
+			require dirname( ABSPATH ) . '/hrswp-sqlsrv-config.php';
 
 		} else {
 

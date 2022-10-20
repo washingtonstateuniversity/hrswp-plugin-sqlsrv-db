@@ -1,8 +1,0 @@
-{
-	"name": "hrswpsqlsrv/list-awards",
-	"category": "hrswp_sqlsrv_db",
-	"supports": {
-		"align": true,
-		"html": false
-	}
-}

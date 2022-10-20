@@ -1,0 +1,15 @@
+name: "💡 Need help?"
+description: "Have a question? We will try to help!"
+labels: "question"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Complete as much of this form as you can if you have a question that is neither a bug nor an enhancement.
+
+  - type: textarea
+    attributes:
+      label: Your question
+      description: Provide a clear and concise description of your question.
+    validations:
+      required: true

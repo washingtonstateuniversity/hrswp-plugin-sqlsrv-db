@@ -7,6 +7,7 @@
  */
 
 namespace HRSWP\SQLSRV\Sqlsrv_Query;
+
 use HRSWP\SQLSRV\Sqlsrv_DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -129,6 +130,8 @@ class Sqlsrv_Query {
 	 *                                    may be passed. Accepts any passed `$field` value or 'rand'.
 	 *                                    Default none.
 	 *     @type string          $groupby Group retrieved records by parameter. Default none.
+	 *     @type int             $offset  Number of records to skip before returning records. Default none.
+	 *     @type int             $limit   Limit records by number. Default none.
 	 * }
 	 */
 	public function parse_query( $query = '' ) {
@@ -155,6 +158,13 @@ class Sqlsrv_Query {
 			$qv['orderby'] = '';
 		} elseif ( ! is_array( $qv['orderby'] ) ) {
 			$qv['orderby'] = explode( ' ', $qv['orderby'] );
+		}
+
+		if ( isset( $qv['offset'] ) ) {
+			$qv['offset'] = ( is_numeric( $qv['offset'] ) ) ? (int) $qv['offset'] : '';
+		}
+		if ( isset( $qv['limit'] ) ) {
+			$qv['limit'] = ( is_numeric( $qv['limit'] ) ) ? (int) $qv['limit'] : '';
 		}
 	}
 
@@ -227,6 +237,8 @@ class Sqlsrv_Query {
 		$join              = '';
 		$where             = '';
 		$groupby           = '';
+		$offset            = '';
+		$limit             = '';
 
 		// Build field => table array and tables array from query vars.
 		foreach ( $q['dataset'] as $dataset ) {
@@ -235,6 +247,7 @@ class Sqlsrv_Query {
 				$field_table_array[ $field ] = $table;
 			}
 		}
+
 		// Create field clauses out of field => table array.
 		$fields_array = array();
 		$tables_array = array();
@@ -245,7 +258,7 @@ class Sqlsrv_Query {
 		$fields = implode( ', ', $fields_array );
 		$tables = implode( ', ', array_unique( $tables_array ) );
 
-		// Build the order and orderby statement clauses.
+		// Build the ORDER statement clause.
 		$rand = ( isset( $q['orderby'] ) && 'rand' === $q['orderby'] );
 		if ( ! isset( $q['order'] ) ) {
 			$q['order'] = $rand ? '' : 'DESC';
@@ -253,6 +266,7 @@ class Sqlsrv_Query {
 			$q['order'] = $rand ? '' : $this->parse_order( $q['order'] );
 		}
 
+		// Build the ORDERBY statement clause.
 		if ( empty( $q['orderby'] ) || false === $q['orderby'] || 'none' === $q['orderby'] ) {
 			$orderby = '';
 		} else {
@@ -261,7 +275,9 @@ class Sqlsrv_Query {
 			foreach ( $q['orderby'] as $_orderby ) {
 				$orderby = addslashes_gpc( urldecode( $_orderby ) );
 
-				if ( ! array_key_exists( $orderby, $field_table_array ) ) {
+				if ( array_key_exists( '*', $field_table_array ) ) {
+					$orderby_clause = $orderby;
+				} elseif ( ! array_key_exists( $orderby, $field_table_array ) ) {
 					continue;
 				} else {
 					$orderby_clause = "{$field_table_array[ $orderby ]}.{$orderby}";
@@ -272,12 +288,34 @@ class Sqlsrv_Query {
 			$orderby = implode( ', ', $orderby_array );
 		}
 
-		// Build the groupby statement clause.
+		// Build the WHERE statement clause.
+		if ( ! isset( $q['where'] ) || empty( $q['where'] ) ) {
+			$where = '';
+		} else {
+			$where = addslashes_gpc( urldecode( $q['where'] ) );
+		}
+
+		// Build the GROUPBY statement clause.
 		if ( empty( $q['groupby'] ) || false === $q['groupby'] || 'none' === $q['groupby'] ) {
 			$groupby = '';
 		} else {
 			$groupby = addslashes_gpc( urldecode( $q['groupby'] ) );
 			$groupby = "{$field_table_array[ $groupby ]}.{$groupby}";
+		}
+
+		// Build the OFFSET statement clause.
+		if ( isset( $q['offset'] ) && ! empty( $orderby ) ) {
+			$offset = (int) $q['offset'];
+		}
+
+		// Build the LIMIT statement clause.
+		if ( isset( $q['limit'] ) && ! empty( $orderby ) ) {
+			// In SQL Server, LIMIT is done with OFFSET ... FETCH,
+			// so we need an offset value if it wasn't specified.
+			// It also requires that ORDER BY is defined, so
+			// ignore the limit query var if it isn't.
+			$offset = ( '' !== $offset ) ? $offset : 0;
+			$limit  = (int) $q['limit'];
 		}
 
 		if ( ! empty( $groupby ) ) {
@@ -286,9 +324,18 @@ class Sqlsrv_Query {
 		if ( ! empty( $orderby ) ) {
 			$orderby = 'ORDER BY ' . $orderby;
 		}
+		if ( ! empty( $where ) ) {
+			$where = 'AND ' . $where;
+		}
+		if ( '' !== $offset ) {
+			$offset = 'OFFSET ' . $offset . ' ROWS';
+		}
+		if ( '' !== $limit ) {
+			$limit = 'FETCH NEXT ' . $limit . ' ROWS ONLY';
+		}
 
 		$this->request = $msdb->prepare(
-			'SELECT %s FROM %s %s WHERE 1=1 %s %s %s',
+			'SELECT %s FROM %s %s WHERE 1=1 %s %s %s %s %s',
 			array(
 				$fields,
 				$tables,
@@ -296,6 +343,8 @@ class Sqlsrv_Query {
 				$where,
 				$groupby,
 				$orderby,
+				$offset,
+				$limit,
 			)
 		);
 

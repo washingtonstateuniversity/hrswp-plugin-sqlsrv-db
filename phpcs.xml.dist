@@ -2,39 +2,33 @@
 <ruleset name="WordPress Coding Standards">
 	<description>Sniffs for WordPress plugins.</description>
 
-	<rule ref="PHPCompatibility"/>
-	<config name="testVersion" value="5.6-"/>
+	<!-- Ignore third-party code. -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Ignore filenames -->
+	<rule ref="WordPress-Extra">
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+
+	<!-- Loads the PHP Compatibility ruleset. -->
+	<rule ref="PHPCompatibilityWP"/>
 
 	<rule ref="WordPress-Core"/>
 	<rule ref="WordPress-Docs"/>
 	<rule ref="WordPress.WP.I18n"/>
-	<config name="text_domain" value="hrswp-sqlsrv-db,default"/>
-
-	<rule ref="VariableAnalysis.CodeAnalysis.VariableAnalysis">
-		<properties>
-			<property name="allowUnusedParametersBeforeUsed" value="true"/>
-		</properties>
-	</rule>
-	<rule ref="WordPress.CodeAnalysis.EmptyStatement"/>
-
-	<rule ref="PEAR.Functions.FunctionCallSignature">
-		<properties>
-			<property name="allowMultipleArguments" value="false"/>
-		</properties>
-	</rule>
 
 	<arg value="ps"/>
 	<arg name="extensions" value="php"/>
 	<arg name="basepath" value="./"/>
 	<arg name="parallel" value="20"/>
 
-	<file>.</file>
+	<!-- Sets the minimum supported PHP version to 7.4, which is also WordPress's. -->
+	<config name="testVersion" value="7.4-"/>
 
-	<!-- Exclude generated files. -->
-	<exclude-pattern type="relative">^build/*</exclude-pattern>
+	<!-- Sets the minimum supported WP version to 5.0. -->
+	<config name="minimum_supported_wp_version" value="5.0" />
 
-	<!-- Directories and third party library exclusions -->
-	<exclude-pattern>/node_modules/*</exclude-pattern>
-	<exclude-pattern>/vendor/*</exclude-pattern>
-
+	<!-- Defines the valid textdomain options. -->
+	<config name="text_domain" value="hrswp-sqlsrv-db,default"/>
 </ruleset>
