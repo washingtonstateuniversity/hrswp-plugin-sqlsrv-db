@@ -21,7 +21,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
-- Bump WP tested-to to 6.0.2. (2ed5a84)
+- Bump WP tested-to to 6.0.3.
 - Bump PHP required version from 7.0 to 7.4. (2ed5a84)
 - Update README to reflect removal of blocks, close #91. (2ed5a84)
 - Switch from setup class to functions, close #92. (99a93a8)
