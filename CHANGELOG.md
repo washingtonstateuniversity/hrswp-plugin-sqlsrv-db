@@ -17,7 +17,9 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## 0.11.1-rc.1 (:construction: TBD)
+## 0.11.1 (2022-11-10)
+
+- Bump WP tested-to to 6.1.1.
 
 ## 0.11.0 (2022-10-20)
 
