@@ -19,6 +19,8 @@ Changelog formatting (http://semver.org/):
 
 ## 0.11.1 (2022-11-10)
 
+### Changed
+
 - Bump WP tested-to to 6.1.1.
 
 ## 0.11.0 (2022-10-20)
