@@ -17,7 +17,7 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
-## TBD
+## 0.11.2 (2023-04-11)
 
 ### Changed
 
