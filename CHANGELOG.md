@@ -17,6 +17,16 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 0.11.3 (TBD)
+
+### Changed
+
+- Bump WP tested-to to 6.3.1. (8ec2873)
+
+### Security
+
+- Bump yaml and npm-package-json-lint. (b97f878)
+
 ## 0.11.2 (2023-04-11)
 
 ### Changed
