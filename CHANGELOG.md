@@ -17,6 +17,10 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 0.11.4 (2023-12-06)
+
+- Bump WP tested-to to 6.4.1. (9928fd5)
+
 ## 0.11.3 (2023-09-08)
 
 ### Changed
