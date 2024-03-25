@@ -17,6 +17,21 @@ Changelog formatting (http://semver.org/):
 ### Security (in case of vulnerabilities.)
 -->
 
+## 0.11.5-rc.1 (:construction: TBD)
+
+### Changed
+
+- Bump WordPress tested-to to 6.5.0 to close #101. (762eb9f)
+- Fix #102 upgrade Node.js and track in project. (904dfc4)
+- Update composer packages and allow select plugins. (30f2005)
+- Update @wordpress/npm-package-json-lint-config from 4.2.0 to 4.39.0. (ef5580c)
+- Upgrade npm-package-json-lint from 6.4.0 to 7.1.0. (ef5580c)
+
+### Removed
+
+- Remove `lodash` package. (ef5580c)
+- Remove `classnames` package. (ef5580c)
+
 ## 0.11.4 (2023-12-06)
 
 - Bump WP tested-to to 6.4.1. (9928fd5)
