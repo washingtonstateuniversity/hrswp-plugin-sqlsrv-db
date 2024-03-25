@@ -28,15 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 register_activation_hook(
 	__FILE__,
-	function(): void {
+	function (): void {
 		// Delete legacy option.
 		delete_option( 'hrswp_sqlsrv_db_plugin-status' );
 	}
 );
 
 // Load plugin classes.
-require_once dirname( __FILE__ ) . '/includes/classes/class-sqlsrv-db.php';
-require_once dirname( __FILE__ ) . '/includes/classes/class-sqlsrv-query.php';
+require_once __DIR__ . '/includes/classes/class-sqlsrv-db.php';
+require_once __DIR__ . '/includes/classes/class-sqlsrv-query.php';
 
 /**
  * Uninstalls the plugin.
@@ -74,11 +74,11 @@ function verify_plugin_dependencies(): bool {
 
 add_action(
 	'plugins_loaded',
-	function(): void {
+	function (): void {
 		if ( ! verify_plugin_dependencies() ) {
 			add_action(
 				'admin_notices',
-				function(): void {
+				function (): void {
 					printf(
 						'<div class="notice notice-error"><p>%s</p></div>',
 						esc_html__( 'ERROR: There doesn\'t seem to be a', 'hrswp-sqlsrv-db' ) . '<code>hrswp-sqlsrv-config.php</code>' . esc_html__( 'file. This is required for the HRSWP Sqlsrv DB plugin to work.', 'hrswp-sqlsrv-db' )
