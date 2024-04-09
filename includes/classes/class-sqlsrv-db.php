@@ -157,18 +157,6 @@ class Sqlsrv_DB {
 	}
 
 	/**
-	 * Handles database option destruction.
-	 *
-	 * This PHP5-style destructor runs when the database object is destroyed.
-	 *
-	 * @since 0.1.0
-	 * @return true
-	 */
-	public function __destruct() {
-		return true;
-	}
-
-	/**
 	 * Adds the connection details for a database as a dataset.
 	 *
 	 * @since 0.2.0
@@ -379,12 +367,12 @@ class Sqlsrv_DB {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $string String to escape.
+	 * @param string $escape_string String to escape.
 	 * @return string Escaped string.
 	 */
-	private function mssql_escape_string( $string ) {
+	private function mssql_escape_string( $escape_string ) {
 		// MS SQL syntax requires single quotes to be escaped.
-		$escaped = str_replace( "'", "''", $string );
+		$escaped = str_replace( "'", "''", $escape_string );
 		$escaped = addslashes( $escaped );
 
 		return $this->add_placeholder_escape( $escaped );
@@ -397,11 +385,11 @@ class Sqlsrv_DB {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $string String to escape.
+	 * @param string $escape_string String to escape.
 	 */
-	public function escape_by_ref( &$string ) {
-		if ( ! is_float( $string ) ) {
-			$string = $this->mssql_escape_string( $string );
+	public function escape_by_ref( &$escape_string ) {
+		if ( ! is_float( $escape_string ) ) {
+			$escape_string = $this->mssql_escape_string( $escape_string );
 		}
 	}
 
@@ -625,9 +613,9 @@ class Sqlsrv_DB {
 		$num_rows = 0;
 		if ( is_resource( $this->result ) ) {
 			// phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition
-			while ( $row = sqlsrv_fetch_object( $this->result ) ) {
+			while ( $row = sqlsrv_fetch_object( $this->result ) ) { // phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 				$this->last_result[ $num_rows ] = $row;
-				$num_rows++;
+				++$num_rows;
 			}
 
 			// Log the number of rows returned and return them.
@@ -788,7 +776,5 @@ class Sqlsrv_DB {
 				esc_html( $str )
 			);
 		}
-
 	}
-
 }
