@@ -4,6 +4,9 @@
 
 ## Overview
 
+> [!CAUTION]
+> As of 26 July 2024, this project is archived and no longer being actively maintained.
+
 A WSU HRS WordPress plugin to connect to and query external Microsoft SQL Server databases.
 
 ## Description
@@ -49,7 +52,7 @@ git checkout -b new-branch-name
 
 ## Support Level
 
-**Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
+**Archived:** WSU HRS no longer maintains this plugin.
 
 ## Changelog
 
